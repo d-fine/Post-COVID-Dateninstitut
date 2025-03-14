@@ -1,0 +1,15 @@
+.p-card {
+    background-color: transparent;
+    box-shadow: none;
+    text-align: left;
+}
+
+.white-p-card {
+    background-color: white;
+    text-align: left;
+    padding: 1rem;
+}
+
+.p-card-body {
+    padding: 0;
+}

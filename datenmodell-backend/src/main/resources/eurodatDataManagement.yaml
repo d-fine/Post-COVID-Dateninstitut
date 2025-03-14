@@ -1,0 +1,105 @@
+---
+openapi: 3.1.0
+components:
+  schemas:
+    InsertResult:
+      type: object
+      required:
+      - result
+      properties:
+        result:
+          type: string
+    DataRequest:
+      type: object
+      required:
+      - data
+      - table
+      - transactionId
+      properties:
+        data:
+          type: array
+          items:
+            type: string
+        table:
+          type: string
+        transactionId:
+          type: string
+  securitySchemes:
+    SecurityScheme:
+      description: Authentication
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/v1/participants/{participantId}/data:
+    post:
+      parameters:
+      - name: participantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InsertResult"
+      summary: Insert Data
+      tags:
+      - Data Management Resource
+    get:
+      parameters:
+      - name: participantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: correlationId
+        in: query
+        schema:
+          type:
+          - integer
+          - "null"
+          format: int64
+      - name: table
+        in: query
+        schema:
+          type: string
+        required: true
+      - name: transactionId
+        in: query
+        schema:
+          type: string
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      summary: Get Data
+      tags:
+      - Data Management Resource
+info:
+  title: Data Management REST API
+  version: 1.0.0-SNAPSHOT
+  description: OpenAPI specification of EuroDaT's Data Management API
+  contact:
+    name: EuroDaT support
+    url: https://www.eurodat.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: https://app.int.eurodat.org
