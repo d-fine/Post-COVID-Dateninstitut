@@ -1,0 +1,261 @@
+openapi: 3.0.1
+info:
+  title: Datenmodell Backend API documentation
+  version: 1.0.0
+servers:
+  - url: /api
+paths:
+  /research-data/dataset:
+    get:
+      tags:
+        - research-data-controller
+      summary: Get a dataset
+      description: Fetch the contents of a dataset
+      operationId: getResearchDataSet
+      parameters:
+        - name: "researchDataId"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+      responses:
+        '200':
+          description: a research data file
+          content:
+            application/octet-stream: # Use more specific MIME type if known
+              schema:
+                type: string
+                format: binary
+          headers:
+            X-Filename:
+              description: The name of the retrieved file
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /research-data/overview:
+    get:
+      tags:
+        - research-data-controller
+      summary: Get an overview of available research data
+      description: Retrieve meta data about all available research data sets
+      operationId: getAllResearchData
+      responses:
+        '200':
+          description: Retrieved all research data sets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResearchDataInformation'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /research-data/upload:
+    post:
+      tags:
+        - research-data-controller
+      summary: Upload a research data file
+      description: Uploads a new file to the DB containing research data and meta information
+      operationId: uploadResearchData
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      parameters:
+        - name: "dataConsumerUsername"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "fileName"
+          required: true
+          in: "query"
+          schema:
+            type: "string"
+        - name: "description"
+          in: "query"
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: File uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformation'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /user/create:
+    post:
+      tags:
+        - user-management-controller
+      summary: Register a new data consumer
+      description: Registers a user with a unique id and username that can be set as a data consumer for research data
+      operationId: createUser
+      parameters:
+        - name: "username"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+        - name: "firstName"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "surname"
+          in: "query"
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: Successfully added a keycloak user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformation'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default-oauth: []
+        - default-bearer-auth: []
+
+  /user/overview:
+    get:
+      tags:
+        - user-management-controller
+      summary: Fetch all available user
+      description: Fetch all user ids and their eurodat clientname
+      operationId: getAllUser
+      responses:
+        '200':
+          description: Fetched all users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformation'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default-oauth: []
+        - default-bearer-auth: []
+
+components:
+  schemas:
+    EntityInformation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    ResearchDataInformation:
+      type: object
+      properties:
+        researchDataId:
+          type: string
+          format: uuid
+        fileName:
+          type: string
+        description:
+          type: string
+    ErrorDetails:
+      required:
+        - errorType
+        - httpStatus
+        - message
+        - summary
+      type: object
+      properties:
+        errorType:
+          type: string
+        summary:
+          type: string
+        message:
+          type: string
+        httpStatus:
+          type: number
+        metaInformation:
+          type: object
+    ErrorResponse:
+      required:
+        - errors
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ErrorDetails"
+
+  securitySchemes:
+    default-bearer-auth:
+      type: http
+      in: header
+      scheme: bearer
+    default-oauth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: /keycloak/realms/data-provider/protocol/openid-connect/auth
+          tokenUrl: /keycloak/realms/data-provider/protocol/openid-connect/token
+          scopes: {}

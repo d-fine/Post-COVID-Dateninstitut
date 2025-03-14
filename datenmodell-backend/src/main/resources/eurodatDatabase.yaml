@@ -1,0 +1,209 @@
+---
+openapi: 3.1.0
+components:
+  schemas:
+    SafeDepositDatabaseResponse:
+      type: object
+      required:
+      - response
+      properties:
+        response:
+          type: string
+    TransactionDatabaseRequest:
+      type: object
+      required:
+      - appId
+      - transactionId
+      - consumer
+      - provider
+      properties:
+        provider:
+          type: array
+          items:
+            type: string
+        appId:
+          type: string
+        transactionId:
+          type: string
+        consumer:
+          type: array
+          items:
+            type: string
+    ClientRoleCreationRequest:
+      type: object
+      required:
+      - client
+      properties:
+        client:
+          type: string
+    SafeDepositDatabaseRequest:
+      type: object
+      required:
+      - appId
+      properties:
+        appId:
+          type: string
+    Unit:
+      type: object
+  securitySchemes:
+    SecurityScheme:
+      description: Authentication
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/v1/database-service/database-service:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SafeDepositDatabaseRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SafeDepositDatabaseResponse"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Create Safe Deposit Database
+      tags:
+      - Safe Deposit Resource
+      security:
+      - SecurityScheme: []
+  /api/v1/database-service/database-service/{appId}:
+    delete:
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Unit"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Delete Safe Deposit Database
+      tags:
+      - Safe Deposit Resource
+      security:
+      - SecurityScheme: []
+  /api/v1/database-service/transaction-database:
+    delete:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionDatabaseRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Unit"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Delete Transaction Database
+      tags:
+      - Transaction Database Resource
+      security:
+      - SecurityScheme: []
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionDatabaseRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Unit"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Create Transaction Database
+      tags:
+      - Transaction Database Resource
+      security:
+      - SecurityScheme: []
+  /api/v1/database-service/transaction-database/roles:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientRoleCreationRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Unit"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Create External Client Role
+      tags:
+      - Transaction Database Resource
+      security:
+      - SecurityScheme: []
+  /api/v1/database-service/transaction-database/roles/{clientId}:
+    delete:
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Unit"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Delete External Client Role
+      tags:
+      - Transaction Database Resource
+      security:
+      - SecurityScheme: []
+info:
+  title: Database Service REST API
+  version: 1.0.0-SNAPSHOT
+  description: OpenAPI specification of EuroDaT's Database Service API
+  contact:
+    name: EuroDaT support
+    url: https://www.eurodat.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: https://app.int.eurodat.org

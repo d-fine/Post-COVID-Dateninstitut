@@ -1,0 +1,558 @@
+---
+openapi: 3.1.0
+components:
+  schemas:
+    LocalDateTime:
+      type: string
+      format: date-time
+      examples:
+        - 2022-03-10T12:15:50
+    ClientSelectorMapping:
+      type: object
+      required:
+        - clientId
+        - clientSelector
+      properties:
+        clientId:
+          type: string
+        clientSelector:
+          type: string
+    WorkflowMetadata:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+    MessageRequest:
+      type: object
+      required:
+        - message
+        - selectors
+      properties:
+        message:
+          type: string
+        selectors:
+          type: array
+          items:
+            type: string
+    Message:
+      type: object
+      required:
+        - appId
+        - transactionId
+        - workflowId
+        - label
+        - selector
+      properties:
+        createdAt:
+          anyOf:
+            - $ref: "#/components/schemas/ZonedDateTime"
+            - type: "null"
+        appId:
+          type: string
+        correlationId:
+          type:
+            - integer
+            - "null"
+          format: int64
+        selector:
+          type: string
+        label:
+          type: string
+        transactionId:
+          type: string
+        workflowId:
+          type: string
+    ClientRegistrationForm:
+      type: object
+      required:
+        - name
+        - certificate
+        - clientSelector
+        - purpose
+      properties:
+        createPublicClient:
+          type: boolean
+        purpose:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/Purpose"
+        name:
+          type: string
+        certificate:
+          type: string
+        clientSelector:
+          type: string
+    ClientDeleteResponse:
+      type: object
+      properties:
+        clientMapperDelete:
+          type: boolean
+        keycloakClientDelete:
+          type: boolean
+    Purpose:
+      type: string
+      enum:
+        - APPS
+        - TRANSACTIONS
+        - SAFEDEPOSITS
+    AppRequest:
+      type: object
+      required:
+        - appId
+        - consumer
+        - provider
+      properties:
+        provider:
+          type: array
+          items:
+            type: string
+        appId:
+          type: string
+        consumer:
+          type: array
+          items:
+            type: string
+    WorkflowStatus:
+      type: object
+      required:
+        - phase
+        - startedAt
+        - finishedAt
+      properties:
+        phase:
+          $ref: "#/components/schemas/WorkflowStatusPhase"
+        startedAt:
+          type: string
+        finishedAt:
+          type: string
+    WorkflowStatusPhase:
+      type: string
+      enum:
+        - UNKNOWN
+        - PENDING
+        - RUNNING
+        - SUCCEEDED
+        - FAILED
+        - ERROR
+    Transaction:
+      type: object
+      required:
+        - id
+        - appId
+        - clientId
+        - consumer
+        - provider
+      properties:
+        clientId:
+          type: string
+        provider:
+          type: array
+          items:
+            type: string
+        appId:
+          type: string
+        startTime:
+          type: string
+        id:
+          type: string
+        endTime:
+          type: string
+        consumer:
+          type: array
+          items:
+            type: string
+    ZonedDateTime:
+      type: string
+      format: date-time
+      examples:
+        - 2022-03-10T12:15:50-04:00
+    WorkflowGetResponse:
+      type: object
+      required:
+        - metadata
+        - status
+      properties:
+        metadata:
+          $ref: "#/components/schemas/WorkflowMetadata"
+        status:
+          $ref: "#/components/schemas/WorkflowStatus"
+    WorkflowStartResponse:
+      type: object
+      required:
+        - transactionId
+        - workflowDefinitionId
+        - workflowRunId
+      properties:
+        workflowDefinitionId:
+          type: string
+        workflowRunId:
+          type: string
+        transactionId:
+          type: string
+    ClientCertificateValues:
+      type: object
+      required:
+        - name
+        - certificate
+      properties:
+        name:
+          type: string
+        certificate:
+          type: string
+    WorkflowRequest:
+      type: object
+      required:
+        - workflowDefinitionId
+      properties:
+        workflowDefinitionId:
+          type: string
+  securitySchemes:
+    SecurityScheme:
+      description: Authentication
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/v1/apps/{appId}/messages:
+    get:
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: excludeUntil
+          in: query
+          schema:
+            type:
+              - integer
+              - "null"
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Message"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Get Messages
+      tags:
+        - Messaging Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/clients:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientCertificateValues"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Update Certificate
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme:
+            - client:write
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientRegistrationForm"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Register Client
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme:
+            - client:write
+  /api/v1/clients/clientmappings:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClientSelectorMapping"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Get Client Selector Mapping
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/clients/clientselector:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Get All Client Selectors
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/clients/clientselector/{clientId}:
+    get:
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Get Client Selector
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/clients/{clientId}:
+    delete:
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/ClientDeleteResponse"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Delete Client
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme:
+            - client:write
+  /api/v1/messages:
+    post:
+      requestBody:
+        description: Message request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessageRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Message"
+        "401":
+          description: Unauthorized
+        "400":
+          description: Invalid selectors
+      security:
+        - custom-bearer: []
+      summary: Post Message
+      tags:
+        - Messaging Resource
+  /api/v1/transactions:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AppRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Start Transaction
+      tags:
+        - Transaction Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/transactions/{transactionId}:
+    get:
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Find Transaction
+      tags:
+        - Transaction Resource
+      security:
+        - SecurityScheme: []
+    delete:
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: End Transaction
+      tags:
+        - Transaction Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/transactions/{transactionId}/workflows:
+    post:
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkflowRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WorkflowStartResponse"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Start Workflow
+      tags:
+        - Workflow Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/transactions/{transactionId}/workflows/{workflowId}:
+    get:
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WorkflowGetResponse"
+        "401":
+          description: Not Authorized
+        "403":
+          description: Not Allowed
+      summary: Get Workflow
+      tags:
+        - Workflow Resource
+      security:
+        - SecurityScheme: []
+info:
+  title: EuroDaT REST API
+  version: 1.0.0-SNAPSHOT
+  description: OpenAPI specification of EuroDaT's available control plane API
+  contact:
+    name: EuroDaT support
+    url: https://www.eurodat.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://app.int.eurodat.org
