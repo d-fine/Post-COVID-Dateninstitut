@@ -1,10 +1,13 @@
 [versions]
 #plugins
-kotlin = "1.9.25"
-springBoot = "3.4.2"
+kotlin = "2.0.21"
+springBoot = "3.4.4"
 springDependencyManagement = "1.1.6"
 openApiGenerator = "7.11.0"
 flywayDb = "11.3.1"
+ktfmt = "0.22.0"
+detekt = "1.23.8"
+dependencyCheck = "12.1.1"
 
 #libraries
 kotlinJackson = "2.18.1"
@@ -16,13 +19,17 @@ servletApi = "4.0.1"
 h2Database = "2.3.232"
 junitLauncher = "1.11.3"
 postgresDriver = "42.7.4"
-springWeb = "6.2.2"
+springWeb = "6.2.5"
 googleOauth2 = "1.23.0"
 nimbusJoseJwt = "9.47"
 jackson = "2.17.1"
 jacksonDatabindNullable = "0.2.6"
 jakartaAnnotation = "2.1.1"
 jupiter = "5.11.4"
+apacheCsv = '1.10.0'
+apacheTika = '3.1.0'
+icu4J = '71.1'
+springSecurity = '6.4.4'
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -31,6 +38,9 @@ kotlinJpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
 springBoot = { id = "org.springframework.boot", version.ref = "springBoot" }
 springDependencyManagement = { id = "io.spring.dependency-management", version.ref = "springDependencyManagement" }
 openApiGenerator = { id = "org.openapi.generator", version.ref = "openApiGenerator" }
+ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt"}
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
+dependencyCheck = { id = "org.owasp.dependencycheck", version.ref = "dependencyCheck"}
 
 [libraries]
 springBootStarterJpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "springBoot" }
@@ -41,6 +51,7 @@ springBootStarterSecurity = { module = "org.springframework.boot:spring-boot-sta
 springDevTools = { module = "org.springframework.boot:spring-boot-devtools", version.ref = "springBoot" }
 springWeb = { module = "org.springframework:spring-web", version.ref = "springWeb" }
 springBootTest = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "springBoot" }
+springSecurityTest = { module = "org.springframework.security:spring-security-test", version.ref = "springSecurity" }
 kotlinJackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "kotlinJackson" }
 kotlinReflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinReflect" }
 swaggerCore = { module = "io.swagger.core.v3:swagger-core", version.ref = "swaggerCore" }
@@ -59,3 +70,6 @@ jakartaAnnotation = { module = "jakarta.annotation:jakarta.annotation-api", vers
 jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "jupiter" }
 flywayCore = { module = "org.flywaydb:flyway-core", version.ref = "flywayDb" }
 flywayPostgres = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flywayDb" }
+apacheCsv = { module = "org.apache.commons:commons-csv", version.ref = "apacheCsv" }
+apacheTika = { module = "org.apache.tika:tika-core", version.ref = "apacheTika" }
+icu4J = { module = "com.ibm.icu:icu4j", version.ref = "icu4J" }
