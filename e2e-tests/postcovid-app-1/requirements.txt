@@ -1,7 +1,0 @@
-argparse
-fastapi
-pandas
-psycopg2-binary >= 2.9.1
-uvicorn[standard]==0.24.0
-wheel
-
