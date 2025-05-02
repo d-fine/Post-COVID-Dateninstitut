@@ -1,0 +1,132 @@
+services:
+  datenmodell-backend:
+    profiles:
+      - datenmodell
+    container_name: datenmodell-backend
+    build:
+      context: .
+      dockerfile: ./datenmodell-backend/Dockerfile
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    env_file:
+      - path: ./datenmodell-backend/datenmodell-backend.env
+      - path: ./datenmodell-backend/datenmodell-backend-secrets.env
+    depends_on:
+      - datenmodell-db
+
+  clientapp-backend:
+    profiles:
+      - clientapp
+    container_name: clientapp-backend
+    build:
+      context: .
+      dockerfile: ./clientapp-backend/Dockerfile
+    ports:
+      - "8081:8081"
+      - "5006:5005"
+    env_file:
+      - path: ./clientapp-backend/clientapp-backend.env
+      - path: ./clientapp-backend/clientapp-backend-secrets.env
+    depends_on:
+      - clientapp-db
+
+  datenmodell-db:
+    profiles:
+      - datenmodell
+      - datenmodell-exclude-backend
+      - full-exclude-backend
+    container_name: datenmodell-db
+    image: postgres:15.8
+    env_file: ./datenmodell-backend/datenmodell-db-secrets.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  clientapp-db:
+    profiles:
+      - clientapp
+      - clientapp-exclude-backend
+      - full-exclude-backend
+    container_name: clientapp-db
+    image: postgres:15.8
+    env_file: ./clientapp-backend/clientapp-db-secrets.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgclientdata:/var/lib/postgresql/data
+
+  clientapp-keycloak-db:
+    profiles:
+      - clientapp
+      - clientapp-exclude-backend
+      - full-exclude-backend
+    container_name: clientapp-keycloak-db
+    restart: unless-stopped
+    image: postgres:15.8
+    volumes:
+      - clientapp_keycloak_data:/var/lib/postgresql/data
+    env_file: ./clientapp-keycloak/clientapp-keycloak-db-secrets.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready || false"]
+      interval: 30s
+      timeout: 3s
+
+  datenmodell-keycloak-db:
+    profiles:
+      - datenmodell
+      - datenmodell-exclude-backend
+      - full-exclude-backend
+    container_name: datenmodell-keycloak-db
+    restart: unless-stopped
+    image: postgres:15.8
+    volumes:
+      - datenmodell_keycloak_data:/var/lib/postgresql/data
+    env_file: ./datenmodell-keycloak/datenmodell-keycloak-db-secrets.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready || false"]
+      interval: 30s
+      timeout: 3s
+
+  datenmodell-keycloak:
+    profiles:
+      - datenmodell
+      - datenmodell-exclude-backend
+      - full-exclude-backend
+    container_name: datenmodell-keycloak
+    restart: unless-stopped
+    build:
+      context: datenmodell-keycloak
+      dockerfile: Dockerfile
+    ports:
+      - "20010:8080"
+    env_file:
+      - path: ./datenmodell-keycloak/datenmodell-keycloak.env
+      - path: ./datenmodell-keycloak/datenmodell-keycloak-secrets.env
+    depends_on:
+      - datenmodell-keycloak-db
+
+  clientapp-keycloak:
+    profiles:
+      - clientapp
+      - clientapp-exclude-backend
+      - full-exclude-backend
+    container_name: clientapp-keycloak
+    restart: unless-stopped
+    build:
+      context: clientapp-keycloak
+      dockerfile: Dockerfile
+    ports:
+      - "20011:8080"
+    env_file:
+      - path: ./clientapp-keycloak/clientapp-keycloak.env
+      - path: ./clientapp-keycloak/clientapp-keycloak-secrets.env
+    depends_on:
+      - clientapp-keycloak-db
+
+volumes:
+  pgdata: {}
+  pgclientdata: {}
+  datenmodell_keycloak_data: {}
+  clientapp_keycloak_data: {}

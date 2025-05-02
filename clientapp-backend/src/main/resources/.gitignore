@@ -1,0 +1,8 @@
+# certificate files
+keystore.jks
+keystore.p12
+keystore.pem
+tls.crt
+
+# development properties
+/application-development.yaml

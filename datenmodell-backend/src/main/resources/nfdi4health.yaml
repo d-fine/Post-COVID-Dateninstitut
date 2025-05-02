@@ -1,0 +1,3783 @@
+components:
+  examples:
+    exampleResource:
+      summary: Example study (non-interventional)
+      value:
+        resource:
+          acronyms:
+          - {language: EN (English), text: DONALD Study}
+          - {language: DE (German), text: DONALD Studie}
+          chronicDiseases: true
+          classification: {type: Study}
+          collection: [Individual Studies]
+          contributors:
+          - affiliations:
+            - address: Friedrich-Hirzebruch-Allee 7, 53115, Bonn, Germany
+              identifiers:
+              - {identifier: 041nas322, scheme: ROR}
+              name: "Rheinische Friedrich-Wilhelms-Universit\xE4t Bonn, Institut f\xFC\
+                r Ern\xE4hrungs- und Lebensmittelwissenschaften (IEL) - Ern\xE4hrungsepidemiologie"
+              webpage: https://www.ernaehrungsepidemiologie.uni-bonn.de/
+            email: epi@uni-bonn.de
+            nameType: Personal
+            personal:
+              familyName: "N\xF6thlings"
+              givenName: Ute
+              identifiers:
+              - {identifier: 0000-0002-5789-2252, scheme: ORCID}
+              type: Principal investigator
+          customMetadata:
+            chronicDiseasesEpidemiology:
+            - commonChronicDiseaseName: Type 2 Diabetes mellitus (E11-E14)
+              dataCollected: Incident
+              informationSources: [Biosamples, 'Self-report (questionnaires or interviews),
+                  cases not verified']
+            - commonChronicDiseaseName: Hyperlipidaemia (E78)
+              dataCollected: Incident
+              informationSources: [Biosamples, 'Self-report (questionnaires or interviews),
+                  cases not verified']
+            - commonChronicDiseaseName: Hypertensive diseases (I10-I15)
+              dataCollected: Incident
+              informationSources: ['Physical measures (e.g., clinical examination)',
+                'Self-report (questionnaires or interviews), cases not verified']
+            dietAssessment:
+            - device: [Paper-based]
+              dietarySupplements: true
+              instrument: Food record
+              mode: [Self-administered]
+              portionSizeEstimation: [Weighing]
+              referencePeriodNumber: 3
+              referencePeriodUnit: Days
+              reliability: true
+              reliabilityReference: doi:10.1017/S136898000999317X
+              repeat: true
+              repeatFrequency: 0
+              validity: true
+              validityReference: doi:10.1017/S136898000999317X
+          descriptions:
+          - {language: EN (English), text: "The DONALD study is an ongoing, open cohort\
+              \ study conducted in Dortmund, Germany. In 1985 the study started to\
+              \ collect data on diet, growth, development, and metabolism of healthy\
+              \ children and adolescents. Since then, 35\u201340 infants are newly\
+              \ recruited every year. The participants are first examined at the age\
+              \ of 3-9 months and return for three more visits in the first year,\
+              \ two in the second year and thereafter annually until young adulthood.\
+              \ In the first study years, approximately 300 participants >2 years\
+              \ old were also recruited. \r\n\r\nYearly examinations include 3-day\
+              \ weighed dietary records, anthropometric measurements, collection of\
+              \ 24-h urine samples (starting at age 3\u20134 years), interviews on\
+              \ lifestyle and medical examinations. Parental examinations (anthropometric\
+              \ measurements, lifestyle interviews) take place every four years. In\
+              \ subgroups, further data was collected, such as on chronobiology or\
+              \ metabolomics. Since 2005, in addition to the regular examinations,\
+              \ participants older than 18 years are invited every five years to provide\
+              \ a fasting blood sample."}
+          - {language: DE (German), text: "Die DONALD-Studie ist eine laufende, offene\
+              \ Kohortenstudie, die in Dortmund, Deutschland, durchgef\xFChrt wird.\
+              \ Im Jahr 1985 begann die Studie, Informationen \xFCber Ern\xE4hrung,\
+              \ Wachstum, Entwicklung und Stoffwechsel von gesunden Kindern und Jugendlichen\
+              \ zu erheben. Seitdem werden jedes Jahr 35-40 S\xE4uglinge rekrutiert.\
+              \ Die Teilnehmenden werden erstmals im Alter von 3-9 Monaten untersucht\
+              \ und kehren im ersten Lebensjahr zu drei weiteren Besuchen in Studienzentrum\
+              \ zur\xFCck, im zweiten Jahr zu zwei Besuchen und anschlie\xDFend bis\
+              \ zum jungen Erwachsenenalter einmal j\xE4hrlich. In den ersten Studienjahren\
+              \ wurden zudem ca. 300 Teilnehmer im Alter von >2 Jahren rekrutiert.\
+              \ \r\n\r\nDie j\xE4hrlichen Untersuchungen umfassen 3-Tage-Wiege-Protokolle,\
+              \ anthropometrische Messungen, die Sammlung von 24-h-Urinproben (beginnend\
+              \ im Alter von 3-4 Jahren), Interviews zum Lebensstil und medizinische\
+              \ Untersuchungen. Die Untersuchungen der Eltern (anthropometrische Messungen,\
+              \ Befragung zum Lebensstil) finden alle vier Jahre statt. In Untergruppen\
+              \ wurden weitere Daten erhoben, z. B. zur Chronobiologie oder Metabolomik.\
+              \ Seit 2005 werden die Teilnehmenden, die \xE4lter als 18 Jahre sind,\
+              \ zus\xE4tzlich zu den regelm\xE4\xDFigen Untersuchungen alle f\xFC\
+              nf Jahre zur Abgabe einer N\xFCchternblutprobe gebeten."}
+          design:
+            administrativeInformation: {ethicsCommitteeApproval: 'Request for approval
+                submitted, approval granted', startDate: '1985-01-08T00:00:00', status: 'Ongoing
+                (II): Recruitment and data collection ongoing', statusEnrollingByInvitation: No}
+            centers: Monocentric
+            conditions:
+            - {classification: SNOMED CT, code: http://snomed.info/id/87276001, label: Nutritional
+                status}
+            - {classification: MeSH, code: http://id.nlm.nih.gov/mesh/D000886, label: Anthropometry}
+            - {classification: MeSH, code: http://id.nlm.nih.gov/mesh/D000083202,
+              label: Cardiometabolic risk factors}
+            - {classification: SNOMED CT, code: http://snomed.info/id/426203009, label: Carotid
+                intima media thickness}
+            - {classification: Free text, label: Thyroid volume}
+            - {classification: Free text, label: Metabolic and excretory parameters
+                in 24-h urine}
+            dataSharingPlan: {accessCriteria: 'In accordance with the consent form
+                for the participants, the pseudonymized study data are not permitted
+                to be made publicly available. However, the DONALD data may be made
+                available to external researchers upon request for cooperation or
+                data use. In this case, a cooperation or data use agreement must be
+                concluded in advance . The use of the DONALD data by external scientists
+                is therefore only possible with detailed prior justification (scientific
+                purpose) and after agreement of the study head.', description: 'In
+                accordance with the consent form for the participants, the pseudonymized
+                study data are not permitted to be made publicly available. However,
+                the DONALD data may be made available to external researchers upon
+                request for cooperation or data use. In this case, a cooperation or
+                data use agreement must be concluded in advance . The use of the DONALD
+                data by external scientists is therefore only possible with detailed
+                prior justification (scientific purpose) and after agreement of the
+                study head.', generally: 'Yes, there is a plan to make data available'}
+            dataSource:
+              biosamples: [Blood, Faeces, Saliva, Urine]
+              description: "Data sources include 3-day weighed dietary records, anthropometric\
+                \ measurements, 24-h urine samples (from onwards 3\u20134 years),\
+                \ medical examinations as well as interviews on lifestyle (e.g. physical\
+                \ acitivity, chronobiology, socioeconomic factors), blood samples\
+                \ (since 2005, from 18 years onwards), saliva (since 2015 once in\
+                \ adolescence) and faeces (adult subsample)."
+              general: [Biological samples, Interview, Other, Questionnaire]
+            eligibilityCriteria:
+              ageMax: {number: 9, timeUnit: Months}
+              ageMin: {number: 3, timeUnit: Months}
+              genders: [Female, Male]
+              inclusionCriteria: Eligible are healthy German infants (i.e., infants
+                free of diseases affecting growth and/or dietary intake), whose parents
+                are willing to participate in a long-term study and of whom at least
+                one has sufficient knowledge of the German language.
+            groupsOfDiseases:
+              generally: ['Endocrine, nutritional and metabolic diseases (IV)', Unknown]
+            mortalityData: Yes, vital status only (cause of death missing)
+            nonInterventional:
+              biospecimenDescription: 24h-urine samples (from 3 years onwards), spot
+                urine samples (0,25 - 3 years), blood samples (from 18 years onwards),
+                stool samples (subsample from 18 years onwards)
+              biospecimenRetention: [Samples with DNA, Samples without DNA]
+              timePerspectives: [Prospective]
+            population:
+              countries: [Germany]
+              region: Dortmund, Germany
+            primaryDesign: Non-interventional
+            sampling: {method: Not applicable}
+            studyType:
+              nonInterventional: [Cohort]
+            subject: Person
+          identifier: '45'
+          ids:
+          - {identifier: 10.1007/s00103-012-1503-6, relationType: A is described by
+              B, scheme: DOI, typeGeneral: Journal article}
+          - {identifier: 10.1007/s00394-004-0445-7, relationType: A is described by
+              B, scheme: DOI, typeGeneral: Journal article}
+          idsAlternative:
+          - {identifier: DRKS00029092, scheme: DRKS}
+          keywords:
+          - {code: http://id.nlm.nih.gov/mesh/T000864255, label: 'Diet, Food and Nutrition'}
+          - {code: http://id.nlm.nih.gov/mesh/D007223, label: Infant}
+          - {code: http://id.nlm.nih.gov/mesh/D002648, label: Child}
+          - {code: http://id.nlm.nih.gov/mesh/D000293, label: Adolescent}
+          - {code: http://id.nlm.nih.gov/mesh/D006262, label: Health}
+          languages: [DE (German)]
+          nutritionalData: true
+          provenance: {dataSource: Manually collected, lastUpdatePostedDate: '2023-07-27T07:42:45Z'}
+          titles:
+          - {language: EN (English), text: DOrtmund Nutritional and Anthropometric
+              Longitudinally Designed Study}
+          webpage: https://www.ernaehrungsepidemiologie.uni-bonn.de/forschung/donald-1/
+    exampleResourceReturned:
+      summary: Example study (non-interventional)
+      value:
+        link: null
+        resource:
+          acronyms:
+          - {language: EN (English), text: DONALD Study}
+          - {language: DE (German), text: DONALD Studie}
+          chronicDiseases: true
+          classification: {type: Study}
+          collection: [Individual Studies]
+          contributors:
+          - affiliations:
+            - address: Friedrich-Hirzebruch-Allee 7, 53115, Bonn, Germany
+              identifiers:
+              - {identifier: 041nas322, scheme: ROR}
+              name: "Rheinische Friedrich-Wilhelms-Universit\xE4t Bonn, Institut f\xFC\
+                r Ern\xE4hrungs- und Lebensmittelwissenschaften (IEL) - Ern\xE4hrungsepidemiologie"
+              webpage: https://www.ernaehrungsepidemiologie.uni-bonn.de/
+            email: epi@uni-bonn.de
+            nameType: Personal
+            personal:
+              familyName: "N\xF6thlings"
+              givenName: Ute
+              identifiers:
+              - {identifier: 0000-0002-5789-2252, scheme: ORCID}
+              type: Principal investigator
+          customMetadata:
+            chronicDiseasesEpidemiology:
+            - commonChronicDiseaseName: Type 2 Diabetes mellitus (E11-E14)
+              dataCollected: Incident
+              informationSources: [Biosamples, 'Self-report (questionnaires or interviews),
+                  cases not verified']
+            - commonChronicDiseaseName: Hyperlipidaemia (E78)
+              dataCollected: Incident
+              informationSources: [Biosamples, 'Self-report (questionnaires or interviews),
+                  cases not verified']
+            - commonChronicDiseaseName: Hypertensive diseases (I10-I15)
+              dataCollected: Incident
+              informationSources: ['Physical measures (e.g., clinical examination)',
+                'Self-report (questionnaires or interviews), cases not verified']
+            dietAssessment:
+            - device: [Paper-based]
+              dietarySupplements: true
+              instrument: Food record
+              mode: [Self-administered]
+              portionSizeEstimation: [Weighing]
+              referencePeriodNumber: 3
+              referencePeriodUnit: Days
+              reliability: true
+              reliabilityReference: doi:10.1017/S136898000999317X
+              repeat: true
+              repeatFrequency: 0
+              validity: true
+              validityReference: doi:10.1017/S136898000999317X
+          descriptions:
+          - {language: EN (English), text: "The DONALD study is an ongoing, open cohort\
+              \ study conducted in Dortmund, Germany. In 1985 the study started to\
+              \ collect data on diet, growth, development, and metabolism of healthy\
+              \ children and adolescents. Since then, 35\u201340 infants are newly\
+              \ recruited every year. The participants are first examined at the age\
+              \ of 3-9 months and return for three more visits in the first year,\
+              \ two in the second year and thereafter annually until young adulthood.\
+              \ In the first study years, approximately 300 participants >2 years\
+              \ old were also recruited. \r\n\r\nYearly examinations include 3-day\
+              \ weighed dietary records, anthropometric measurements, collection of\
+              \ 24-h urine samples (starting at age 3\u20134 years), interviews on\
+              \ lifestyle and medical examinations. Parental examinations (anthropometric\
+              \ measurements, lifestyle interviews) take place every four years. In\
+              \ subgroups, further data was collected, such as on chronobiology or\
+              \ metabolomics. Since 2005, in addition to the regular examinations,\
+              \ participants older than 18 years are invited every five years to provide\
+              \ a fasting blood sample."}
+          - {language: DE (German), text: "Die DONALD-Studie ist eine laufende, offene\
+              \ Kohortenstudie, die in Dortmund, Deutschland, durchgef\xFChrt wird.\
+              \ Im Jahr 1985 begann die Studie, Informationen \xFCber Ern\xE4hrung,\
+              \ Wachstum, Entwicklung und Stoffwechsel von gesunden Kindern und Jugendlichen\
+              \ zu erheben. Seitdem werden jedes Jahr 35-40 S\xE4uglinge rekrutiert.\
+              \ Die Teilnehmenden werden erstmals im Alter von 3-9 Monaten untersucht\
+              \ und kehren im ersten Lebensjahr zu drei weiteren Besuchen in Studienzentrum\
+              \ zur\xFCck, im zweiten Jahr zu zwei Besuchen und anschlie\xDFend bis\
+              \ zum jungen Erwachsenenalter einmal j\xE4hrlich. In den ersten Studienjahren\
+              \ wurden zudem ca. 300 Teilnehmer im Alter von >2 Jahren rekrutiert.\
+              \ \r\n\r\nDie j\xE4hrlichen Untersuchungen umfassen 3-Tage-Wiege-Protokolle,\
+              \ anthropometrische Messungen, die Sammlung von 24-h-Urinproben (beginnend\
+              \ im Alter von 3-4 Jahren), Interviews zum Lebensstil und medizinische\
+              \ Untersuchungen. Die Untersuchungen der Eltern (anthropometrische Messungen,\
+              \ Befragung zum Lebensstil) finden alle vier Jahre statt. In Untergruppen\
+              \ wurden weitere Daten erhoben, z. B. zur Chronobiologie oder Metabolomik.\
+              \ Seit 2005 werden die Teilnehmenden, die \xE4lter als 18 Jahre sind,\
+              \ zus\xE4tzlich zu den regelm\xE4\xDFigen Untersuchungen alle f\xFC\
+              nf Jahre zur Abgabe einer N\xFCchternblutprobe gebeten."}
+          design:
+            administrativeInformation: {ethicsCommitteeApproval: 'Request for approval
+                submitted, approval granted', startDate: '1985-01-08T00:00:00', status: 'Ongoing
+                (II): Recruitment and data collection ongoing', statusEnrollingByInvitation: No}
+            centers: Monocentric
+            conditions:
+            - {classification: SNOMED CT, code: http://snomed.info/id/87276001, label: Nutritional
+                status}
+            - {classification: MeSH, code: http://id.nlm.nih.gov/mesh/D000886, label: Anthropometry}
+            - {classification: MeSH, code: http://id.nlm.nih.gov/mesh/D000083202,
+              label: Cardiometabolic risk factors}
+            - {classification: SNOMED CT, code: http://snomed.info/id/426203009, label: Carotid
+                intima media thickness}
+            - {classification: Free text, label: Thyroid volume}
+            - {classification: Free text, label: Metabolic and excretory parameters
+                in 24-h urine}
+            dataSharingPlan: {accessCriteria: 'In accordance with the consent form
+                for the participants, the pseudonymized study data are not permitted
+                to be made publicly available. However, the DONALD data may be made
+                available to external researchers upon request for cooperation or
+                data use. In this case, a cooperation or data use agreement must be
+                concluded in advance . The use of the DONALD data by external scientists
+                is therefore only possible with detailed prior justification (scientific
+                purpose) and after agreement of the study head.', description: 'In
+                accordance with the consent form for the participants, the pseudonymized
+                study data are not permitted to be made publicly available. However,
+                the DONALD data may be made available to external researchers upon
+                request for cooperation or data use. In this case, a cooperation or
+                data use agreement must be concluded in advance . The use of the DONALD
+                data by external scientists is therefore only possible with detailed
+                prior justification (scientific purpose) and after agreement of the
+                study head.', generally: 'Yes, there is a plan to make data available'}
+            dataSource:
+              biosamples: [Blood, Faeces, Saliva, Urine]
+              description: "Data sources include 3-day weighed dietary records, anthropometric\
+                \ measurements, 24-h urine samples (from onwards 3\u20134 years),\
+                \ medical examinations as well as interviews on lifestyle (e.g. physical\
+                \ acitivity, chronobiology, socioeconomic factors), blood samples\
+                \ (since 2005, from 18 years onwards), saliva (since 2015 once in\
+                \ adolescence) and faeces (adult subsample)."
+              general: [Biological samples, Interview, Other, Questionnaire]
+            eligibilityCriteria:
+              ageMax: {number: 9, timeUnit: Months}
+              ageMin: {number: 3, timeUnit: Months}
+              genders: [Female, Male]
+              inclusionCriteria: Eligible are healthy German infants (i.e., infants
+                free of diseases affecting growth and/or dietary intake), whose parents
+                are willing to participate in a long-term study and of whom at least
+                one has sufficient knowledge of the German language.
+            groupsOfDiseases:
+              generally: ['Endocrine, nutritional and metabolic diseases (IV)', Unknown]
+            mortalityData: Yes, vital status only (cause of death missing)
+            nonInterventional:
+              biospecimenDescription: 24h-urine samples (from 3 years onwards), spot
+                urine samples (0,25 - 3 years), blood samples (from 18 years onwards),
+                stool samples (subsample from 18 years onwards)
+              biospecimenRetention: [Samples with DNA, Samples without DNA]
+              timePerspectives: [Prospective]
+            population:
+              countries: [Germany]
+              region: Dortmund, Germany
+            primaryDesign: Non-interventional
+            sampling: {method: Not applicable}
+            studyType:
+              nonInterventional: [Cohort]
+            subject: Person
+          identifier: '45'
+          ids:
+          - {identifier: 10.1007/s00103-012-1503-6, relationType: A is described by
+              B, scheme: DOI, typeGeneral: Journal article}
+          - {identifier: 10.1007/s00394-004-0445-7, relationType: A is described by
+              B, scheme: DOI, typeGeneral: Journal article}
+          idsAlternative:
+          - {identifier: DRKS00029092, scheme: DRKS}
+          keywords:
+          - {code: http://id.nlm.nih.gov/mesh/T000864255, label: 'Diet, Food and Nutrition'}
+          - {code: http://id.nlm.nih.gov/mesh/D007223, label: Infant}
+          - {code: http://id.nlm.nih.gov/mesh/D002648, label: Child}
+          - {code: http://id.nlm.nih.gov/mesh/D000293, label: Adolescent}
+          - {code: http://id.nlm.nih.gov/mesh/D006262, label: Health}
+          languages: [DE (German)]
+          nutritionalData: true
+          provenance: {dataSource: Manually collected, lastUpdatePostedDate: '2023-07-27T07:42:45Z'}
+          titles:
+          - {language: EN (English), text: DOrtmund Nutritional and Anthropometric
+              Longitudinally Designed Study}
+          webpage: https://www.ernaehrungsepidemiologie.uni-bonn.de/forschung/donald-1/
+        versions:
+        - {create_timestamp: '2023-07-27T07:10:08Z', id: '573', last_update_timestamp: '2023-07-27T07:42:45Z',
+          name: '1.0', release_timestamp: '2023-07-27T07:42:45Z', status: PUBLISHED}
+        - {create_timestamp: '2024-04-17T10:20:14Z', id: '4198', last_update_timestamp: '2024-05-28T08:36:21Z',
+          name: DRAFT}
+  responses:
+    200-Get-List-Of-Files:
+      content:
+        application/json:
+          schema:
+            items: {$ref: '#/components/schemas/Link'}
+            type: array
+      description: OK
+    200-Resource-Created-Or-Updated: {description: No new draft version created because
+        uploaded resource contains no changes}
+    201-Resource-Created-Or-Updated:
+      content:
+        application/json:
+          examples:
+            exampleStudy: {$ref: '#/components/examples/exampleResourceReturned'}
+          schema:
+            description: The new or updated resource
+            properties:
+              link: {$ref: '#/components/schemas/Link'}
+              resource: {$ref: '#/components/schemas/Resource'}
+              versions: {$ref: '#/components/schemas/Versions'}
+            type: object
+      description: OK
+    401-No-Access-Rights: {description: No access rights}
+    401-Resource-Not-Created-Or-Updated: {description: "Not allowed to edit resource.\
+        \ User must either be the original creator of the resource or have been added\n\
+        as a collaborator (see\n[POST /api/resource/{id}/collaborators](#/Managing%20resources/post_api_resource__id__collaborators))\n"}
+    422-Resource-Not-Created-Or-Updated:
+      content:
+        application/json:
+          examples:
+            invalidRequestBodyIdInReview:
+              summary: 'Invalid request body: resource currently in review'
+              value:
+                error: {message: Resource cannot be edited because it is in review.}
+            invalidRequestBodyLinkInvalid:
+              summary: 'Invalid request body: invalid link'
+              value:
+                error: {message: Provided link to object described by metadata is
+                    not a valid URL.}
+            invalidRequestBodyMissingData:
+              summary: 'Invalid request body: missing data'
+              value:
+                error: {message: "Invalid request body: 'resource' is missing"}
+            invalidRequestBodySchemaInvalid:
+              summary: 'Invalid request body: failed schema validation'
+              value:
+                error:
+                  message: "1 error(s): 'descriptions' is a required property"
+                  missing_fields: [descriptions]
+                  paths: [$]
+          schema:
+            properties:
+              error:
+                properties:
+                  message: {type: string}
+                  missing_fields:
+                    items: {type: string}
+                    type: array
+                  paths:
+                    items: {type: string}
+                    type: array
+                required: [message]
+                type: object
+            required: [error]
+            type: object
+      description: "This error can occur for different reasons:\n- Resource is currently\
+        \ in review and cannot be updated\n- Link to attached file is invalid\n- Request\
+        \ body is malformed, i.e. missing necessary data\n- Posted resource does not\
+        \ conform to the MDS\n"
+    500-Internal-Server-Error: {description: Internal server error}
+  schemas:
+    Link:
+      properties:
+        external: {description: "When the link is external, the data is hosted outside\
+            \ of the Central Study Hub.\nWhen the link is not external, the data is\
+            \ hosted by the Central Study Hub.\n", type: boolean}
+        filename: {description: File name (for internal data), type: string}
+        identifier: {description: Identifier of the file (for internal data), type: string}
+        url: {description: Link to data described by metadata, format: uri, type: string}
+      required: [url, external]
+      type: object
+    Permissions:
+      description: Your current permissions for the resource
+      properties:
+        edit: {type: boolean}
+        publish: {type: boolean}
+        viewDraft: {type: boolean}
+      type: object
+    Resource: {{
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$defs": {
+        "Country_names_from_the_ISO_3166-1_list": {
+          "type": "string",
+          "enum": [
+            "Andorra",
+            "United Arab Emirates",
+            "Afghanistan",
+            "Antigua and Barbuda",
+            "Anguilla",
+            "Albania",
+            "Armenia",
+            "Angola",
+            "Antarctica",
+            "Argentina",
+            "American Samoa",
+            "Austria",
+            "Australia",
+            "Aruba",
+            "Åland Islands",
+            "Azerbaijan",
+            "Bosnia and Herzegovina",
+            "Barbados",
+            "Bangladesh",
+            "Belgium",
+            "Burkina Faso",
+            "Bulgaria",
+            "Bahrain",
+            "Burundi",
+            "Benin",
+            "Saint Barthélemy",
+            "Bermuda",
+            "Brunei Darussalam",
+            "Bolivia, Plurinational State of",
+            "Bonaire, Sint Eustatius and Saba",
+            "Brazil",
+            "Bahamas",
+            "Bhutan",
+            "Bouvet Island",
+            "Botswana",
+            "Belarus",
+            "Belize",
+            "Canada",
+            "Cocos (Keeling) Islands",
+            "Congo, Democratic Republic of the",
+            "Central African Republic",
+            "Congo",
+            "Switzerland",
+            "Côte d'Ivoire",
+            "Cook Islands",
+            "Chile",
+            "Cameroon",
+            "China",
+            "Colombia",
+            "Costa Rica",
+            "Cuba",
+            "Cabo Verde",
+            "Curaçao",
+            "Christmas Island",
+            "Cyprus",
+            "Czechia",
+            "Germany",
+            "Djibouti",
+            "Denmark",
+            "Dominica",
+            "Dominican Republic",
+            "Algeria",
+            "Ecuador",
+            "Estonia",
+            "Egypt",
+            "Western Sahara",
+            "Eritrea",
+            "Spain",
+            "Ethiopia",
+            "Finland",
+            "Fiji",
+            "Falkland Islands (Malvinas)",
+            "Micronesia, Federated States of",
+            "Faroe Islands",
+            "France",
+            "Gabon",
+            "United Kingdom of Great Britain and Northern Ireland",
+            "Grenada",
+            "Georgia",
+            "French Guiana",
+            "Guernsey",
+            "Ghana",
+            "Gibraltar",
+            "Greenland",
+            "Gambia",
+            "Guinea",
+            "Guadeloupe",
+            "Equatorial Guinea",
+            "Greece",
+            "South Georgia and the South Sandwich Islands",
+            "Guatemala",
+            "Guam",
+            "Guinea-Bissau",
+            "Guyana",
+            "Hong Kong",
+            "Heard Island and McDonald Islands",
+            "Honduras",
+            "Croatia",
+            "Haiti",
+            "Hungary",
+            "Indonesia",
+            "Ireland",
+            "Israel",
+            "Isle of Man",
+            "India",
+            "British Indian Ocean Territory",
+            "Iraq",
+            "Iran, Islamic Republic of",
+            "Iceland",
+            "Italy",
+            "Jersey",
+            "Jamaica",
+            "Jordan",
+            "Japan",
+            "Kenya",
+            "Kyrgyzstan",
+            "Cambodia",
+            "Kiribati",
+            "Comoros",
+            "Saint Kitts and Nevis",
+            "Korea, Democratic People's Republic of",
+            "Korea, Republic of",
+            "Kuwait",
+            "Cayman Islands",
+            "Kazakhstan",
+            "Lao People's Democratic Republic",
+            "Lebanon",
+            "Saint Lucia",
+            "Liechtenstein",
+            "Sri Lanka",
+            "Liberia",
+            "Lesotho",
+            "Lithuania",
+            "Luxembourg",
+            "Latvia",
+            "Libya",
+            "Morocco",
+            "Monaco",
+            "Moldova, Republic of",
+            "Montenegro",
+            "Saint Martin, (French part)",
+            "Madagascar",
+            "Marshall Islands",
+            "North Macedonia",
+            "Mali",
+            "Myanmar",
+            "Mongolia",
+            "Macao",
+            "Northern Mariana Islands",
+            "Martinique",
+            "Mauritania",
+            "Montserrat",
+            "Malta",
+            "Mauritius",
+            "Maldives",
+            "Malawi",
+            "Mexico",
+            "Malaysia",
+            "Mozambique",
+            "Namibia",
+            "New Caledonia",
+            "Niger",
+            "Norfolk Island",
+            "Nigeria",
+            "Nicaragua",
+            "Netherlands",
+            "Norway",
+            "Nepal",
+            "Nauru",
+            "Niue",
+            "New Zealand",
+            "Oman",
+            "Panama",
+            "Peru",
+            "French Polynesia",
+            "Papua New Guinea",
+            "Philippines",
+            "Pakistan",
+            "Poland",
+            "Saint Pierre and Miquelon",
+            "Pitcairn",
+            "Puerto Rico",
+            "Palestine, State of",
+            "Portugal",
+            "Palau",
+            "Paraguay",
+            "Qatar",
+            "Réunion",
+            "Romania",
+            "Serbia",
+            "Russian Federation",
+            "Rwanda",
+            "Saudi Arabia",
+            "Solomon Islands",
+            "Seychelles",
+            "Sudan",
+            "Sweden",
+            "Singapore",
+            "Saint Helena, Ascension and Tristan da Cunha",
+            "Slovenia",
+            "Svalbard and Jan Mayen",
+            "Slovakia",
+            "Sierra Leone",
+            "San Marino",
+            "Senegal",
+            "Somalia",
+            "Suriname",
+            "South Sudan",
+            "Sao Tome and Principe",
+            "El Salvador",
+            "Sint Maarten, (Dutch part)",
+            "Syrian Arab Republic",
+            "Eswatini",
+            "Turks and Caicos Islands",
+            "Chad",
+            "French Southern Territories",
+            "Togo",
+            "Thailand",
+            "Tajikistan",
+            "Tokelau",
+            "Timor-Leste",
+            "Turkmenistan",
+            "Tunisia",
+            "Tonga",
+            "Türkiye",
+            "Trinidad and Tobago",
+            "Tuvalu",
+            "Taiwan, Province of China",
+            "Tanzania, United Republic of",
+            "Ukraine",
+            "Uganda",
+            "United States Minor Outlying Islands",
+            "United States of America",
+            "Uruguay",
+            "Uzbekistan",
+            "Holy See",
+            "Saint Vincent and the Grenadines",
+            "Venezuela, Bolivarian Republic of",
+            "Virgin Islands, British",
+            "Virgin Islands, U.S.",
+            "Viet Nam",
+            "Vanuatu",
+            "Wallis and Futuna",
+            "Samoa",
+            "Yemen",
+            "Mayotte",
+            "South Africa",
+            "Zambia",
+            "Zimbabwe"
+          ]
+        },
+        "Language_names_from_the_ISO_639-1_list": {
+          "type": "string",
+          "enum": [
+            "AA (Afar)",
+            "AB (Abkhaz)",
+            "AE (Avestan)",
+            "AF (Afrikaans)",
+            "AK (Akan)",
+            "AM (Amharic)",
+            "AN (Aragonese)",
+            "AR (Arabic)",
+            "AS (Assamese)",
+            "AV (Avaric)",
+            "AY (Aymara)",
+            "AZ (Azerbaijani)",
+            "BA (Bashkir)",
+            "BE (Belarusian)",
+            "BG (Bulgarian)",
+            "BI (Bislama)",
+            "BM (Bambara)",
+            "BN (Bengali)",
+            "BO (Tibetan)",
+            "BR (Breton)",
+            "BS (Bosnian)",
+            "CA (Catalan)",
+            "CE (Chechen)",
+            "CH (Chamorro)",
+            "CO (Corsican)",
+            "CR (Cree)",
+            "CS (Czech)",
+            "CU (Old Church Slavonic)",
+            "CV (Chuvash)",
+            "CY (Welsh)",
+            "DA (Danish)",
+            "DE (German)",
+            "DV (Divehi)",
+            "DZ (Dzongkha)",
+            "EE (Ewe)",
+            "EL (Greek)",
+            "EN (English)",
+            "EO (Esperanto)",
+            "ES (Spanish)",
+            "ET (Estonian)",
+            "EU (Basque)",
+            "FA (Persian)",
+            "FF (Fula)",
+            "FI (Finnish)",
+            "FJ (Fijian)",
+            "FO (Faroese)",
+            "FR (French)",
+            "FY (Western Frisian)",
+            "GA (Irish)",
+            "GD (Scottish Gaelic)",
+            "GL (Galician)",
+            "GN (Guaraní)",
+            "GU (Gujarati)",
+            "GV (Manx)",
+            "HA (Hausa)",
+            "HE (Hebrew)",
+            "HI (Hindi)",
+            "HO (Hiri Motu)",
+            "HR (Croatian)",
+            "HT (Haitian)",
+            "HU (Hungarian)",
+            "HY (Armenian)",
+            "HZ (Herero)",
+            "IA (Interlingua)",
+            "ID (Indonesian)",
+            "IE (Interlingue)",
+            "IG (Igbo)",
+            "II (Nuosu)",
+            "IK (Inupiaq)",
+            "IO (Ido)",
+            "IS (Icelandic)",
+            "IT (Italian)",
+            "IU (Inuktitut)",
+            "JA (Japanese)",
+            "JV (Javanese)",
+            "KA (Georgian)",
+            "KG (Kongo)",
+            "KI (Kikuyu)",
+            "KJ (Kwanyama)",
+            "KK (Kazakh)",
+            "KL (Kalaallisut)",
+            "KM (Khmer)",
+            "KN (Kannada)",
+            "KO (Korean)",
+            "KR (Kanuri)",
+            "KS (Kashmiri)",
+            "KU (Kurdish)",
+            "KV (Komi)",
+            "KW (Cornish)",
+            "KY (Kyrgyz)",
+            "LA (Latin)",
+            "LB (Luxembourgish)",
+            "LG (Ganda)",
+            "LI (Limburgish)",
+            "LN (Lingala)",
+            "LO (Lao)",
+            "LT (Lithuanian)",
+            "LU (Luba-Katanga)",
+            "LV (Latvian)",
+            "MG (Malagasy)",
+            "MH (Marshallese)",
+            "MI (Māori)",
+            "MK (Macedonian)",
+            "ML (Malayalam)",
+            "MN (Mongolian)",
+            "MR (Marathi)",
+            "MS (Malay)",
+            "MT (Maltese)",
+            "MY (Burmese)",
+            "NA (Nauru)",
+            "NB (Norwegian Bokmål)",
+            "ND (Northern Ndebele)",
+            "NE (Nepali)",
+            "NG (Ndonga)",
+            "NL (Dutch)",
+            "NN (Norwegian Nynorsk)",
+            "NO (Norwegian)",
+            "NR (Southern Ndebele)",
+            "NV (Navajo)",
+            "NY (Chichewa)",
+            "OC (Occitan)",
+            "OJ (Ojibwe)",
+            "OM (Oromo)",
+            "OR (Oriya)",
+            "OS (Ossetian)",
+            "PA (Panjabi)",
+            "PI (Pāli)",
+            "PL (Polish)",
+            "PS (Pashto)",
+            "PT (Portuguese)",
+            "QU (Quechua)",
+            "RM (Romansh)",
+            "RN (Kirundi)",
+            "RO (Romanian)",
+            "RU (Russian)",
+            "RW (Kinyarwanda)",
+            "SA (Sanskrit)",
+            "SC (Sardinian)",
+            "SD (Sindhi)",
+            "SE (Northern Sami)",
+            "SG (Sango)",
+            "SI (Sinhala)",
+            "SK (Slovak)",
+            "SL (Slovenian)",
+            "SM (Samoan)",
+            "SN (Shona)",
+            "SO (Somali)",
+            "SQ (Albanian)",
+            "SR (Serbian)",
+            "SS (Swati)",
+            "ST (Southern Sotho)",
+            "SU (Sundanese)",
+            "SV (Swedish)",
+            "SW (Swahili)",
+            "TA (Tamil)",
+            "TE (Telugu)",
+            "TG (Tajik)",
+            "TH (Thai)",
+            "TI (Tigrinya)",
+            "TK (Turkmen)",
+            "TL (Tagalog)",
+            "TN (Tswana)",
+            "TO (Tonga)",
+            "TR (Turkish)",
+            "TS (Tsonga)",
+            "TT (Tatar)",
+            "TW (Twi)",
+            "TY (Tahitian)",
+            "UG (Uyghur)",
+            "UK (Ukrainian)",
+            "UR (Urdu)",
+            "UZ (Uzbek)",
+            "VE (Venda)",
+            "VI (Vietnamese)",
+            "VO (Volapük)",
+            "WA (Walloon)",
+            "WO (Wolof)",
+            "XH (Xhosa)",
+            "YI (Yiddish)",
+            "YO (Yoruba)",
+            "ZA (Zhuang)",
+            "ZH (Chinese)",
+            "ZU (Zulu)"
+          ]
+        }
+      },
+      "title": "Resource",
+      "description": "Group of items providing information about a resource. Resources can be, for example, files or parts of them (e.g. datasets or study documents such as study protocols or questionnaires) or also studies or substudies.",
+      "display_on_create": true,
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "title": "ID of the [RESOURCE]",
+          "description": "Unique identifier of the resource used for identification within the NFDI4Health.",
+          "display_on_create": false,
+          "type": "string",
+          "minLength": 1
+        },
+        "collection": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "classification": {
+          "title": "Resource classification",
+          "description": "Group of items providing information about the classification of the resource within the predefined categories.",
+          "display_on_create": false,
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type of the resource",
+              "description": "A term describing the resource.",
+              "input_help": "You can register a study, a study protocol, a questionnaire, etc. Please only add follow up questionnaires if baseline questionnaires have already been registered.",
+              "display_on_create": true,
+              "type": "string",
+              "enum": [
+                "Study",
+                "Substudy",
+                "Biobank",
+                "Case report form",
+                "Code book",
+                "Data dictionary",
+                "Data management plan",
+                "Dataset",
+                "Discussion guide",
+                "Informed consent form",
+                "Interview scheme and themes",
+                "Manual of operations (SOPs)",
+                "Observation guide",
+                "Participant tasks",
+                "Patient information sheet",
+                "Questionnaire",
+                "Registry",
+                "Secondary data source",
+                "Statistical analysis plan",
+                "Study protocol",
+                "Other data collection instrument",
+                "Other study document",
+                "Other"
+              ],
+              "minLength": 1
+            },
+            "typeGeneral": {
+              "title": "In what form is the [RESOURCE] available?",
+              "description": "Specific information about the form in which the [RESOURCE] is available.",
+              "input_help": "You can select 'Text' for most of the study documents, e.g. for questionnaires, informed consent forms, case report forms, etc.",
+              "display_on_create": true,
+              "type": "string",
+              "enum": [
+                "Audiovisual",
+                "Book",
+                "Book chapter",
+                "Collection",
+                "Computational notebook",
+                "Conference paper",
+                "Conference proceeding",
+                "Data paper",
+                "Dataset",
+                "Dissertation",
+                "Event",
+                "Image",
+                "Interactive resource",
+                "Journal",
+                "Journal article",
+                "Model",
+                "Output management plan",
+                "Peer review",
+                "Physical object",
+                "Preprint",
+                "Report",
+                "Service",
+                "Software",
+                "Sound",
+                "Standard",
+                "Text",
+                "Workflow",
+                "Other"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        },
+        "titles": {
+          "title": "Title(s)/name(s) of the [RESOURCE]",
+          "description": "Group of items providing information about title(s)/name(s) of the [RESOURCE].",
+          "display_on_create": true,
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "title": "Title/name",
+                "description": "Scientific unabbreviated title or name of the [RESOURCE].",
+                "input_help": "Please provide at least one title/name of the [RESOURCE]. If the original title is not in English, please also provide an English translation of the original title.",
+                "display_on_create": true,
+                "type": "string",
+                "minLength": 1
+              },
+              "language": {
+                "title": "Language of the title/name",
+                "description": "Language in which the title/name is provided.",
+                "display_on_create": true,
+                "$ref": "#/$defs/Language_names_from_the_ISO_639-1_list"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "text",
+              "language"
+            ]
+          }
+        },
+        "acronyms": {
+          "title": "Acronym(s) of the [RESOURCE]",
+          "description": "Group of items providing information about acronym(s) of the [RESOURCE].",
+          "display_on_create": true,
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "title": "Acronym",
+                "description": "If existing, acronym(s) of the [RESOURCE].",
+                "input_help": "If no acronym exists, you can provide a short title, preferably up to 5 words, e.g. 'NAKO-COVID Questionnaire'.",
+                "display_on_create": true,
+                "type": "string",
+                "minLength": 1
+              },
+              "language": {
+                "title": "Language of the acronym",
+                "description": "Language in which the acronym is provided.",
+                "display_on_create": true,
+                "$ref": "#/$defs/Language_names_from_the_ISO_639-1_list"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "text",
+              "language"
+            ]
+          }
+        },
+        "descriptions": {
+          "title": "Description(s) of the [RESOURCE]",
+          "description": "Group of items providing information about the description(s) of the [RESOURCE].",
+          "display_on_create": true,
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "title": "Description",
+                "description": "Short plain text summary of the [RESOURCE].",
+                "input_help": "Please provide a description in the original language of the [RESOURCE]. If the original language is not English, please also provide a full English translation of the description.",
+                "display_on_create": true,
+                "type": "string",
+                "minLength": 1
+              },
+              "language": {
+                "title": "Language of the description",
+                "description": "Language in which the description text is provided.",
+                "display_on_create": true,
+                "$ref": "#/$defs/Language_names_from_the_ISO_639-1_list"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "text",
+              "language"
+            ]
+          }
+        },
+        "keywords": {
+          "title": "Keyword(s) describing the [RESOURCE]",
+          "description": "Group of items providing information about keywords describing the [RESOURCE].",
+          "display_on_create": true,
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "title": "Keyword",
+                "description": "Keyword(s) describing the [RESOURCE].",
+                "example": "SARS-CoV-2",
+                "input_help": "Preferably, use terms from SNOMED CT or MESH.",
+                "display_on_create": true,
+                "type": "string",
+                "minLength": 1
+              },
+              "code": {
+                "title": "Code of the keyword",
+                "description": "If known, the code of the keyword in the classification/vocabulary used.",
+                "example": "http://id.nlm.nih.gov/mesh/D000086402",
+                "input_help": "If known, you can provide the code of the keyword in the classification/vocabulary used.",
+                "display_on_create": true,
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "label"
+            ]
+          }
+        },
+        "languages": {
+          "title": "Language(s) of the [RESOURCE]",
+          "description": "Language(s) in which the [RESOURCE] is conducted/provided.",
+          "input_help": "Select all that apply.",
+          "display_on_create": true,
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/Language_names_from_the_ISO_639-1_list"
+          }
+        },
+        "webpage": {
+          "title": "Web page of the [RESOURCE]",
+          "description": "If existing, a link to the web page directly relevant to the [RESOURCE].",
+          "display_on_create": true,
+          "type": "string",
+          "format": "uri"
+        },
+        "nonStudyDetails": {
+          "title": "Detailed information about the [RESOURCE]",
+          "description": "Group of items applicable only to resource types other than a study/substudy, a dataset, a registry, or a secondary data source.",
+          "display_on_create": false,
+          "type": "object",
+          "properties": {
+            "version": {
+              "title": "Version",
+              "description": "If applicable, the version number of the [RESOURCE].",
+              "display_on_create": true,
+              "type": "string"
+            },
+            "format": {
+              "title": "Format",
+              "description": "If applicable, the file format of the [RESOURCE] (e.g., XML, PDF, XLSX, etc.).",
+              "example": "PDF",
+              "display_on_create": true,
+              "type": "string"
+            },
+            "useRights": {
+              "title": "(Re-)use rights",
+              "description": "Group of items providing information about the rights to (re-)use the [RESOURCE].",
+              "display_on_create": true,
+              "type": "object",
+              "properties": {
+                "label": {
+                  "title": "License",
+                  "description": "License defining the rights to (re-)use the [RESOURCE].",
+                  "input_help": "Select one value from the list. If 'Other' is selected, please provide an explanation of the (re-)use terms and conditions in the field 'Additional information about use rights'.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "CC0 1.0 (Creative Commons Zero v1.0 Universal)",
+                    "CC BY 4.0 (Creative Commons Attribution 4.0 International)",
+                    "CC BY-NC 4.0 (Creative Commons Attribution Non Commercial 4.0 International)",
+                    "CC BY-SA 4.0 (Creative Commons Attribution Share Alike 4.0 International)",
+                    "CC BY-NC-SA 4.0 (Creative Commons Attribution Non Commercial Share Alike 4.0 International)",
+                    "All rights reserved",
+                    "Other",
+                    "Not applicable",
+                    "Not assigned",
+                    "Unknown"
+                  ],
+                  "minLength": 1
+                },
+                "link": {
+                  "title": "URL of the license",
+                  "description": "Link to the selected license.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "format": "uri"
+                },
+                "confirmations": {
+                  "title": "Licensing confirmations",
+                  "description": "Group of items applicable only if a Creative Commons license is selected.",
+                  "display_on_create": false,
+                  "type": "object",
+                  "properties": {
+                    "authority": {
+                      "title": "Do you confirm that the authors of the [RESOURCE] have authority to license it?",
+                      "description": "Confirmation that the authors of the [RESOURCE] have authority to license it.",
+                      "display_on_create": true,
+                      "type": "boolean"
+                    },
+                    "terms": {
+                      "title": "Do you confirm that the authors of the [RESOURCE] have read and understood the terms of the chosen license?",
+                      "description": "Confirmation that the authors of the [RESOURCE] have read and understood the terms of the chosen license.",
+                      "display_on_create": true,
+                      "type": "boolean"
+                    },
+                    "irrevocability": {
+                      "title": "Do you confirm that the authors of the [RESOURCE] understand that Creative Commons (CC) licensing is irrevocable?",
+                      "description": "Confirmation that the authors of the [RESOURCE] understand that Creative Commons (CC) licensing is not revocable.",
+                      "display_on_create": true,
+                      "type": "boolean"
+                    },
+                    "supportByLicensing": {
+                      "title": "Do you confirm that the authors of the [RESOURCE] allow NFDI4Health to license the document?",
+                      "description": "Confirmation that NFDI4Health is allowed to license the document, i.e. to mark the [RESOURCE] with the license information.",
+                      "display_on_create": true,
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "authority",
+                    "terms",
+                    "irrevocability",
+                    "supportByLicensing"
+                  ]
+                },
+                "description": {
+                  "title": "Additional information about use rights",
+                  "description": "Any additional descriptive information explaining terms and conditions to (re-)use the [RESOURCE].",
+                  "display_on_create": true,
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "label"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": []
+        },
+        "contributors": {
+          "title": "Contributor(s) of the [RESOURCE]",
+          "description": "Group of items providing information about person(s), group(s) of persons or institution(s)/organisation(s) contributing to the [RESOURCE].",
+          "display_on_create": true,
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "nameType": {
+                "title": "Is it a personal or organisational contribution?",
+                "description": "Indication whether the contribution was made by person(s) or organisation(s)/institution(s)/group(s).",
+                "display_on_create": true,
+                "type": "string",
+                "enum": [
+                  "Personal",
+                  "Organisational"
+                ],
+                "minLength": 1
+              },
+              "organisational": {
+                "title": "Details about the contributing organisation(s)/institution(s)/group(s)",
+                "description": "Group of items providing information about group(s) of persons, institution(s) or organisation(s) contributing to the [RESOURCE].",
+                "display_on_create": false,
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "title": "Contributor type",
+                    "description": "Contributor type an organisation, institution or group fulfills. For example, this can be a sponsor of the study or a group of authors of the document.",
+                    "input_help": "Which contributor type does the organisation, institution or group fulfill? Select one value from the list.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "enum": [
+                      "Contact",
+                      "Creator/Author",
+                      "Funder (public)",
+                      "Funder (private)",
+                      "Sponsor (primary)",
+                      "Sponsor (secondary)",
+                      "Sponsor-Investigator",
+                      "Research group",
+                      "Data collector",
+                      "Data curator",
+                      "Data manager",
+                      "Distributor",
+                      "Hosting institution",
+                      "Producer",
+                      "Publisher",
+                      "Registration agency",
+                      "Registration authority",
+                      "Rights holder",
+                      "Supervisor",
+                      "Other"
+                    ],
+                    "minLength": 1
+                  },
+                  "fundingIds": {
+                    "title": "Funding identifier(s)",
+                    "description": "Identifier(s) assigned by a funder to the [RESOURCE].",
+                    "input_help": "If available, you can enter funding identifiers.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "title": "Name of the organisation/institution/group",
+                    "description": "Name of the organisation, institution or group.",
+                    "input_help": "An organisational name can be used to denote a research group or an institution.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "type",
+                  "name"
+                ]
+              },
+              "personal": {
+                "title": "Details about the contributing person(s)",
+                "description": "Group of items providing information about person(s) contributing to the [RESOURCE].",
+                "display_on_create": false,
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "title": "Contributor type",
+                    "description": "Contributor type a person fulfills. For example, this can be a principal investigator of a study or an author of a document.",
+                    "input_help": "Which contributor type does the person fulfill? Select one value from the list.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "enum": [
+                      "Contact",
+                      "Principal investigator",
+                      "Creator/Author",
+                      "Sponsor (primary)",
+                      "Sponsor (secondary)",
+                      "Sponsor-Investigator",
+                      "Data collector",
+                      "Data curator",
+                      "Data manager",
+                      "Editor",
+                      "Producer",
+                      "Project leader",
+                      "Project manager",
+                      "Project member",
+                      "Related person",
+                      "Researcher",
+                      "Rights holder",
+                      "Supervisor",
+                      "Work package leader",
+                      "Other"
+                    ],
+                    "minLength": 1
+                  },
+                  "givenName": {
+                    "title": "Given name",
+                    "description": "Given name of the person.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "familyName": {
+                    "title": "Family name(s)",
+                    "description": "Family name(s) of the person.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "identifiers": {
+                    "title": "Digital identifier(s)",
+                    "description": "Group of items providing information about digital identifiers of the person.",
+                    "display_on_create": true,
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "identifier": {
+                          "title": "Identifier",
+                          "description": "Digital identifier according to a specific scheme that uniquely identifies the person.",
+                          "example": "0000-0003-1379-7023",
+                          "input_help": "Preferably, provide an ORCID (https://orcid.org/).",
+                          "display_on_create": true,
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "scheme": {
+                          "title": "Scheme",
+                          "description": "Type of the identifier scheme reported.",
+                          "example": "ORCID",
+                          "display_on_create": true,
+                          "type": "string",
+                          "enum": [
+                            "ORCID",
+                            "ROR",
+                            "GRID",
+                            "ISNI"
+                          ],
+                          "minLength": 1
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "identifier",
+                        "scheme"
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "type",
+                  "givenName",
+                  "familyName"
+                ]
+              },
+              "email": {
+                "title": "Email address",
+                "description": "Email address of the person, group of persons or institution/organisation.",
+                "display_on_create": true,
+                "type": "string"
+              },
+              "phone": {
+                "title": "Phone number",
+                "description": "Phone number of the person, group of persons or institution/organisation.",
+                "example": "+49 (0)153 1112233",
+                "input_help": "Please use the International ITU-T E.164-number structure for geographic areas.",
+                "display_on_create": true,
+                "type": "string"
+              },
+              "affiliations": {
+                "title": "Organisation(s) associated with the contributor",
+                "description": "Group of items providing further information about the organisation(s) associated with the contributor.",
+                "display_on_create": true,
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "title": "Name",
+                      "description": "Name of the organisation associated with the contributor.",
+                      "input_help": "If you have already entered the name of the organistion in the field 'Name of the organisation/institution/group', please repeat it here.",
+                      "display_on_create": true,
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "address": {
+                      "title": "Address",
+                      "description": "Address of the organisation associated with the contributor.",
+                      "example": "Gleueler Straße 60, 50931, Cologne, Germany",
+                      "input_help": "Please preferably use the following address format: Street name and number [comma] post code [comma] city [comma] country.",
+                      "display_on_create": true,
+                      "type": "string"
+                    },
+                    "webpage": {
+                      "title": "Web page",
+                      "description": "Web page of the organisation associated with the contributor.",
+                      "display_on_create": true,
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "identifiers": {
+                      "title": "Digital identifier(s)",
+                      "description": "Group of items providing information about identifiers of the organisation.",
+                      "display_on_create": true,
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "identifier": {
+                            "title": "Identifier",
+                            "description": "Digital identifier according to a specific scheme that uniquely identifies the organisation.",
+                            "example": "0259fwx54",
+                            "input_help": "Preferably, provide an identifier from ROR (https://ror.org/search).",
+                            "display_on_create": true,
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "scheme": {
+                            "title": "Scheme",
+                            "description": "Type of the identifier scheme reported.",
+                            "example": "ROR",
+                            "display_on_create": true,
+                            "type": "string",
+                            "enum": [
+                              "ROR",
+                              "GRID",
+                              "ISNI"
+                            ],
+                            "minLength": 1
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "identifier",
+                          "scheme"
+                        ]
+                      }
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "name"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "nameType"
+            ]
+          }
+        },
+        "idsAlternative": {
+          "title": "Alternative identifiers",
+          "description": "Group of items providing information about identifiers (IDs) assigned to the given [RESOURCE] by another registering systems, e.g. a registry of clinical trials or a data repository.",
+          "display_on_create": true,
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "scheme": {
+                "title": "Type of the registry",
+                "description": "Type/name of the system where the given [RESOURCE] is already registered.",
+                "example": "DRKS",
+                "display_on_create": true,
+                "type": "string",
+                "enum": [
+                  "DRKS",
+                  "NCT (ClinicalTrials.gov)",
+                  "ISRCTN",
+                  "EudraCT",
+                  "EUDAMED",
+                  "UTN",
+                  "KonsortSWD",
+                  "MDM Portal",
+                  "Other"
+                ],
+                "minLength": 1
+              },
+              "identifier": {
+                "title": "Identifier",
+                "description": "Identifier (ID) assigned to the given [RESOURCE] by another registering system, e.g. by a registry of clinical trials or a data repository.",
+                "example": "ISRCTN91495258",
+                "input_help": "If the [RESOURCE] is registered in other systems (e.g. a registry of clinical trials or a data repository), you can provide here corresponding identifier(s) such as DRKS00021273, NCT04327505, etc.",
+                "display_on_create": true,
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "scheme",
+              "identifier"
+            ]
+          }
+        },
+        "ids": {
+          "title": "Related resources",
+          "description": "Group of items providing information about identifiers (IDs) of the resources related to the given [RESOURCE], e.g. DOIs of publications, datasets, study documents or links to web pages.",
+          "display_on_create": true,
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "identifier": {
+                "title": "Identifier of the related resource",
+                "description": "Identifier (ID) related to, or associated with, the [RESOURCE] being registered. These can be IDs of related publications, datasets, study documents, web pages, etc.",
+                "example": "10.4126/FRL01-006431467",
+                "input_help": "If existing, you can specify here identifier(s) of any related resources, e.g. DOIs of publications, datasets, study documents, links to web pages, etc.",
+                "display_on_create": true,
+                "type": "string",
+                "minLength": 1
+              },
+              "scheme": {
+                "title": "Type of the identifier",
+                "description": "Type of the identifier of the related resource.",
+                "example": "DOI",
+                "input_help": "Select one value from the list.",
+                "display_on_create": true,
+                "type": "string",
+                "enum": [
+                  "DOI",
+                  "URL",
+                  "arXiv",
+                  "EAN13",
+                  "EISSN",
+                  "Handle",
+                  "ISBN",
+                  "ISSN",
+                  "ISTC",
+                  "LISSN",
+                  "LSID",
+                  "PMID",
+                  "PURL",
+                  "URN",
+                  "w3id",
+                  "Other"
+                ],
+                "minLength": 1
+              },
+              "relationType": {
+                "title": "Relationship between this [RESOURCE] (A) and the related resource (B)",
+                "description": "Relationship between the [RESOURCE] being registered (A) and the related resource (B).",
+                "example": "A is part of B",
+                "input_help": "Select one value from the list.",
+                "display_on_create": true,
+                "type": "string",
+                "enum": [
+                  "A is cited by B",
+                  "A cites B",
+                  "A is supplement to B",
+                  "A is supplemented by B",
+                  "A is continued by B",
+                  "A continues B",
+                  "A is described by B",
+                  "A describes B",
+                  "A has metadata B",
+                  "A is metadata for B",
+                  "A has version B",
+                  "A is version of B",
+                  "A is new version of B",
+                  "A is previous version of B",
+                  "A is part of B",
+                  "A has part B",
+                  "A is referenced by B",
+                  "A references B",
+                  "A is documented by B",
+                  "A documents B",
+                  "A is compiled by B",
+                  "A compiles B",
+                  "A is variant form of B",
+                  "A is original form of B",
+                  "A is identical to B",
+                  "A is reviewed by B",
+                  "A reviews B",
+                  "A is derived from B",
+                  "A is source of B",
+                  "A is required by B",
+                  "A requires B",
+                  "A is obsoleted by B",
+                  "A obsoletes B"
+                ],
+                "minLength": 1
+              },
+              "typeGeneral": {
+                "title": "Type of the related resource",
+                "description": "Type of the related resource, e.g. journal article, dataset, text, etc.",
+                "example": "Text",
+                "input_help": "Select one value from the list.",
+                "display_on_create": true,
+                "type": "string",
+                "enum": [
+                  "Audiovisual",
+                  "Book",
+                  "Book chapter",
+                  "Collection",
+                  "Computational notebook",
+                  "Conference paper",
+                  "Conference proceeding",
+                  "Data paper",
+                  "Dataset",
+                  "Dissertation",
+                  "Event",
+                  "Image",
+                  "Interactive resource",
+                  "Journal",
+                  "Journal article",
+                  "Model",
+                  "Output management plan",
+                  "Peer review",
+                  "Physical object",
+                  "Preprint",
+                  "Report",
+                  "Service",
+                  "Software",
+                  "Sound",
+                  "Standard",
+                  "Text",
+                  "Workflow",
+                  "Other"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "identifier",
+              "scheme",
+              "relationType"
+            ]
+          }
+        },
+        "idsNfdi4health": {
+          "title": "Related resources registered on this portal",
+          "description": "Group of items providing information about related resources (e.g. (sub-)studies, study documents, etc.) registered on this portal.",
+          "display_on_create": true,
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "identifier": {
+                "title": "Identifier of the related resource",
+                "description": "Identifier (ID) of the related resource assigned on this portal.",
+                "example": "39",
+                "display_on_create": true,
+                "type": "string",
+                "minLength": 1
+              },
+              "date": {
+                "title": "Date of ID assignment",
+                "description": "Date when the identifier of the related resource was assigned.",
+                "display_on_create": true,
+                "type": "string",
+                "format": "date-time"
+              },
+              "relationType": {
+                "title": "Relationship between this [RESOURCE] (A) and the related resource (B)",
+                "description": "Relationship between the [RESOURCE] being registered (A) and the related resource (B).",
+                "display_on_create": true,
+                "type": "string",
+                "enum": [
+                  "A is cited by B",
+                  "A cites B",
+                  "A is supplement to B",
+                  "A is supplemented by B",
+                  "A is continued by B",
+                  "A continues B",
+                  "A is described by B",
+                  "A describes B",
+                  "A has metadata B",
+                  "A is metadata for B",
+                  "A has version B",
+                  "A is version of B",
+                  "A is new version of B",
+                  "A is previous version of B",
+                  "A is part of B",
+                  "A has part B",
+                  "A is referenced by B",
+                  "A references B",
+                  "A is documented by B",
+                  "A documents B",
+                  "A is compiled by B",
+                  "A compiles B",
+                  "A is variant form of B",
+                  "A is original form of B",
+                  "A is identical to B",
+                  "A is reviewed by B",
+                  "A reviews B",
+                  "A is derived from B",
+                  "A is source of B",
+                  "A is required by B",
+                  "A requires B",
+                  "A is obsoleted by B",
+                  "A obsoletes B"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "identifier"
+            ]
+          }
+        },
+        "provenance": {
+          "title": "Provenance aspects of data entry",
+          "description": "Group of items providing information about provenance aspects of the data entry on this portal.",
+          "display_on_create": false,
+          "type": "object",
+          "properties": {
+            "dataSource": {
+              "title": "Source of information about the [RESOURCE]",
+              "description": "Source of information about the [RESOURCE] and the way it was uploaded/collected.",
+              "display_on_create": false,
+              "type": "string",
+              "enum": [
+                "Automatically uploaded: ClinicalTrials.gov",
+                "Automatically uploaded: DRKS",
+                "Automatically uploaded: ICTRP",
+                "Automatically uploaded: MDM Portal",
+                "Automatically uploaded: Other",
+                "Manually collected"
+              ],
+              "minLength": 1
+            },
+            "verificationDate": {
+              "title": "Last verified on",
+              "description": "Date on which the responsible party last verified the information about the [RESOURCE], even if no additional or updated information is being submitted.",
+              "display_on_create": false,
+              "type": "string",
+              "format": "date-time"
+            },
+            "verificationUser": {
+              "title": "Last verified by",
+              "description": "User who last verified the information about the [RESOURCE].",
+              "display_on_create": false,
+              "type": "string",
+              "enum": [
+                "Names from the list of users"
+              ]
+            },
+            "firstSubmittedDate": {
+              "title": "First submitted on",
+              "description": "Date when the [RESOURCE] was first submitted for publication.",
+              "display_on_create": false,
+              "type": "string",
+              "format": "date-time"
+            },
+            "firstSubmittedUser": {
+              "title": "First submitted by",
+              "description": "User who first submitted the [RESOURCE] for publication.",
+              "display_on_create": false,
+              "type": "string",
+              "enum": [
+                "Names from the list of users"
+              ]
+            },
+            "firstPostedDate": {
+              "title": "First posted/published on",
+              "description": "Date when the [RESOURCE] was first posted/published.",
+              "display_on_create": false,
+              "type": "string",
+              "format": "date-time"
+            },
+            "firstPostedUser": {
+              "title": "First posted/published by",
+              "description": "User who first posted/published the [RESOURCE].",
+              "display_on_create": false,
+              "type": "string",
+              "enum": [
+                "Names from the list of users"
+              ]
+            },
+            "lastUpdateSubmittedDate": {
+              "title": "Last update submitted on",
+              "description": "Date when the last update of the [RESOURCE] was submitted for publication.",
+              "display_on_create": false,
+              "type": "string",
+              "format": "date-time"
+            },
+            "lastUpdateSubmittedUser": {
+              "title": "Last updated submitted by",
+              "description": "User who submitted the last update of the [RESOURCE].",
+              "display_on_create": false,
+              "type": "string",
+              "enum": [
+                "Names from the list of users"
+              ]
+            },
+            "lastUpdatePostedDate": {
+              "title": "Last update posted/published on",
+              "description": "Date when the last update of the [RESOURCE] was posted/published.",
+              "display_on_create": false,
+              "type": "string",
+              "format": "date-time"
+            },
+            "lastUpdatePostedUser": {
+              "title": "Last update posted/published by",
+              "description": "User who posted/published the last update of the [RESOURCE].",
+              "display_on_create": false,
+              "type": "string",
+              "enum": [
+                "Names from the list of users"
+              ]
+            },
+            "resourceVersion": {
+              "title": "Version number",
+              "description": "Version number of the [RESOURCE] within this portal.",
+              "display_on_create": false,
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "dataSource"
+          ]
+        },
+        "nutritionalData": {
+          "title": "Collects nutritional data?",
+          "description": "Indication whether the [RESOURCE] collects nutritional data.",
+          "display_on_create": true,
+          "type": "boolean"
+        },
+        "chronicDiseases": {
+          "title": "Includes chronic diseases?",
+          "description": "Indication whether the [RESOURCE] addresses chronic diseases.",
+          "display_on_create": true,
+          "type": "boolean"
+        },
+        "design": {
+          "title": "Characteristics of the [RESOURCE]",
+          "description": "Group of items providing information about the characteristics of a [RESOURCE].",
+          "display_on_create": true,
+          "type": "object",
+          "properties": {
+            "primaryDesign": {
+              "title": "Is it an interventional or non-interventional [RESOURCE]?",
+              "description": "Non-interventional design refers to a [RESOURCE] that does not aim to alter its outcomes of interest. Interventional design refers to a [RESOURCE] that aims to alter its outcomes of interest.",
+              "input_help": "Select between non-interventional and interventional design for the given [RESOURCE].",
+              "display_on_create": true,
+              "type": "string",
+              "enum": [
+                "Non-interventional",
+                "Interventional"
+              ]
+            },
+            "studyType": {
+              "title": "Specification of the type of the [RESOURCE]",
+              "description": "Group of items providing information about the type of the [RESOURCE].",
+              "display_on_create": false,
+              "type": "object",
+              "properties": {
+                "interventional": {
+                  "title": "Interventional [RESOURCE] type",
+                  "description": "The strategy for assigning interventions to participants.",
+                  "input_help": "Select all that apply. If 'Other' is selected, please specify the type of the [RESOURCE] in the field 'Additional information about the [RESOURCE]'.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Single group",
+                      "Parallel",
+                      "Crossover",
+                      "Factorial",
+                      "Sequential",
+                      "Other",
+                      "Unknown"
+                    ]
+                  }
+                },
+                "nonInterventional": {
+                  "title": "Non-interventional [RESOURCE] type",
+                  "description": "The primary strategy for participant identification and follow-up.",
+                  "input_help": "Select all that apply. If 'Other' is selected, please specify the type of the [RESOURCE] in the field 'Additional information about the [RESOURCE]'.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Case-control",
+                      "Nested case-control",
+                      "Case-only",
+                      "Case-crossover",
+                      "Ecologic or community studies",
+                      "Family-based",
+                      "Twin study",
+                      "Cohort",
+                      "Case-cohort",
+                      "Birth cohort",
+                      "Trend",
+                      "Panel",
+                      "Longitudinal",
+                      "Cross-sectional",
+                      "Cross-sectional ad-hoc follow-up",
+                      "Time series",
+                      "Quality control",
+                      "Register studies",
+                      "Other",
+                      "Unknown"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": []
+            },
+            "conditions": {
+              "title": "Primary health condition(s) or disease(s) considered in the [RESOURCE]",
+              "description": "Group of items providing information about primary health condition(s) or disease(s) considered in the [RESOURCE].",
+              "display_on_create": true,
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "title": "Primary health condition or disease name",
+                    "description": "Name of primary health condition or disease considered in the [RESOURCE].",
+                    "example": "SARS-CoV-2",
+                    "input_help": "Preferably, use terms from SNOMED CT (https://browser.ihtsdotools.org).",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "classification": {
+                    "title": "Terminology/classification",
+                    "description": "Terminology/classification used for the health condition or disease.",
+                    "example": "SNOMED CT",
+                    "input_help": "If used, name of the terminology/classification.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "enum": [
+                      "MeSH",
+                      "ICD-10",
+                      "ICD-11",
+                      "MedDRA",
+                      "SNOMED CT",
+                      "Other vocabulary",
+                      "Free text"
+                    ],
+                    "minLength": 1
+                  },
+                  "code": {
+                    "title": "Code of the health condition or disease",
+                    "description": "Code of the health condition or disease in the terminology/classification used.",
+                    "example": "http://snomed.info/id/840533007",
+                    "input_help": "If known, you can provide the code from the terminology/classification used.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "label",
+                  "classification"
+                ]
+              }
+            },
+            "focus": {
+              "title": "Primary focus of the [RESOURCE]",
+              "description": "Group of items providing information about the focus of the [RESOURCE] (e.g. medication, food, therapy, device, etc.).",
+              "display_on_create": true,
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "title": "Focus area",
+                    "description": "Focus area of the [RESOURCE] (e.g. medication, food, therapy, device, etc.).",
+                    "input_help": "Preferably, use terms from SNOMED CT (https://browser.ihtsdotools.org).",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "classification": {
+                    "title": "Terminology/classification",
+                    "description": "Terminology/classification used for the focus area.",
+                    "example": "SNOMED CT",
+                    "input_help": "If used, name of the terminology/classification.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "enum": [
+                      "MeSH",
+                      "ICD-10",
+                      "ICD-11",
+                      "MedDRA",
+                      "SNOMED CT",
+                      "Other vocabulary",
+                      "Free text"
+                    ],
+                    "minLength": 1
+                  },
+                  "code": {
+                    "title": "Code of the focus area",
+                    "description": "Code of the focus area in the terminology/classification used.",
+                    "example": "http://snomed.info/id/840533007",
+                    "input_help": "If known, you can provide the code from the terminology/classification used.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "label",
+                  "classification"
+                ]
+              }
+            },
+            "groupsOfDiseases": {
+              "title": "Groups of diseases or conditions",
+              "description": "Group of items providing information about groups of diseases or conditions on which the data were collected in the [RESOURCE].",
+              "display_on_create": true,
+              "type": "object",
+              "properties": {
+                "generally": {
+                  "title": "Which groups of diseases or conditions were the data collected on?",
+                  "description": "General groups of diseases or conditions on which the data were collected in the [RESOURCE].",
+                  "input_help": "Select all that apply. For more information about the groups of diseases/conditions, visit the WHO's ICD-10 homepage: https://icd.who.int/en.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Certain infectious or parasitic diseases (I)",
+                      "Neoplasms (II)",
+                      "Diseases of the blood or blood-forming organs and certain disorders involving the immune mechanism (III)",
+                      "Endocrine, nutritional and metabolic diseases (IV)",
+                      "Mental and behavioural disorders (V)",
+                      "Diseases of the nervous system (VI)",
+                      "Diseases of the eye and adnexa (VII)",
+                      "Diseases of the ear or mastoid process (VIII)",
+                      "Diseases of the circulatory system (IX)",
+                      "Diseases of the respiratory system (X)",
+                      "Diseases of the digestive system (XI)",
+                      "Diseases of the skin and subcutaneous tissue (XII)",
+                      "Diseases of the musculoskeletal system and connective tissue (XIII)",
+                      "Diseases of the genitourinary system (XIV)",
+                      "Pregnancy, childbirth or the puerperium (XV)",
+                      "Certain conditions originating in the perinatal period (XVI)",
+                      "Congenital malformations, deformations and chromosomal abnormalities (XVII)",
+                      "Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified (XVIII)",
+                      "Injury, poisoning and certain other consequences of external causes (XIX)",
+                      "External causes of morbidity or mortality (XX)",
+                      "Factors influencing health status and contact with health services (XXI)",
+                      "Other",
+                      "Not applicable",
+                      "Unknown"
+                    ],
+                    "minLength": 1
+                  }
+                },
+                "conditions": {
+                  "title": "On which diseases or conditions were the data collected?",
+                  "description": "Diseases or conditions on which the data were collected in the [RESOURCE].",
+                  "input_help": "Select all that apply. Values are based on lower level ICD-10. For more information visit the WHO's ICD-10 homepage: https://icd.who.int/en.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Cholera (1A00)",
+                      "Intestinal infection due to other Vibrio (1A01)",
+                      "Intestinal infections due to Shigella (1A02)"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "generally"
+              ]
+            },
+            "mortalityData": {
+              "title": "Collects mortality data?",
+              "description": "Indication whether mortality data are collected in the [RESOURCE].",
+              "display_on_create": true,
+              "type": "string",
+              "enum": [
+                "Yes, vital status only (cause of death missing)",
+                "Yes, with cause of death",
+                "No"
+              ]
+            },
+            "administrativeInformation": {
+              "title": "Administrative information about the [RESOURCE]",
+              "description": "Group of items providing administrative information about the [RESOURCE].",
+              "display_on_create": true,
+              "type": "object",
+              "properties": {
+                "ethicsCommitteeApproval": {
+                  "title": "Status of the ethics committee approval",
+                  "description": "Status of the [RESOURCE] approval from the (leading) ethics committee.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Request for approval not yet submitted",
+                    "Request for approval submitted, approval pending",
+                    "Request for approval submitted, approval granted",
+                    "Request for approval submitted, exempt granted",
+                    "Request for approval submitted, approval denied",
+                    "Approval not required",
+                    "Study withdrawn prior to decision on approval",
+                    "Unknown status of request approval"
+                  ]
+                },
+                "status": {
+                  "title": "Overall [RESOURCE] status",
+                  "description": "Overall status of the [RESOURCE].",
+                  "input_help": "Select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "At the planning stage",
+                    "Ongoing (I): Recruitment ongoing, but data collection not yet started",
+                    "Ongoing (II): Recruitment and data collection ongoing",
+                    "Ongoing (III): Recruitment completed, but data collection ongoing",
+                    "Ongoing (IV): Recruitment and data collection completed, but data quality management ongoing",
+                    "Suspended: Recruitment, data collection, or data quality management, halted, but potentially will resume",
+                    "Terminated: Recruitment, data collection, data and quality management halted prematurely and will not resume",
+                    "Completed: Recruitment, data collection, and data quality management completed normally",
+                    "Other"
+                  ]
+                },
+                "statusWhenIntervention": {
+                  "title": "Participants receive an intervention?",
+                  "description": "Specification whether [RESOURCE] participants receive an intervention or have completed it but are still being followed up according to the primary objective of the [RESOURCE].",
+                  "input_help": "Select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Intervention ongoing",
+                    "Intervention completed, follow-up ongoing"
+                  ]
+                },
+                "stageStopped": {
+                  "title": "Stopping stage",
+                  "description": "Specification of the stage at which the [RESOURCE] was prematurely stopped.",
+                  "input_help": "Select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "At the planning stage",
+                    "Ongoing (I): Recruitment ongoing, but data collection not yet started",
+                    "Ongoing (II): Recruitment and data collection ongoing",
+                    "Ongoing (III): Recruitment completed, but data collection ongoing",
+                    "Ongoing (IV): Recruitment and data collection completed, but data quality management ongoing"
+                  ]
+                },
+                "reasonStopped": {
+                  "title": "Stopping reason",
+                  "description": "Specification of the reason(s) why the [RESOURCE] was prematurely stopped.",
+                  "example": "accrual goal met",
+                  "input_help": "You can provide reasons such as closed due to toxicity, closed due to lack of [RESOURCE] progress, temporarily-closed per [RESOURCE] design, etc.",
+                  "display_on_create": true,
+                  "type": "string"
+                },
+                "statusEnrollingByInvitation": {
+                  "title": "Participants enrolled by invitation?",
+                  "description": "Specification whether [RESOURCE] participants are selected from a predetermined population.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Yes",
+                    "No",
+                    "Not applicable"
+                  ]
+                },
+                "recruitmentStatusRegister": {
+                  "title": "Overall recruitment status from the register of clinical trials",
+                  "description": "Overall recruitment status of the [RESOURCE] as indicated in the corresponding register of clinical trials.",
+                  "display_on_create": false,
+                  "type": "string",
+                  "enum": [
+                    "Not yet recruiting",
+                    "Recruiting",
+                    "Enrolling by invitation",
+                    "Active, not recruiting",
+                    "Completed",
+                    "Suspended",
+                    "Terminated",
+                    "Withdrawn",
+                    "Other"
+                  ]
+                },
+                "startDate": {
+                  "title": "Start date",
+                  "description": "Start date of data collection for the [RESOURCE].",
+                  "input_help": "In case of a planned [RESOURCE], enter the intended start date. In case of an ongoing [RESOURCE], enter the actual start date.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "endDate": {
+                  "title": "End date",
+                  "description": "In case of a [RESOURCE] with patients or other participants, it is the date when the last participant is examined or receives an intervention, or the date of the last participant’s last visit.",
+                  "input_help": "In case of a planned or ongoing [RESOURCE], enter the intended end date. In case of a completed [RESOURCE], enter the actual end date.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "additionalProperties": false,
+              "required": []
+            },
+            "centers": {
+              "title": "Mono- or multicentric?",
+              "description": "Specification whether the [RESOURCE] is conducted at only one or at more than one [RESOURCE] center.",
+              "display_on_create": true,
+              "type": "string",
+              "enum": [
+                "Monocentric",
+                "Multicentric"
+              ]
+            },
+            "centersNumber": {
+              "title": "Number of centers",
+              "description": "Number of centers involved in the [RESOURCE].",
+              "display_on_create": true,
+              "type": "integer"
+            },
+            "dataProviders": {
+              "title": "One or more data providers?",
+              "description": "Specification whether the [RESOURCE] involves only one or more than one data provider.",
+              "display_on_create": true,
+              "type": "string",
+              "enum": [
+                "One data provider",
+                "Several data providers"
+              ]
+            },
+            "dataProvidersNumber": {
+              "title": "Number of data providers",
+              "description": "Number of data providers involved in the [RESOURCE].",
+              "display_on_create": true,
+              "type": "integer"
+            },
+            "subject": {
+              "title": "Primary subject",
+              "description": "The primary subject addressed by the [RESOURCE], i.e. a person, an animal or other subject types.",
+              "input_help": "Select one value from the list.",
+              "display_on_create": true,
+              "type": "string",
+              "enum": [
+                "Person",
+                "Animal",
+                "Other",
+                "Unknown"
+              ],
+              "minLength": 1
+            },
+            "sampling": {
+              "title": "Sampling method",
+              "description": "Group of items providing information about the applied sampling method.",
+              "display_on_create": false,
+              "type": "object",
+              "properties": {
+                "method": {
+                  "title": "Applied sampling method",
+                  "description": "Type of the sampling method applied for the selection of [RESOURCE] participants.",
+                  "input_help": "Select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Probability",
+                    "Non-probability",
+                    "Mixed probability and non-probability",
+                    "Total universe/Complete enumeration",
+                    "Other",
+                    "Unknown",
+                    "Not applicable"
+                  ],
+                  "minLength": 1
+                },
+                "probabilityMethod": {
+                  "title": "Specific type of probability sampling",
+                  "description": "Specific type of the probability sampling method applied for the selection of [RESOURCE] participants.",
+                  "input_help": "If known, select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Simple random",
+                    "Systematic random",
+                    "Stratified",
+                    "Stratified: Proportional",
+                    "Stratified: Disproportional",
+                    "Cluster",
+                    "Cluster: Simple random",
+                    "Cluster: Stratified random",
+                    "Multistage"
+                  ]
+                },
+                "nonProbabilityMethod": {
+                  "title": "Specific type of non-probability sampling",
+                  "description": "Specific type of the non-probability sampling method applied for the selection of [RESOURCE] participants.",
+                  "input_help": "If known, select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Availability",
+                    "Purposive",
+                    "Quota",
+                    "Respondent-assisted"
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "method"
+              ]
+            },
+            "dataSource": {
+              "title": "Data sources of the [RESOURCE]",
+              "description": "Group of items providing information about data sources from which the data of the [RESOURCE] are generated or extracted.",
+              "display_on_create": false,
+              "type": "object",
+              "properties": {
+                "general": {
+                  "title": "Type(s) of data sources",
+                  "description": "Different types of data sources from which the data of the [RESOURCE] are generated or extracted.",
+                  "input_help": "Select all that apply.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Administrative databases",
+                      "Biological samples",
+                      "Cognitive measurements",
+                      "Genealogical records",
+                      "Imaging data",
+                      "Interview",
+                      "Medical records",
+                      "Omics technology",
+                      "Physiological/Biochemical measurements",
+                      "Questionnaire",
+                      "Registries",
+                      "Other"
+                    ]
+                  }
+                },
+                "biosamples": {
+                  "title": "Biosamples collected",
+                  "description": "Specification of biosamples collected in the [RESOURCE].",
+                  "input_help": "Select all that apply.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Blood",
+                      "Buccal cells",
+                      "Cord blood",
+                      "DNA",
+                      "Faeces",
+                      "Hair",
+                      "Immortalized cell lines",
+                      "Isolated pathogen",
+                      "Nail",
+                      "Plasma",
+                      "RNA",
+                      "Saliva",
+                      "Serum",
+                      "Tissue (FFPE)",
+                      "Tissue (frozen)",
+                      "Urine",
+                      "Other biological samples"
+                    ]
+                  }
+                },
+                "imaging": {
+                  "title": "Imaging data collected",
+                  "description": "Specification of imaging data collected in the [RESOURCE].",
+                  "input_help": "Select all that apply.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Computed tomography (CT)",
+                      "Magnetic resonance imaging (MRI)",
+                      "Radiography (x-ray)",
+                      "Ultrasound",
+                      "Other imaging data"
+                    ]
+                  }
+                },
+                "omics": {
+                  "title": "Omics technology used",
+                  "description": "Specification of omics technology applied in the [RESOURCE].",
+                  "input_help": "Select all that apply.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Biomarkers",
+                      "Genomics",
+                      "Metabolomics",
+                      "Proteomics",
+                      "Transcriptomics",
+                      "Other omics technology"
+                    ]
+                  }
+                },
+                "description": {
+                  "title": "Additional information about data sources",
+                  "description": "If needed, additional descriptive information about the data sources of the [RESOURCE], e.g. indication of the data source(s) not listed in the field 'Type(s) of data sources' or a more detailed description of the selected data sources.",
+                  "input_help": "You can indicate here other data source(s) not listed in the field 'Type(s) of data sources' or provide a more detailed description of the selected data sources.",
+                  "display_on_create": true,
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": []
+            },
+            "primaryPurpose": {
+              "title": "Primary purpose of the [RESOURCE]",
+              "description": "Specification of the main purpose of the [RESOURCE].",
+              "input_help": "Foremost for interventional studies, please specify the primary purpose why the [RESOURCE] was conducted. For non-interventional studies, this field may be 'Not applicable' as multiple purposes may be defined as primary ones.",
+              "display_on_create": true,
+              "type": "string",
+              "enum": [
+                "Treatment",
+                "Prevention",
+                "Prognostic",
+                "Diagnostic",
+                "Supportive care",
+                "Screening",
+                "Health services research",
+                "Basic science/Physiological study",
+                "Device feasibility",
+                "Pharmacogenetics",
+                "Pharmacogenomics",
+                "Health economics",
+                "Not applicable",
+                "Other"
+              ]
+            },
+            "eligibilityCriteria": {
+              "title": "Eligibility criteria for [RESOURCE] participants",
+              "description": "Group of items providing information about eligibility criteria for [RESOURCE] participants.",
+              "display_on_create": true,
+              "type": "object",
+              "properties": {
+                "ageMin": {
+                  "title": "Eligibility criteria: Minimum age",
+                  "description": "Group of items providing information about the minimum eligible age of [RESOURCE] participants.",
+                  "display_on_create": false,
+                  "type": "object",
+                  "properties": {
+                    "number": {
+                      "title": "Minimum eligible age",
+                      "description": "Numerical value of the minimum age of potential participants eligible to participate in the [RESOURCE].",
+                      "input_help": "If age is less than 1 year, please indicate a value in months, weeks, days, hours, minutes, or weeks of gestation.",
+                      "display_on_create": true,
+                      "type": "integer"
+                    },
+                    "timeUnit": {
+                      "title": "Unit of age",
+                      "description": "Unit of measurement used to describe the minimum eligible age.",
+                      "display_on_create": true,
+                      "type": "string",
+                      "enum": [
+                        "Years",
+                        "Months",
+                        "Weeks",
+                        "Days",
+                        "Hours",
+                        "Minutes",
+                        "Weeks of gestation"
+                      ],
+                      "minLength": 1
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "number",
+                    "timeUnit"
+                  ]
+                },
+                "ageMax": {
+                  "title": "Eligibility criteria: Maximum age",
+                  "description": "Group of items providing information about the maximum eligible age of [RESOURCE] participants.",
+                  "display_on_create": false,
+                  "type": "object",
+                  "properties": {
+                    "number": {
+                      "title": "Maximum eligible age",
+                      "description": "Numerical value of the maximum age of potential participants eligible to participate in the [RESOURCE].",
+                      "input_help": "If age is less than 1 year, please indicate a value in months, weeks, days, hours, minutes, or weeks of gestation.",
+                      "display_on_create": true,
+                      "type": "integer"
+                    },
+                    "timeUnit": {
+                      "title": "Unit of age",
+                      "description": "Unit of measurement used to describe the maximum eligible age.",
+                      "display_on_create": true,
+                      "type": "string",
+                      "enum": [
+                        "Years",
+                        "Months",
+                        "Weeks",
+                        "Days",
+                        "Hours",
+                        "Minutes",
+                        "Weeks of gestation"
+                      ],
+                      "minLength": 1
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "number",
+                    "timeUnit"
+                  ]
+                },
+                "genders": {
+                  "title": "Eligible gender",
+                  "description": "Gender of potential participants eligible to participate in the [RESOURCE].",
+                  "input_help": "Select all that apply. If no gender was explicitly excluded in the [RESOURCE], 'Male', 'Female', and 'Diverse' should be selected.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Male",
+                      "Female",
+                      "Diverse",
+                      "Not applicable"
+                    ]
+                  }
+                },
+                "inclusionCriteria": {
+                  "title": "Inclusion criteria",
+                  "description": "Inclusion criteria for participation in the [RESOURCE].",
+                  "example": "- First inclusion criterion; - Second inclusion criterion;",
+                  "input_help": "If possible, use an enumerated or bulleted list for each criterion, starting with '-' and finishing with ';'.",
+                  "display_on_create": true,
+                  "type": "string"
+                },
+                "exclusionCriteria": {
+                  "title": "Exclusion criteria",
+                  "description": "Exclusion criteria for participation in the [RESOURCE].",
+                  "example": "- First inclusion criterion; - Second inclusion criterion;",
+                  "input_help": "If possible, use an enumerated or bulleted list for each criterion, starting with '-' and finishing with ';'.",
+                  "display_on_create": true,
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": []
+            },
+            "population": {
+              "title": "Population of the [RESOURCE]",
+              "description": "Group of items providing information about the population of the [RESOURCE].",
+              "display_on_create": true,
+              "type": "object",
+              "properties": {
+                "coverage": {
+                  "title": "Coverage",
+                  "description": "Specification of the recruitment area of the [RESOURCE].",
+                  "input_help": "Select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "International",
+                    "National",
+                    "Regional"
+                  ]
+                },
+                "countries": {
+                  "title": "Country(ies)",
+                  "description": "Country or countries where the [RESOURCE] takes place.",
+                  "input_help": "Select all that apply.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/$defs/Country_names_from_the_ISO_3166-1_list"
+                  }
+                },
+                "region": {
+                  "title": "Region(s) and/or city(ies)",
+                  "description": "If applicable, region(s) and/or city(ies) within a country where the [RESOURCE] takes place.",
+                  "display_on_create": true,
+                  "type": "string"
+                },
+                "description": {
+                  "title": "Population description",
+                  "description": "Additional descriptive information providing more details about the population of the [RESOURCE].",
+                  "input_help": "Any information important for the given [RESOURCE] population can be specified here.",
+                  "display_on_create": true,
+                  "type": "string"
+                },
+                "targetSampleSize": {
+                  "title": "Target sample size",
+                  "description": "Intended number of observational units for the whole [RESOURCE] (e.g. intended number of [RESOURCE] participants at all sites of the [RESOURCE]).",
+                  "display_on_create": true,
+                  "type": "integer"
+                },
+                "obtainedSampleSize": {
+                  "title": "Obtained sample size",
+                  "description": "Obtained number of observational units for the whole [RESOURCE] (e.g. obtained number of [RESOURCE] participants at all sites of the [RESOURCE]).",
+                  "display_on_create": true,
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "countries"
+              ]
+            },
+            "hypotheses": {
+              "title": "Research questions/hypotheses",
+              "description": "Statement of the research questions and/or hypotheses underlying the [RESOURCE].",
+              "display_on_create": true,
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "type": "string"
+              }
+            },
+            "arms": {
+              "title": "Arms of the [RESOURCE]",
+              "description": "Group of items providing information about the arms of the [RESOURCE].",
+              "display_on_create": true,
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "title": "Name of the arm",
+                    "description": "Short name used to identify the arm.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "type": {
+                    "title": "Role of the arm",
+                    "description": "Role of the given arm in the [RESOURCE].",
+                    "input_help": "Select one value from the list.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "enum": [
+                      "Experimental",
+                      "Active comparator",
+                      "Placebo comparator",
+                      "Sham comparator",
+                      "No intervention",
+                      "Other"
+                    ],
+                    "minLength": 1
+                  },
+                  "description": {
+                    "title": "Additional information about the arm",
+                    "description": "Additional descriptive information about the given arm.",
+                    "display_on_create": true,
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "label",
+                  "type"
+                ]
+              }
+            },
+            "groups": {
+              "title": "Groups/cohorts of the [RESOURCE]",
+              "description": "Group of items providing information about the groups/cohorts of the [RESOURCE].",
+              "display_on_create": true,
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "title": "Name of the group",
+                    "description": "Short name used to identify the group.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "description": {
+                    "title": "Additional information about the group",
+                    "description": "Additional descriptive information about the given group.",
+                    "display_on_create": true,
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "label"
+                ]
+              }
+            },
+            "interventions": {
+              "title": "Interventions of the [RESOURCE]",
+              "description": "Group of items providing information about the interventions of the [RESOURCE].",
+              "display_on_create": true,
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "title": "Name of the intervention",
+                    "description": "A short descriptive name of the intervention.",
+                    "input_help": "If the same intervention is associated with more than one arm, please provide the information once and use the field 'Name(s) of the arm(s) associated with the given intervention' to associate it with more than one arm.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "type": {
+                    "title": "Type of the intervention",
+                    "description": "General type of the given intervention.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "enum": [
+                      "Drug (including placebo)",
+                      "Device (including sham)",
+                      "Biological/Vaccine",
+                      "Procedure/Surgery",
+                      "Radiation",
+                      "Behavioral (e.g., psychotherapy, lifestyle counseling)",
+                      "Genetic (including gene transfer, stem cell and recombinant DNA)",
+                      "Dietary supplement (e.g., vitamins, minerals)",
+                      "Combination product (combining a drug and device, a biological product and device; a drug and biological product; or a drug, biological product, and device)",
+                      "Diagnostic test (e.g., imaging, in-vitro)",
+                      "Other"
+                    ]
+                  },
+                  "description": {
+                    "title": "Additional information about the intervention",
+                    "description": "If needed, additional descriptive information about the given intervention.",
+                    "display_on_create": true,
+                    "type": "string"
+                  },
+                  "armsLabel": {
+                    "title": "Name(s) of the arm(s) associated with the given intervention",
+                    "description": "Name(s) of the [RESOURCE] arm(s) associated with the given intervention.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "name"
+                ]
+              }
+            },
+            "exposures": {
+              "title": "Exposures of the [RESOURCE]",
+              "description": "Group of items providing information about the exposures of the [RESOURCE].",
+              "display_on_create": true,
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "title": "Name of the exposure",
+                    "description": "A short descriptive name of the exposure.",
+                    "input_help": "If the same exposure is associated with more than one group, please provide the information once and use the field 'Name(s) of the group(s) associated with the given exposure' to associate it with more than one group.",
+                    "display_on_create": true,
+                    "type": "string"
+                  },
+                  "type": {
+                    "title": "Type of the exposure",
+                    "description": "General type of the given exposure.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "enum": [
+                      "Drug (including placebo)",
+                      "Device (including sham)",
+                      "Biological/Vaccine",
+                      "Procedure/Surgery",
+                      "Radiation",
+                      "Behavioral (e.g., psychotherapy, lifestyle counseling)",
+                      "Genetic (including gene transfer, stem cell and recombinant DNA)",
+                      "Dietary supplement (e.g., vitamins, minerals)",
+                      "Combination product (combining a drug and device, a biological product and device; a drug and biological product; or a drug, biological product, and device)",
+                      "Diagnostic test (e.g., imaging, in-vitro)",
+                      "Other"
+                    ]
+                  },
+                  "description": {
+                    "title": "Additional information about the exposure",
+                    "description": "If needed, additional descriptive information about the given exposure.",
+                    "display_on_create": true,
+                    "type": "string"
+                  },
+                  "groupsLabel": {
+                    "title": "Name(s) of the group(s) associated with the given exposure",
+                    "description": "Name(s) of the [RESOURCE] group(s) associated with the given exposure.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": false,
+                "required": []
+              }
+            },
+            "outcomes": {
+              "title": "Outcome measures in the [RESOURCE]",
+              "description": "Group of items providing information about outcome measures.",
+              "display_on_create": true,
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "title": "Name of the outcome measure",
+                    "description": "Name of the outcome measure. For non-interventional studies, this can be the name of specific measurement(s) or observation(s) used to describe patterns of diseases or traits or associations with exposures, risk factors or treatment.",
+                    "input_help": "For non-interventional studies, you can provide specific measurement(s) or observation(s) used to describe patterns of diseases or traits or associations with exposures, risk factors or treatment.",
+                    "display_on_create": true,
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "description": {
+                    "title": "Description of the outcome measure",
+                    "description": "Additional descriptive information about the given outcome.",
+                    "display_on_create": true,
+                    "type": "string"
+                  },
+                  "type": {
+                    "title": "Type of the outcome measure",
+                    "description": "The type indicates the degree of importance of the outcome measure in the [RESOURCE].",
+                    "display_on_create": true,
+                    "type": "string",
+                    "enum": [
+                      "Primary",
+                      "Secondary",
+                      "Other"
+                    ]
+                  },
+                  "timeFrame": {
+                    "title": "Time point(s) of assessment",
+                    "description": "Description of the time point(s) at which the measurement for the outcome is assessed, e.g. the specific duration of time over which each participant is assessed.",
+                    "display_on_create": true,
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "title"
+                ]
+              }
+            },
+            "comment": {
+              "title": "Additional information about the [RESOURCE]",
+              "description": "Any additional information about specific aspects of the [RESOURCE] that could not be captured by other fields.",
+              "input_help": "You can provide here specific aspects of the [RESOURCE] that could not be captured by other fields.",
+              "display_on_create": true,
+              "type": "string"
+            },
+            "assessments": {
+              "title": "Additional assessments/measurements in the [RESOURCE]",
+              "description": "Any additional assessments/measurements included in the [RESOURCE].",
+              "input_help": "Select all that apply.",
+              "display_on_create": true,
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Diet/Nutrition",
+                  "Physical activity",
+                  "Tobacco use",
+                  "Alcohol consumption",
+                  "Body weight",
+                  "Body height",
+                  "Waist circumference",
+                  "Body Mass Index",
+                  "Body fat percentage",
+                  "Sociodemographic information"
+                ]
+              }
+            },
+            "dataSharingPlan": {
+              "title": "Data sharing strategy of the [RESOURCE]",
+              "description": "Group of items providing information about the data sharing strategy of the [RESOURCE].",
+              "display_on_create": true,
+              "type": "object",
+              "properties": {
+                "generally": {
+                  "title": "Is it planned to share the data?",
+                  "description": "Indication whether there is a plan to make data collected in the [RESOURCE] available. In case of a [RESOURCE] with patients or other individuals, this refers to individual participant data (IPD).",
+                  "input_help": "Select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Yes, there is a plan to make data available",
+                    "No, there is no plan to make data available",
+                    "Undecided, it is not yet known if data will be made available"
+                  ],
+                  "minLength": 1
+                },
+                "supportingInformation": {
+                  "title": "Supporting documents available in addition to the data",
+                  "description": "Supporting information/documents which will be made available in addition to the data collected in the [RESOURCE].",
+                  "input_help": "Select all that apply.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Data dictionary",
+                      "Study protocol",
+                      "Protocol amendment",
+                      "Statistical analysis plan",
+                      "Analytic code",
+                      "Informed consent form",
+                      "Clinical study report",
+                      "Manual of operations (SOP)",
+                      "Case report form (template)",
+                      "Questionnaire (template)",
+                      "Code book",
+                      "Other"
+                    ]
+                  }
+                },
+                "timeFrame": {
+                  "title": "When and for how long will the data be available?",
+                  "description": "Indication of the time period for which the data and, if applicable, supporting documents will be made available.",
+                  "display_on_create": true,
+                  "type": "string"
+                },
+                "accessCriteria": {
+                  "title": "Criteria for data access",
+                  "description": "Indication of the access criteria by which the data will be shared, including: a) with whom; b) for which types of analyses; and c) by what mechanism.",
+                  "input_help": "Please provide here with whom, for which types of analyses and by what mechanism the data will be shared.",
+                  "display_on_create": true,
+                  "type": "string"
+                },
+                "description": {
+                  "title": "Additional information about data sharing",
+                  "description": "Additional descriptive information providing more details about data sharing, e.g. indication of which data in particular will be shared or why the data will not be shared or why it is not yet decided.",
+                  "input_help": "Please indicate here which data in particular will be shared, or the reasons why it will not be shared or it is not yet decided.",
+                  "display_on_create": true,
+                  "type": "string"
+                },
+                "datashield": {
+                  "title": "DataSHIELD/Opal infrastructure available?",
+                  "description": "Indication whether the DataSHIELD/Opal infrastructure is available.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Yes",
+                    "No",
+                    "Pending"
+                  ]
+                },
+                "requestData": {
+                  "title": "Link to data request application",
+                  "description": "If existing, a link to the web page where the data request form and/or information on data reuse can be found.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "format": "uri"
+                },
+                "url": {
+                  "title": "Web page with additional information about data sharing",
+                  "description": "If existing, a link to the web page where additional information about data sharing can be found.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "format": "uri"
+                },
+                "recordLinkage": {
+                  "title": "Record linkage possible?",
+                  "description": "Indication if record linkage with other data sources is possible.",
+                  "display_on_create": true,
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "generally"
+              ]
+            },
+            "nonInterventional": {
+              "title": "Non-interventional aspects of the [RESOURCE]",
+              "description": "Group of items providing information about specific non-interventional aspects of the [RESOURCE].",
+              "display_on_create": true,
+              "type": "object",
+              "properties": {
+                "timePerspectives": {
+                  "title": "Temporal design",
+                  "description": "Temporal design of the [RESOURCE], i.e. the observation period in relation to the time of participant enrollment.",
+                  "input_help": "Is it a retrospective, prospective or cross-sectional [RESOURCE]?",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Retrospective",
+                      "Prospective",
+                      "Cross-sectional",
+                      "Other"
+                    ]
+                  }
+                },
+                "targetFollowUpDuration": {
+                  "title": "Target follow-up duration of the [RESOURCE]",
+                  "description": "If applicable, anticipated time period over which each participant would be followed.",
+                  "display_on_create": true,
+                  "type": "object",
+                  "properties": {
+                    "number": {
+                      "title": "Target follow-up duration",
+                      "description": "Numerical value of the target follow-up duration.",
+                      "display_on_create": true,
+                      "type": "integer"
+                    },
+                    "timeUnit": {
+                      "title": "Unit of time",
+                      "description": "Unit of measurement used to describe the follow-up duration.",
+                      "display_on_create": true,
+                      "type": "string",
+                      "enum": [
+                        "Years",
+                        "Months",
+                        "Weeks",
+                        "Days"
+                      ],
+                      "minLength": 1
+                    },
+                    "frequency": {
+                      "title": "Number of follow-ups conducted",
+                      "description": "The number of follow-ups conducted within the specified duration.",
+                      "display_on_create": true,
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "number",
+                    "timeUnit"
+                  ]
+                },
+                "biospecimenRetention": {
+                  "title": "Biosamples retained in a biorepository",
+                  "description": "Indication whether samples of biomaterials from participants of the [RESOURCE] are retained in a biorepository.",
+                  "input_help": "Select all that apply.",
+                  "display_on_create": true,
+                  "type": "array",
+                  "minItems": 0,
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "None retained",
+                      "Samples with DNA",
+                      "Samples without DNA"
+                    ]
+                  }
+                },
+                "biospecimenDescription": {
+                  "title": "Specific types of retained biosamples",
+                  "description": "Additional information about retained biosamples, i.e. an indication of the specific types of retained biospecimens (e.g. blood, serum, urine, etc.).",
+                  "example": "blood",
+                  "input_help": "You can provide here specific types of retained biosamples (e.g. blood, serum, urine, etc.).",
+                  "display_on_create": true,
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": []
+            },
+            "interventional": {
+              "title": "Interventional aspects of the [RESOURCE]",
+              "description": "Group of items providing information about specific interventional aspects of the [RESOURCE].",
+              "display_on_create": true,
+              "type": "object",
+              "properties": {
+                "phase": {
+                  "title": "Numerical phase",
+                  "description": "If applicable, numerical phase of the [RESOURCE].",
+                  "input_help": "Select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Early-phase-1",
+                    "Phase-1",
+                    "Phase-1-phase-2",
+                    "Phase-2",
+                    "Phase-2a",
+                    "Phase-2b",
+                    "Phase-2-phase-3",
+                    "Phase-3",
+                    "Phase-3a",
+                    "Phase-3b",
+                    "Phase-4",
+                    "Other",
+                    "Not applicable"
+                  ]
+                },
+                "masking": {
+                  "title": "Masking of intervention(s) assignment",
+                  "description": "Group of items providing information about the masking of intervention(s) assignment.",
+                  "display_on_create": true,
+                  "type": "object",
+                  "properties": {
+                    "general": {
+                      "title": "Masking implemented?",
+                      "description": "Indication whether a masking (or blinding) of intervention(s) assignment is implemented (i.e., whether someone is prevented from having knowledge of the interventions assigned to individual participants).",
+                      "display_on_create": true,
+                      "type": "boolean"
+                    },
+                    "roles": {
+                      "title": "Who is masked?",
+                      "description": "If masking is implemented, the party(ies) who are masked.",
+                      "input_help": "Select all that apply.",
+                      "display_on_create": true,
+                      "type": "array",
+                      "minItems": 0,
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "Participant",
+                          "Care provider",
+                          "Investigator",
+                          "Outcomes assessor"
+                        ]
+                      }
+                    },
+                    "description": {
+                      "title": "Additional information about masking",
+                      "description": "If needed, additional descriptive information about masking (e.g. information about other parties who may be masked).",
+                      "input_help": "You can provide here additional information about masking, e.g. other parties who may be masked.",
+                      "display_on_create": true,
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": []
+                },
+                "allocation": {
+                  "title": "Type of allocation of participants to an arm",
+                  "description": "Type of allocation/assignment of individual participants of the [RESOURCE] to an arm.",
+                  "input_help": "Select one value from the list.",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Randomized",
+                    "Nonrandomized",
+                    "Not applicable (for single-arm trials)"
+                  ]
+                },
+                "offLabelUse": {
+                  "title": "Off-label use of a drug product",
+                  "description": "Unapproved (off-label) use of a drug product.",
+                  "input_help": "Select 'Yes' or 'No' only for a drug [RESOURCE] and 'Not applicable' for any other [RESOURCE].",
+                  "display_on_create": true,
+                  "type": "string",
+                  "enum": [
+                    "Yes",
+                    "No",
+                    "Not applicable"
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": []
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "groupsOfDiseases",
+            "subject",
+            "population",
+            "dataSharingPlan"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "identifier",
+        "classification",
+        "titles",
+        "descriptions",
+        "contributors",
+        "provenance"
+      ]
+    }}
+    Versions:
+      description: Available versions of the resource (e.g. DRAFT, 1.0, 2.0)
+      items:
+        properties:
+          create_timestamp: {format: date-time, type: string}
+          last_update_timestamp: {format: date-time, type: string}
+          name: {type: string}
+          release_timestamp: {format: date-time, type: string}
+        type: object
+      type: array
+  securitySchemes:
+    OpenID: { openIdConnectUrl: https://sso.studyhub.nfdi4health.de/realms/nfdi4health/.well-known/openid-configuration,
+              type: openIdConnect }
+info:
+  contact: {email: fb.studyhub@nfdi4health.de}
+  description: "The Health Study Hub offers a RESTful API to interact with the system.\
+    \ All possible operations, such as creating\nor updating resources, are described\
+    \ below.\n\nThe full JSON Schema version of the NFDI4Health Metadata Schema (MDS),\
+    \ including all conditions between fields, can\nbe accessed at\n[https://health-study-hub.de/api/MDS_latest_full.json](https://health-study-hub.de/api/MDS_latest_full.json).\n\
+    The full version of the schema is used by the API when validating uploaded resources.\n\
+    Custom metadata blocks can be added under the key `customMetadata`. The currently\
+    \ available custom metadata blocks\nare:\n\n1. [Diet assessment](https://health-study-hub.de/api/MDS_dietAssessment.json)\n\
+    2. [Chronic diseases/Epidemiology](https://health-study-hub.de/api/MDS_chronicDiseasesEpidemiology.json)\n\
+    3. [Record linkage](https://health-study-hub.de/api/MDS_recordLinkage.json)\n"
+  title: NFDI4Health German Central Health Study Hub API
+  version: '3.3'
+openapi: 3.0.1
+servers:
+  - url: https://health-study-hub.de
+paths:
+  /api/collection/{id}:
+    get:
+      parameters:
+      - description: Collection ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    description: {description: Collection description, type: string}
+                    name: {description: Collection name, type: string}
+                  type: object
+                type: array
+          description: OK
+        '404': {description: Collection not found}
+      summary: Get collection by ID
+      tags: [Viewing collections]
+  /api/resource/validate/:
+    post:
+      description: "Validates resource against the current metadata schema\n"
+      parameters:
+      - description: "Indicates if only the set of minimal properties (true) or all\
+          \ properties (false) are validated. Default is \"false\", i.e all\nconstraints\
+          \ are checked.\n"
+        in: query
+        name: use_minimal_schema
+        required: false
+        schema: {default: false, type: boolean}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                resource: {$ref: '#/components/schemas/Resource'}
+              required: [resource]
+              type: object
+      responses:
+        '200': {description: OK.}
+        '422': {description: Invalid request or not valid resource according to current
+            metadata schema}
+      summary: Validates a resource against the current metadata schema.
+      tags: [Managing resources]
+  /api/resource/{id}:
+    delete:
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      responses:
+        '200': {description: OK}
+        '401': {description: No access rights (resources can only be deleted by the
+            creator and only if they're not published yet)}
+        '404': {description: Resource not found}
+      summary: Delete resource by ID
+      tags: [Managing resources]
+    get:
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      - description: Resource version
+        in: query
+        name: version
+        required: false
+        schema: {example: '2.0', type: string}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  link: {$ref: '#/components/schemas/Link'}
+                  permissions: {$ref: '#/components/schemas/Permissions'}
+                  resource: {$ref: '#/components/schemas/Resource'}
+                  versions: {$ref: '#/components/schemas/Versions'}
+                type: object
+          description: OK
+        '401': {description: No access rights (unpublished resources can only be accessed
+            by the creator or curator users)}
+        '404': {description: Resource not found}
+      summary: Get resource by ID
+      tags: [Managing resources]
+  /api/resource/{id}/collaborators:
+    post:
+      description: "Add a user as a collaborator to a resource who will receive editing\
+        \ rights.\n"
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                username: {type: string}
+              type: object
+      responses:
+        '200': {description: User was already added as collaborator}
+        '201': {description: OK}
+        '401': {description: Logged in user doesn't have permission to add a collaborator
+            to this resource}
+        '404': {description: User not found}
+        '422': {description: 'No username given, or own username given'}
+        '500': {description: Adding the user as collaborator failed}
+      summary: Add a new collaborating user to a resource
+      tags: [Managing resources]
+  /api/resource/{id}/completion_status:
+    get:
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  missing_fields:
+                    description: List of missing mandatory fields
+                    items: {type: string}
+                    type: array
+                type: object
+          description: OK
+        '401': {description: No access rights (unpublished resources can only be accessed
+            by the creator or curator users)}
+        '404': {description: Resource not found}
+      summary: Get completion status of resource by ID
+      tags: [Managing resources]
+  /api/resource/{id}/file:
+    post:
+      description: "Upload a file attached to a resource. Note that only one file\
+        \ can be attached to a resource, so this will fail\nif the resource already\
+        \ has an attached file. In this case, use the PUT API to replace the current\
+        \ file.\nFiles can only be attached to resources of a type other than Study,\
+        \ Substudy, Registry or Secondary data source.\n"
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                document: {format: binary, type: string}
+              required: [document]
+              type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Link'}
+          description: OK
+        '401': {description: No access rights}
+        '422': {description: Wrong resource type}
+      summary: Add file attached to a resource
+      tags: [Managing files]
+  /api/resource/{id}/file/{file_id}:
+    delete:
+      description: "Deletes the file attached to a resource.\n"
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      - description: File ID
+        in: path
+        name: file_id
+        required: true
+        schema: {type: string}
+      responses:
+        '200': {description: OK}
+        '401': {description: No access rights}
+        '404': {description: File not found}
+      summary: Delete file attached to a resource
+      tags: [Managing files]
+    put:
+      description: "Replaces the file attached to a resource.\n"
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      - description: File ID
+        in: path
+        name: file_id
+        required: true
+        schema: {type: string}
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                document: {format: binary, type: string}
+              required: [document]
+              type: object
+      responses:
+        '200': {description: OK}
+        '401': {description: No access rights}
+        '404': {description: File not found}
+      summary: Replace file attached to a resource
+      tags: [Managing files]
+  /api/resource/{id}/file/{file_id}/data:
+    get:
+      description: "Downloads the file attached to a resource specified by the file\
+        \ ID. When the file attached to a resource is\nupdated/replaced over the course\
+        \ of the resource's versions, it receives a new file ID.\n"
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      - description: File ID
+        in: path
+        name: file_id
+        required: true
+        schema: {type: string}
+      responses:
+        '200': {description: OK}
+        '401': {description: No access rights}
+        '404': {description: File not found}
+      summary: Get file attached to a resource
+      tags: [Managing files]
+  /api/resource/{id}/files:
+    get:
+      description: "Get list of files attached to the latest version of a resource.\n"
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      responses:
+        '200': {$ref: '#/components/responses/200-Get-List-Of-Files'}
+        '401': {$ref: '#/components/responses/401-No-Access-Rights'}
+      summary: Get list of files attached to latest version of a resource
+      tags: [Managing files]
+  /api/resource/{id}/publish:
+    post:
+      description: "Changes resource status from DRAFT to PENDING.\n"
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      - description: To request publication with a DOI
+        in: query
+        name: with_doi
+        required: false
+        schema: {type: boolean}
+      responses:
+        '200': {description: Latest version of resource is already pending publication
+            or already published}
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  resource:
+                    properties:
+                      identifier: {description: The identifier under which the resource
+                          will be published (DOI or NFDI4Health PID), example: 10.48793/nfdi4health-ds839s,
+                        type: string}
+                    type: object
+                type: object
+          description: OK
+        '401': {description: Resource is not created by logged in user}
+        '404': {description: Resource not found}
+        '422': {description: Resource is invalid according to MDS}
+        '500': {description: Updating the resource failed}
+      summary: Request publication of resource
+      tags: [Managing resources]
+  /api/resource/{id}/version/{version}/files:
+    get:
+      description: "Get list of files attached to a resource.\n"
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      - description: Resource version
+        in: path
+        name: version
+        required: true
+        schema: {example: '2.0', type: string}
+      responses:
+        '200': {$ref: '#/components/responses/200-Get-List-Of-Files'}
+        '401': {$ref: '#/components/responses/401-No-Access-Rights'}
+      summary: Get list of files attached to a resource
+      tags: [Managing files]
+  /api/resource/{id}/{mode}:
+    post:
+      description: "Changes status of latest resource version from PENDING to PUBLISHED\
+        \ (when accepted) or DRAFT (when rejected).\nPublished versions of resources\
+        \ become publicly visible.\n"
+      parameters:
+      - description: Resource ID
+        in: path
+        name: id
+        required: true
+        schema: {type: string}
+      - description: Decision on pending resource
+        in: path
+        name: mode
+        required: true
+        schema:
+          enum: [approve, reject]
+          type: string
+      responses:
+        '200': {description: Latest version of resource is already published}
+        '201': {description: OK}
+        '401': {description: No access rights (can only be accessed by curator users)}
+        '422': {description: Invalid mode}
+        '500': {description: Updating the resource failed}
+      summary: Approve or reject a pending resource
+      tags: [Managing resources as curator]
+  /api/resources/:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                fq: {description: Filter query string, type: string}
+                perPage: {description: Number of results per page, type: number}
+                q: {description: Query string, type: string}
+                showFacets: {description: Whether to return facets or not, type: boolean}
+                sortField:
+                  enum: [relevance, date, name]
+                  type: string
+                sortOrder:
+                  enum: [asc, desc]
+                  type: string
+                start: {description: Results start, type: number}
+              type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  content:
+                    description: The resources
+                    items: {$ref: '#/components/schemas/Resource'}
+                    type: array
+                  totalElements: {description: Number of resources, type: integer}
+                type: object
+          description: OK
+        400: {description: Search syntax error}
+        500: {$ref: '#/components/responses/500-Internal-Server-Error'}
+      summary: Search all published resources
+      tags: [Searching resources]
+  /api/resources/pending_approvals:
+    get:
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        required: false
+        schema: {type: integer}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      properties:
+                        creator:
+                          properties:
+                            email: {type: string}
+                            name: {type: string}
+                          type: object
+                        resource: {$ref: '#/components/schemas/Resource'}
+                        status:
+                          enum: [PENDING]
+                          type: string
+                      type: object
+                    type: array
+                  pagination:
+                    properties:
+                      totalPages: {type: integer}
+                    type: object
+                type: object
+          description: OK
+        '401': {description: No access rights (can only be accessed by curator users)}
+      summary: Get all resources that are pending approval
+      tags: [Managing resources as curator]
+  /api/resources/user:
+    get:
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        required: false
+        schema: {type: integer}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      properties:
+                        missing:
+                          properties:
+                            missing_fields:
+                              items: {type: string}
+                              type: array
+                          type: object
+                        permissions: {$ref: '#/components/schemas/Permissions'}
+                        resource: {$ref: '#/components/schemas/Resource'}
+                        role:
+                          enum: [Contributor, Collaborator]
+                          type: string
+                        versions: {$ref: '#/components/schemas/Versions'}
+                      type: object
+                    type: array
+                  pagination:
+                    properties:
+                      totalPages: {type: integer}
+                    type: object
+                type: object
+          description: OK
+        401: {description: No access rights (not logged in)}
+      summary: Get all resources that are created by the logged in user
+      tags: [Managing resources]
+  /api/stats:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  lastUpdate: {description: Ingest timestamp of newest resource, type: string}
+                  softwareVersion: {description: Commit SHA of backend, type: string}
+                  totalElements: {description: Number of published resources, type: integer}
+                type: object
+          description: OK
+      summary: Get statistics
+      tags: [Misc]
+tags:
+- {name: Searching resources}
+- {name: Viewing collections}
+- {description: 'Everything related to the management of resources (creating, updating,
+    deleting,...)', name: Managing resources}
+- {description: 'Everything related to the management of files attached to resources
+    (creating, updating, deleting,...)', name: Managing files}

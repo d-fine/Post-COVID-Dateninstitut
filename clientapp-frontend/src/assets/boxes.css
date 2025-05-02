@@ -1,0 +1,77 @@
+.blue_box {
+  margin-left: 75px;
+  background-color: rgba(83, 188, 240, 0.7);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+  width: calc((100% - 350px) / 3);
+  color: var(--df-blue);
+}
+
+.white-mid-section {
+  background-color: white;
+  font-weight: bold;
+  color: var(--df-blue);
+  font-size: 0.875rem;
+}
+
+.small_header {
+  text-transform: uppercase;
+  margin-bottom: 1em;
+  font-size: 1.2rem;
+}
+
+.header_box {
+  color: #f07d00;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.box_number {
+  color: #f07d00;
+  font-size: 2rem;
+  text-align: right;
+  margin-top: 1.3rem;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+.p-fileupload-advanced {
+  border-radius: 20px;
+}
+
+.upload-field {
+  align-content: center;
+  border-radius: 5px;
+}
+
+.p-fileupload-file-thumbnail {
+  width: 0;
+}
+
+.upload_button {
+  margin-bottom: -180px;
+  position: relative;
+  margin-top: 130px;
+  z-index: 1;
+}
+
+.p-fileupload-content {
+  z-index: 1000;
+}
+
+.p-fileupload-file {
+  margin-bottom: 52px;
+}
+
+.p-button-icon {
+  justify-content: end;
+}

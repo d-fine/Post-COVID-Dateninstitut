@@ -1,0 +1,74 @@
+.navigation_button {
+  background-color: #8fbc8f !important;
+  width: 75%;
+  padding: 3px;
+  border-radius: 10px;
+  color: white !important;
+  font-weight: normal;
+  font-size: 0.875rem;
+  border: none !important;
+}
+
+.p-button {
+  border: none !important;
+}
+
+.p-button-label {
+  color: #127c0c;
+}
+
+.p-button:not(:disabled):active {
+  background-color: rgba(125, 21, 12, 0.85);
+  border: none;
+  color: #127c0c;
+}
+
+.p-button:not(:disabled):hover {
+  background-color: rgba(125, 21, 12, 0.85);
+  border: none;
+  color: #127c0c;
+}
+
+.login-button:hover {
+  background-color: #8fbc8f !important;
+}
+
+.login-button:active {
+  background-color: #8fbc8f !important;
+}
+
+.white-button {
+  border: none;
+  background-color: white;
+  --p-button-primary-color: #334153 !important;
+  --p-button-primary-background: white !important;
+  --p-button-primary-border-color: white !important;
+  --p-button-primary-hover-color: white;
+  --p-button-primary-active-color: white;
+}
+
+.white-button.primary.hover {
+  color: white;
+  border: none;
+}
+
+.white-button:not(:disabled):hover {
+  background-color: #8fbc8f;
+  border: none;
+  color: #334153;
+}
+
+.login-button {
+  --p-button-primary-background: white !important;
+  --p-button-primary-border-color: white !important;
+}
+
+#button_center {
+  width: 390px;
+  justify-content: center;
+  display: flex;
+}
+
+.p-button-icon {
+  color: #127c0c;
+}

@@ -1,0 +1,86 @@
+name: Gradle CI Pipeline
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+
+env:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=true"
+  GIT_DEPTH: "0"
+
+jobs:
+  assemble-job:
+    runs-on: ubuntu-latest
+    container:
+      image: gradle:8.10.2-jdk21
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.GIT_DEPTH }}
+
+      - name: Set up Gradle User Home
+        run: echo "GRADLE_USER_HOME=$(pwd)/.gradle" >> $GITHUB_ENV
+
+      - name: Assemble
+        run: gradle assemble
+
+  ktfmt-job:
+    runs-on: ubuntu-latest
+    container:
+      image: gradle:8.10.2-jdk21
+    needs: [assemble-job]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.GIT_DEPTH }}
+
+      - name: ktfmt Check
+        run: gradle ktfmtCheck
+
+  detekt-job:
+    runs-on: ubuntu-latest
+    container:
+      image: gradle:8.10.2-jdk21
+    needs: [assemble-job]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.GIT_DEPTH }}
+
+      - name: Detekt
+        run: gradle detekt
+
+  checkstyle-job:
+    runs-on: ubuntu-latest
+    container:
+      image: gradle:8.10.2-jdk21
+    needs: [assemble-job]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.GIT_DEPTH }}
+
+      - name: Checkstyle
+        run: gradle checkstyleMain
+
+  test-job:
+    runs-on: ubuntu-latest
+    container:
+      image: gradle:8.10.2-jdk21
+    needs: [assemble-job]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ env.GIT_DEPTH }}
+
+      - name: Test
+        run: gradle test

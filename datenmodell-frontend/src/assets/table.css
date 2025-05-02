@@ -1,0 +1,31 @@
+.p-datatable-table {
+  border-spacing: 0 5px !important;
+  border-collapse: separate;
+}
+
+.p-paginator {
+  background: none !important;
+}
+
+.p-datatable-paginator-bottom {
+  border: 0 !important;
+}
+
+.p-datatable-row-expansion {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.p-datatable-column-title {
+  color: #f07d00;
+  margin-bottom: -10px;
+}
+
+.p-datatable-header-cell {
+  background: none !important;
+  border: 0 !important;
+}
+
+.p-paginator-page.p-paginator-page-selected {
+  color: #334155 !important;
+  background-color: rgba(30, 155, 215, 0.15) !important;
+}
