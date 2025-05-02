@@ -1,0 +1,46 @@
+logging:
+    level:
+        root: DEBUG
+spring:
+    application:
+        name: datenmodellbackend
+    main:
+        web-application-type: servlet
+    datasource:
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+        password: postgres
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+    security:
+        oauth2:
+            client:
+                registration:
+                    eurodat:
+                        client-id: <TO_BE_CHANGED>
+                        client-authentication-method: private_key_jwt
+                        authorization-grant-type: client_credentials
+                        scope: openid
+                        provider: eurodat
+                provider:
+                    eurodat:
+                        issuer-uri: https://app.int.eurodat.org/auth/realms/eurodat-int # most important if you provide issuer-uri then all the configuration will be automatically handled
+            resourceserver:
+                jwt:
+                    issuer-uri: http://localhost:20010/realms/dateninstitut
+                    jwk-set-uri: http://localhost:20010/realms/dateninstitut/protocol/openid-connect/certs
+jks:
+    base-path: https://app.int.eurodat.org/
+    file-path: src/main/resources/keystore.jks
+    certificate-alias: certificate
+    password: <TO_BE_CHANGED>
+keycloak:
+    client: datenmodell-frontend
+server:
+    servlet:
+        context-path: /api
+image-repository:
+    user-id: <TO_BE_CHANGED>
+    password: <TO_BE_CHANGED>

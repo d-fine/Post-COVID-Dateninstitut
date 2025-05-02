@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+@import 'base.css';
+@import 'navigation.css';
+@import 'boxes.css';
+@import 'buttons.css';
+@import 'cards.css';
+@import 'popup.css';
+@import 'table.css';

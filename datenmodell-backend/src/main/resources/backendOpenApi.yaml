@@ -1,0 +1,253 @@
+openapi: 3.0.1
+info:
+  title: Datenmodell Backend API documentation
+  version: 1.0.0
+servers:
+  - url: /api
+paths:
+  /datacatalog/nfdi4health:
+    get:
+      tags:
+        - datacatalog-controller
+      summary: Retrieve data catalog.
+      description: Information on all relevant data from nfdi4health is retrieved.
+      operationId: getNFDI4HealthDataCatalog
+      responses:
+        '200':
+          description: Successfully retrieved data catalog.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataCatalogInformation'
+  /transaction/complete-run/{dataAnalysisId}:
+    post:
+      tags:
+        - transaction-controller
+      operationId: postTransaction
+      summary: starts a complete EuroDaT transaction run
+      parameters:
+        - name: dataAnalysisId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successfully completed a transaction.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResult'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default-oauth: []
+        - default-bearer-auth: []
+  /transaction/start-infrastructure/{dataAnalysisId}:
+    post:
+      tags:
+        - transaction-controller
+      operationId: setupTransactionInfrastructure
+      parameters:
+        - name: dataAnalysisId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successfully set up transaction environment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitializedTransaction'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+      security:
+        - default-oauth: []
+        - default-bearer-auth: []
+  /transaction/process-data/{transactionId}:
+    post:
+      tags:
+        - transaction-controller
+      operationId: processTransactionData
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successfully completed a transaction.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResult'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+      security:
+        - default-oauth: []
+        - default-bearer-auth: []
+  /transaction/data-analysis:
+    get:
+      tags:
+        - transaction-controller
+      operationId: getAllDataAnalysis
+      responses:
+        '200':
+          description: Successfully retrieved list of EuroDaT apps
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataAnalysis'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ErrorResponse"
+      security:
+        - default-oauth: []
+        - default-bearer-auth: []
+
+components:
+  schemas:
+    DataAnalysis:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        name:
+          type: string
+    TransactionResult:
+      required:
+        - transactionId
+        - csvStr
+      type: object
+      properties:
+        transactionId:
+          type: string
+          format: uuid
+        csvStr:
+          type: string
+    DataCatalogInformation:
+      required:
+        - id
+        - title
+        - content
+        - dataProvider
+        - link
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        dataProvider:
+          type: string
+        link:
+          type: string
+    InitializedTransaction:
+      required:
+        - eurodatClientId
+        - eurodatTransactionId
+        - transactionId
+      type: object
+      properties:
+        eurodatClientId:
+          type: string
+        eurodatTransactionId:
+          type: string
+        transactionId:
+          type: string
+          format: uuid
+    ErrorDetails:
+      required:
+        - errorType
+        - httpStatus
+        - message
+        - summary
+      type: object
+      properties:
+        errorType:
+          type: string
+        summary:
+          type: string
+        message:
+          type: string
+        httpStatus:
+          type: number
+        metaInformation:
+          type: object
+    ErrorResponse:
+      required:
+        - errors
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
+  securitySchemes:
+    default-bearer-auth:
+      type: http
+      in: header
+      scheme: bearer
+    default-oauth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: /keycloak/realms/dateninstitut/protocol/openid-connect/auth
+          tokenUrl: /keycloak/realms/dateninstitut/protocol/openid-connect/token
+          scopes: {}

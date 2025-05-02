@@ -1,0 +1,2 @@
+test-2-write-input-to-output.sh eol=lf
+ddl.sql eol=lf

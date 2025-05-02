@@ -1,0 +1,66 @@
+image: gradle:8.10.2-jdk21
+
+stages:
+  - build-stage
+  - analyze-stage
+  - test-stage
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=true"
+  GIT_DEPTH: "0"
+
+before_script:
+  - GRADLE_USER_HOME="$(pwd)/.gradle"
+  - export GRADLE_USER_HOME
+
+assemble-job:
+  stage: build-stage
+  script: gradle assemble
+  tags:
+    - large
+
+ktfmt-job:
+  stage: analyze-stage
+  needs: [ assemble-job ]
+  script: gradle ktfmtCheck
+  allow_failure: false
+  tags:
+    - large
+
+detekt-job:
+  stage: analyze-stage
+  needs: [ assemble-job ]
+  script: gradle detekt
+  allow_failure: false
+  tags:
+    - large
+
+checkstyle-job:
+  stage: analyze-stage
+  needs: [ assemble-job ]
+  script: gradle checkstyleMain
+  allow_failure: false
+  tags:
+    - large
+
+# TODO: very slow
+#owasp-scanner-job:
+#  stage: analyze-stage
+#  needs: [ assemble-job ]
+#  script: gradle dependencyCheckAggregate
+#  allow_failure: false
+#  artifacts:
+#    paths:
+#      - build/reports/dependency-check-report.html
+
+test-job:
+  stage: test-stage
+  needs: [ assemble-job ]
+  script: gradle test
+  allow_failure: false
+  tags:
+    - large
+
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH'

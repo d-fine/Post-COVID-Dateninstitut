@@ -1,0 +1,25 @@
+.login-button {
+  border: none;
+  color: #334153;
+  background-color: white;
+}
+
+.login-button.primary.hover {
+  color: white;
+}
+
+.login-button:not(:disabled):active {
+  background-color: #f1f5f9;
+  border: none;
+  color: #334153;
+}
+
+.login-button:not(:disabled):hover {
+  background-color: #f1f5f9;
+  border: none;
+  color: #334153;
+}
+
+.active {
+  color: #f07d00;
+}

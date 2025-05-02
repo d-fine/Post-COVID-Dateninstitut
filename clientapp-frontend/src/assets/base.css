@@ -1,0 +1,37 @@
+:root {
+  --df-light-blue: #7d1f0c;
+  --df-faded-light-blue: rgba(12, 124, 12, 0.15);
+  --df-dark-blue: #127c0c;
+  --df-orange: #7d1f0c;
+  --df-blue: #127c0c;
+
+  --p-button-primary-background: #7d1f0c !important;
+  --p-button-primary-border-color: #7d1f0c !important;
+  --p-button-primary-hover-background: rgba(125, 21, 12, 0.85) !important;
+  --p-button-primary-hover-border-color: rgba(125, 21, 12, 0.85) !important;
+  --p-card-body-padding: 0rem !important;
+  --p-button-secondary-background: #8fbc8f !important;
+  --p-menubar-item-focus-background: #8fbc8f !important;
+  --p-menubar-item-active-background: #8fbc8f !important;
+  --p-card-color: #127c0c !important;
+  --p-menubar-item-color: #8fbc8f !important;
+  --p-menubar-item-focus-color: #7d1f0c !important;
+  --p-datatable-row-color: #127c0c !important;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*
+Always add scrollbar to avoid visible offset when switching between emptyish and full content page.
+TODO: Find better solution to avoid offset induced by added/removed scrollbar
+*/
+body {
+  overflow-y: scroll;
+}
