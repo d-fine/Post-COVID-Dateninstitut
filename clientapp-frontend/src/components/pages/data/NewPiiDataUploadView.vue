@@ -1,5 +1,11 @@
 <script lang="ts">
-import { FileUpload, Card, type FileUploadSelectEvent, type FileUploadRemoveEvent } from 'primevue';
+import {
+  FileUpload,
+  Card,
+  type FileUploadSelectEvent,
+  type FileUploadRemoveEvent,
+  type FileUploadUploaderEvent,
+} from 'primevue';
 import PrimeButton from 'primevue/button';
 
 import { postUploadPiiData } from '@/services/ApiClients';
@@ -19,11 +25,13 @@ export default {
     };
   },
   methods: {
-    async uploadFiles(event) {
-      for (const file of event.files) {
+     
+    async uploadFiles(event: FileUploadUploaderEvent) {
+      let fileList = event.files;
+      if (fileList instanceof File) fileList = [fileList];
+      for (const file of fileList) {
         const reader = new FileReader();
-        reader.onload = async (e: ProgressEvent<FileReader>) => {
-          payload = new Blob([e.target?.result], { type: file.type });
+        reader.onload = async () => {
           const response = await postUploadPiiData(
             assertDefined(this.getKeycloakPromise),
             file.name,
@@ -51,7 +59,7 @@ export default {
     },
 
     onFileSelect(event: FileUploadSelectEvent) {
-      event.files.forEach((file) => {
+      event.files.forEach((file: { name: string }) => {
         if (!this.fileNames.includes(file.name)) {
           this.fileNames.push(file.name);
         }

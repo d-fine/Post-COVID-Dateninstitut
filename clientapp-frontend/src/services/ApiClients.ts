@@ -1,10 +1,5 @@
 import type Keycloak from 'keycloak-js';
-import {
-  type Configuration,
-  type EntityInformation,
-  type ResearchDataInformation,
-  type PiiInformation,
-} from '@/generated/openapi';
+import { type Configuration, type EntityInformation, type ResearchDataInformation } from '@/generated/openapi';
 import * as backendApis from '@/generated/openapi';
 import { updateTokenAndItsExpiryTimestampAndStoreBoth } from '@/utils/SessionTimeoutUtils';
 import axios, { type AxiosInstance } from 'axios';
@@ -82,7 +77,7 @@ export async function postTransactionUploadData(
   transactionId: string,
   tableName: string,
   researchDataId: string
-): Promise<EntityInformation> {
+): Promise<EntityInformation | null> {
   try {
     const transactionApi = new ApiClientProvider(getKeycloakPromise()).backendClients.transactionApi;
     return (await transactionApi.uploadTransactionResearchData(clientId, transactionId, tableName, researchDataId))
@@ -105,11 +100,12 @@ export async function postUploadReseachData(
   fileName: string,
   dataConsumerUser: string,
   description: string,
-  file: PossibleFileTypes
-): Promise<EntityInformation> {
+  file: Blob
+): Promise<EntityInformation | null> {
   try {
     const researchDataControllerApi = new ApiClientProvider(getKeycloakPromise()).backendClients.researchDataApi;
-    return (await researchDataControllerApi.uploadResearchData(fileName, dataConsumerUser, description, file)).data;
+    const payload = new File([file], fileName, { type: file.type });
+    return (await researchDataControllerApi.uploadResearchData(fileName, dataConsumerUser, description, payload)).data;
   } catch (error) {
     console.error(error);
     return null;
@@ -121,8 +117,8 @@ export async function postUploadPiiData(
   fileName: string,
   dataConsumerUser: string,
   description: string,
-  file: PossibleFileTypes
-): Promise<PiiInformation> {
+  file: File
+): Promise<EntityInformation | null> {
   try {
     const piiDataControllerApi = new ApiClientProvider(getKeycloakPromise()).backendClients.piiDataApi;
     return (await piiDataControllerApi.uploadPiiData(fileName, dataConsumerUser, description, file)).data;
@@ -134,13 +130,13 @@ export async function postUploadPiiData(
 
 export async function getAllResearchData(
   getKeycloakPromise: () => Promise<Keycloak>
-): Promise<ResearchDataInformation[] | null> {
+): Promise<ResearchDataInformation[]> {
   try {
     const researchDataControllerApi = new ApiClientProvider(getKeycloakPromise()).backendClients.researchDataApi;
     return (await researchDataControllerApi.getAllResearchData()).data;
   } catch (error) {
     console.error(error);
-    return null;
+    return [];
   }
 }
 
@@ -163,7 +159,7 @@ export async function postCreateProviderUser(
   username: string,
   firstName: string,
   surname: string
-): Promise<EntityInformation> {
+): Promise<EntityInformation | null> {
   try {
     const userManagementControllerApi = new ApiClientProvider(getKeycloakPromise()).backendClients.userManagementApi;
     return (await userManagementControllerApi.createUser(username, firstName, surname)).data;

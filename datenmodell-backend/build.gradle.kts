@@ -37,7 +37,6 @@ dependencies {
   implementation(libs.flywayPostgres)
   developmentOnly(libs.springDevTools)
   compileOnly(libs.servletApi)
-  runtimeOnly(libs.h2Database)
   runtimeOnly(libs.postgresDriver)
   testImplementation(libs.springBootTest)
   testImplementation(libs.kotlinJunit5)
@@ -272,8 +271,8 @@ tasks.withType<Checkstyle>().configureEach {
 
 dependencyCheck {
   format = "HTML"
-  failBuildOnCVSS =
-      "11".toFloat() // TODO With "11" it will never fail, with "0" if there are any vulnerabilities
+  failBuildOnCVSS = "7".toFloat()
+  suppressionFile = "$rootDir/config/dependency-check/suppressions.xml"
 }
 
 tasks.check { dependsOn("dependencyCheckAnalyze") }
