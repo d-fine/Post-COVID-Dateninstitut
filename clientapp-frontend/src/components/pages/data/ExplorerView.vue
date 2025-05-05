@@ -29,14 +29,16 @@ const updateAllResearchData = async () => {
 
 const downloadDataSet = async (researchDataId: string, name: string) => {
   const response = await getResearchDataSet(assertDefined(getKeycloakPromise), researchDataId);
-  const blob = new Blob([response.file]);
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = name;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(link.href);
+  if (response) {
+    const blob = new Blob([response.file]);
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = name;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+  }
 };
 
 onMounted(updateAllResearchData);

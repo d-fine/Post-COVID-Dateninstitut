@@ -73,14 +73,14 @@ export async function getAllDataAnalysis(getKeycloakPromise: () => Promise<Keycl
     return (await transactionApi.getAllDataAnalysis()).data;
   } catch (error) {
     console.error(error);
-    return null;
+    return [];
   }
 }
 
 export async function postStartTransactionInfrastructure(
   getKeycloakPromise: () => Promise<Keycloak>,
   dataAnalysisId: string
-): Promise<InitializedTransaction> {
+): Promise<InitializedTransaction | null> {
   try {
     const transactionApi = new ApiClientProvider(getKeycloakPromise()).backendClients.transactionControllerApi;
     return (await transactionApi.setupTransactionInfrastructure(dataAnalysisId)).data;
@@ -93,7 +93,7 @@ export async function postStartTransactionInfrastructure(
 export async function postTransactionProcessData(
   getKeycloakPromise: () => Promise<Keycloak>,
   transactionId: string
-): Promise<TransactionResult> {
+): Promise<TransactionResult | null> {
   try {
     const transactionApi = new ApiClientProvider(getKeycloakPromise()).backendClients.transactionControllerApi;
     return (await transactionApi.processTransactionData(transactionId)).data;

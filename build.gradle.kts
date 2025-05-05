@@ -16,4 +16,10 @@ subprojects {
   plugins.apply("org.owasp.dependencycheck")
 }
 
+dependencyCheck {
+  format = "HTML"
+  failBuildOnCVSS = "7".toFloat()
+  suppressionFile = "$rootDir/config/dependency-check/suppressions.xml"
+}
+
 tasks.check { dependsOn("dependencyCheckAggregate") }

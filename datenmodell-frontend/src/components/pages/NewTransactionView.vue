@@ -81,16 +81,18 @@ const InitializedTransactionAsDataTable = (initializedTransaction: InitializedTr
 };
 
 const downloadResultStringAsFile = () => {
-  const blob = new Blob([result.value.csvStr], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'result.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  transactionInProgress.value = null;
+  if (result.value) {
+    const blob = new Blob([result.value.csvStr], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'result.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    transactionInProgress.value = null;
+  }
 };
 
 onMounted(updateAllAnalysis);

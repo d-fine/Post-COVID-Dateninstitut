@@ -6,8 +6,8 @@ repositories { mavenCentral() }
 
 dependencyCheck {
   format = "HTML"
-  failBuildOnCVSS =
-      "11".toFloat() // TODO With "11" it will never fail, with "0" if there are any vulnerabilities
+  failBuildOnCVSS = "7".toFloat()
+  suppressionFile = "$rootDir/config/dependency-check/suppressions.xml"
 }
 
 tasks.check { dependsOn("dependencyCheckAnalyze") }

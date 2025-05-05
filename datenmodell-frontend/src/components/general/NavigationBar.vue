@@ -31,7 +31,7 @@ export default {
       alert('Login not supported');
     },
 
-    isActive(route) {
+    isActive(route: string) {
       const currentRoute = this.$route.path;
       if (route === '/') {
         return currentRoute === route;

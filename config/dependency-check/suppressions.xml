@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+	<suppress>
+		<notes><![CDATA[
+	  file name: guava-31.0.1-jre.jar
+	  ]]> Not relevant in microservice architecture </notes>
+		<packageUrl regex="true">^pkg:maven/com\.google\.guava/guava@.*$</packageUrl>
+		<cve>CVE-2023-2976</cve>
+	</suppress>
+	<suppress>
+		<notes><![CDATA[
+	   file name: guava-31.0.1-jre.jar
+	   ]]> Not relevant in microservice architecture </notes>
+		<packageUrl regex="true">^pkg:maven/com\.google\.guava/guava@.*$</packageUrl>
+		<cve>CVE-2020-8908</cve>
+	</suppress>
+	<suppress>
+		<notes><![CDATA[
+	   file name: kotlin-native-compiler-embeddable.jar (shaded: org.jetbrains.intellij.deps:log4j:1.2.17.2)
+	   ]]> Not relevant in built product </notes>
+		<packageUrl regex="true">^pkg:maven/org\.jetbrains\.intellij\.deps/log4j@.*$</packageUrl>
+		<cve>CVE-2020-9493</cve>
+	</suppress>
+	<suppress>
+		<notes><![CDATA[
+	   file name: kotlin-native-compiler-embeddable.jar (shaded: org.jetbrains.intellij.deps:log4j:1.2.17.2)
+	   ]]> Not relevant in built product </notes>
+		<packageUrl regex="true">^pkg:maven/org\.jetbrains\.intellij\.deps/log4j@.*$</packageUrl>
+		<cve>CVE-2022-23307</cve>
+	</suppress>
+	<suppress>
+		<notes><![CDATA[
+	   file name: kotlin-native-compiler-embeddable.jar (shaded: org.jetbrains.intellij.deps:log4j:1.2.17.2)
+	   ]]> Not relevant in built product </notes>
+		<packageUrl regex="true">^pkg:maven/org\.jetbrains\.intellij\.deps/log4j@.*$</packageUrl>
+		<cve>CVE-2023-26464</cve>
+	</suppress>
+</suppressions>

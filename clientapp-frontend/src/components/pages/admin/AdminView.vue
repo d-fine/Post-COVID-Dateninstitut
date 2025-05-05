@@ -6,7 +6,7 @@ import { assertDefined } from '@/utils/TypeScriptUtils';
 import { InputText } from 'primevue';
 
 import { Button } from 'primevue';
-import { Form } from '@primevue/forms';
+import { Form, type FormFieldState } from '@primevue/forms';
 
 import { postCreateProviderUser } from '@/services/ApiClients';
 import { zodResolver } from '@primevue/forms/resolvers/zod';
@@ -41,7 +41,7 @@ const resolver = ref(
   )
 );
 
-const onFormCreateUser = ({ valid, states }) => {
+const onFormCreateUser = ({ valid, states }: { valid: boolean; states: Record<string, FormFieldState> }) => {
   if (valid) {
     postProviderUser(states.userName.value, states.firstName.value, states.surname.value);
   }

@@ -36,7 +36,7 @@ class PiiDataController(
     logger.debug("Entering controller method")
     val keycloakId = userManagementService.getKeycloakId()
     val dataConsumerId = userManagementService.getIdForUsername(dataConsumerUsername)
-    val convertedCsvFile = dataConverterService.parseCsvFileToMap(file, "StudyId")
+    val convertedCsvFile = dataConverterService.parseCsvFileToMap(file, "id")
     val filterLength = 100
     val strategy = DoubleHashingStrategy(length = filterLength, iterations = 2, nGramLength = 2)
     val bloomFilterResult =

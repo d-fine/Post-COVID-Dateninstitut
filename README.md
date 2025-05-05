@@ -116,6 +116,9 @@ using Docker profiles:
 -  ```docker compose --profile datenmodell up -d```
 -  ```docker compose --profile clientapp up -d```
 
+Note: The frontend applications, datenmodell-frontend and clientapp-frontend, are currently not yet dockerized. 
+They have to be started locally.
+
 ## Backend Remarks
 
 Use IntelliJ or an IDE that understands Kotlin. For deployment, see Docker.

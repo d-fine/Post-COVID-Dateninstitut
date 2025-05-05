@@ -62,7 +62,8 @@ const uploadData = async (clientId: string, transactionId: string, tableName: st
   }
 };
 
-const onFormUpload = ({ valid, states }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const onFormUpload = ({ valid, states }: { valid: any; states: any }) => {
   if (valid) {
     uploadData(states.clientId.value, states.transactionId.value, states.tableName.value);
   }

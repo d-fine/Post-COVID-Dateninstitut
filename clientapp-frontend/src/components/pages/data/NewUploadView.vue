@@ -1,12 +1,10 @@
 <script lang="ts">
-import { Card, FileUpload, type FileUploadSelectEvent, type FileUploadRemoveEvent } from 'primevue';
+import { Card, FileUpload, type FileUploadUploaderEvent } from 'primevue';
 import PrimeButton from 'primevue/button';
 import { postUploadReseachData } from '@/services/ApiClients';
 import type Keycloak from 'keycloak-js';
 import { inject } from 'vue';
 import { assertDefined } from '@/utils/TypeScriptUtils';
-
-import { parseCSV, transformToPrimevueDataTable } from '@/utils/Utils';
 
 interface CsvFile {
   header: string[];
@@ -25,59 +23,34 @@ export default {
     };
   },
   methods: {
-    async uploadFiles(event) {
-      event.files.forEach((file) => {
+    async uploadFiles(event: FileUploadUploaderEvent) {
+      let fileList = event.files;
+      if (fileList instanceof File) fileList = [fileList];
+      fileList.forEach((file) => {
         const reader = new FileReader();
-        reader.onload = (e) => {
+        reader.onload = (e: ProgressEvent<FileReader>) => {
           const formData = new FormData();
-          formData.append('file', new Blob([e.target?.result], { type: file.type }), file.name);
-          const payload = new Blob([e.target?.result], { type: file.type });
-          response = postUploadReseachData(
-            assertDefined(this.getKeycloakPromise),
-            file.name,
-            'postcovidclient',
-            'test data',
-            payload
-          ).then((result) => {
-            if (result == null) {
-              this.$toast.add({ severity: 'error', summary: `failed to upload file ${file.name}`, life: 3000 });
-            } else {
-              this.$toast.add({ severity: 'success', summary: `Uploaded ${file.name}`, life: 3000 });
-            }
-          });
+          const arrayBuffer = e.target?.result;
+          if (arrayBuffer) {
+            formData.append('file', new Blob([arrayBuffer], { type: file.type }), file.name);
+            const payload = new Blob([arrayBuffer], { type: file.type });
+            postUploadReseachData(
+              assertDefined(this.getKeycloakPromise),
+              file.name,
+              'postcovidclient',
+              'test data',
+              new File([payload], file.name, { type: payload.type })
+            ).then((result) => {
+              if (result == null) {
+                this.$toast.add({ severity: 'error', summary: `failed to upload file ${file.name}`, life: 3000 });
+              } else {
+                this.$toast.add({ severity: 'success', summary: `Uploaded ${file.name}`, life: 3000 });
+              }
+            });
+          }
         };
         reader.readAsArrayBuffer(file);
       });
-    },
-
-    onClear() {
-      this.fileNameDataMap = {};
-    },
-
-    onFileRemove(event: FileUploadRemoveEvent) {
-      delete this.fileNameDataMap[event.file.name];
-    },
-
-    onFileSelect(event: FileUploadSelectEvent) {
-      event.files.forEach((file) => {
-        if (file.name in this.fileNameDataMap) {
-          console.log(`${file.name} already uploaded`);
-        } else {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            this.csvToDataMap(file.name, e.target?.result);
-          };
-          reader.readAsText(file);
-        }
-      });
-    },
-
-    csvToDataMap(fileName: string, fileContent: string) {
-      const parsed = parseCSV(fileContent, ',');
-      this.fileNameDataMap[fileName] = {
-        header: parsed?.header,
-        data: transformToPrimevueDataTable(parsed?.header, parsed?.data),
-      };
     },
   },
   components: {
@@ -120,16 +93,7 @@ export default {
     </div>
 
     <div class="flex justify-center mb-25 mt-5">
-      <FileUpload
-        name="demo[]"
-        accept=".csv"
-        :maxFileSize="1000000"
-        :multiple="false"
-        @select="onFileSelect"
-        @remove="onFileRemove"
-        @clear="onClear"
-        @uploader="uploadFiles"
-      >
+      <FileUpload name="demo[]" accept=".csv" :maxFileSize="1000000" :multiple="false" @uploader="uploadFiles">
         <template #header="FileUploadSelectEvent">
           <div class="flex-row h-100">
             <div class="text-2xl uppercase font-bold mb-5 text-(--df-orange)">Daten Bereitstellen</div>
