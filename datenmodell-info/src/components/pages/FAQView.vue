@@ -14,7 +14,7 @@ export default {
           value: 2,
           question: 'Wie installiere ich die Client-App?',
           answer:
-            'Weitergehende Informationen finden Sie auf unserer <a href="https:\\about.gitlab.com">GitLab-Seite</a>. ',
+            'Weitergehende Informationen finden Sie auf unserer <a href="https://github.com/d-fine/Post-COVID-Dateninstitut">GitHub-Seite</a>. ',
         },
         {
           value: 3,

@@ -35,8 +35,8 @@ export default {
               route: '/tech/eurodat',
             },
             {
-              label: 'Gitlab',
-              route: '/tech/gitlab',
+              label: 'GitHub',
+              route: '/tech/github',
             },
           ],
         },

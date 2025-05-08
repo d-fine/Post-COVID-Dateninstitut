@@ -8,7 +8,7 @@ import WorkInProgressView from '@/components/pages/WorkInProgressView.vue';
 import TeamView from '@/components/pages/about/TeamView.vue';
 import TargetView from '@/components/pages/about/TargetView.vue';
 import ChallengeView from '@/components/pages/about/ChallengeView.vue';
-import GitlabView from '@/components/pages/tech/GitlabView.vue';
+import GithubView from '@/components/pages/tech/GithubView.vue';
 import EurodatView from '@/components/pages/tech/EurodatView.vue';
 import DatacatalogInfoView from '@/components/pages/datenkatalog/DatenkatalogInfo.vue';
 import DatacatalogSearchView from '@/components/pages/datenkatalog/DatenkatalogSuche.vue';
@@ -29,9 +29,9 @@ const router = createRouter({
       name: 'tech',
       children: [
         {
-          path: 'gitlab',
-          name: 'GitLab',
-          component: GitlabView,
+          path: 'github',
+          name: 'GitHub',
+          component: GithubView,
         },
         {
           path: 'eurodat',
