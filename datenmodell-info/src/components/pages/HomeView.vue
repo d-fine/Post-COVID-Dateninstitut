@@ -51,7 +51,12 @@ export default {
             Wir unterstützen Ihre Forschung mit passenden Daten aus allen relevanten Bereichen.
           </div>
           <div class="mt-5 flex justify-center">
-            <PrimeButton class="navigation_button h-9" as="router-link" to="/about/team" label="ÜBER UNS >" />
+            <PrimeButton
+              class="navigation_button h-9"
+              as="router-link"
+              to="/about/target#video"
+              label="ZUM ERKLÄRVIDEO >"
+            />
           </div>
         </template>
       </Card>
