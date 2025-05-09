@@ -55,7 +55,7 @@ export default {
               class="navigation_button h-9"
               as="router-link"
               to="/about/target#video"
-              label="ZUM ERKLÄRVIDEO >"
+              label="MEHR INFORMATIONEN >"
             />
           </div>
         </template>

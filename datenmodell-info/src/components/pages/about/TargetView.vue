@@ -88,8 +88,8 @@ export default {
         <span class="text-(--df-orange) uppercase"> Erklärvideo zur Nutzung des Datennexus </span>
       </div>
       <div class="text-left pb-12 ml-25 mr-25 w-180 font-normal">
-        In diesem Video erklären wir Ihnen, wie Sie mithilfe des Datennexus verschiedene Datenquellen auf
-        Einzelpatientenebene verknüpfen können.
+        In diesem Video erklären wir Ihnen, wie Sie mithilfe des Datennexus verschiedene Datenquellen auf Patientenebene
+        verknüpfen können.
       </div>
       <div class="items-center ml-25 mr-25">
         <video controls>

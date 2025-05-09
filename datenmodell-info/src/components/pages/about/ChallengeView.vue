@@ -56,8 +56,8 @@ export default {
         <img :src="notebook_logo" alt="Logo" class="w-55 rounded-full bg-white -mb-60" />
       </div>
     </div>
-    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-55">
-      <Card class="white-p-card font-bold pt-5 pb-5 pl-6 pr-6 w-99 text-lg">
+    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-65">
+      <Card class="white-p-card font-bold pt-5 pb-5 pl-6 pr-6 w-80 text-lg">
         <template #content>
           Die Bundesregierung will die datengetriebene Wertschöpfung in Deutschland stärken.
         </template>
@@ -67,9 +67,12 @@ export default {
     <div class="orange_box ml-50 mr-50 mt-15 mb-15">
       <p class="text-xl ml-5 mr-5 mb-5 mt-5">
         Wir freuen uns, bekanntgeben zu können, dass wir den <b>ersten Platz</b> bei der Post-COVID Challenge des
-        Bundesinnenministeriums erreicht haben. Unsere Lösung zur Überwindung von Datensilos dank Record Linkage wurde
-        als das innovativste und skalierbarste MVP ausgezeichnet. Wir sehen diese Auszeichnung als Anfang einer neuen
-        Phase und freuen uns darauf, unsere Arbeit als Enabler der deutschen Datenökonomie fortzusetzen!
+        Bundesinnenministeriums erreicht haben.
+      </p>
+      <p class="text-xl ml-5 mr-5 mb-5 mt-5">
+        Unsere Lösung zur Überwindung von Datensilos dank Record Linkage wurde als das innovativste und skalierbarste
+        MVP ausgezeichnet. Wir sehen diese Auszeichnung als Anfang einer neuen Phase und freuen uns darauf, unsere
+        Arbeit als Enabler der deutschen Datenökonomie fortzusetzen!
       </p>
     </div>
 
