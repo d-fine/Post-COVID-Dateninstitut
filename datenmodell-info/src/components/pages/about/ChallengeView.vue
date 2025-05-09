@@ -56,7 +56,7 @@ export default {
         <img :src="notebook_logo" alt="Logo" class="w-55 rounded-full bg-white -mb-60" />
       </div>
     </div>
-    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-65">
+    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-85">
       <Card class="white-p-card font-bold pt-5 pb-5 pl-6 pr-6 w-80 text-lg">
         <template #content>
           Die Bundesregierung will die datengetriebene Wertschöpfung in Deutschland stärken.
