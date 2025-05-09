@@ -15,6 +15,7 @@ export default {
         { name: 'd-fine_Abschlussbericht_Stufe_2.pdf', title: 'Abschlussbericht Stufe 2' },
         { name: 'd-fine_Abschlusspraesentation_Stufe_2.pdf', title: 'Abschlusspräsentation Stufe 2' },
         { name: 'd-fine_Abschlussbericht_Stufe_3.pdf', title: 'Abschlussbericht Stufe 3' },
+        { name: 'd-fine_Abschlusspraesentation_Stufe_3.pdf', title: 'Abschlusspräsentation Stufe 3' },
       ],
     };
   },
@@ -55,13 +56,24 @@ export default {
         <img :src="notebook_logo" alt="Logo" class="w-55 rounded-full bg-white -mb-60" />
       </div>
     </div>
-    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-55">
-      <Card class="white-p-card font-bold pt-5 pb-5 pl-6 pr-6 w-99 text-lg">
+    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-85">
+      <Card class="white-p-card font-bold pt-5 pb-5 pl-6 pr-6 w-80 text-lg">
         <template #content>
-          Die Bundesregierung will mit der Gründung des Dateninstituts die datengetriebene Wertschöpfung in Deutschland
-          stärken.
+          Die Bundesregierung will die datengetriebene Wertschöpfung in Deutschland stärken.
         </template>
       </Card>
+    </div>
+
+    <div class="orange_box ml-50 mr-50 mt-15 mb-15">
+      <p class="text-xl ml-5 mr-5 mb-5 mt-5">
+        Wir freuen uns, bekanntgeben zu können, dass wir den <b>ersten Platz</b> bei der Post-COVID Challenge des
+        Bundesinnenministeriums erreicht haben.
+      </p>
+      <p class="text-xl ml-5 mr-5 mb-5 mt-5">
+        Unsere Lösung zur Überwindung von Datensilos dank Record Linkage wurde als das innovativste und skalierbarste
+        MVP ausgezeichnet. Wir sehen diese Auszeichnung als Anfang einer neuen Phase und freuen uns darauf, unsere
+        Arbeit als Enabler der deutschen Datenökonomie fortzusetzen!
+      </p>
     </div>
 
     <div class="white-mid-section mt-15 mb-15 pt-13 pb-13">
@@ -69,11 +81,12 @@ export default {
         <span> für die Datenökonomie </span>
       </div>
       <div class="text-left pb-12 ml-25 mr-25 w-180 font-normal text-(--df-blue)">
-        Die Bundesregierung hat die Notwendigkeit erkannt, in Deutschland die digitale Wirtschaft zu stärken. Im Fokus
-        dieser Initiative steht insbesondere die Wertschöpfung durch datenbasierte Geschäftsmodelle. Hierfür soll mit
-        dem Dateninstitut eine zentrale Anlaufstelle geschaffen werden, die Daten zugänglich macht und Prozesse
-        standardisiert. Als Pilot-Use Case erproben wir im Rahmen der Post-Covid Challenge wie das Dateninstitut
-        arbeiten könnte und welchen Mehrwert es für die Forschung und die Wirtschaft bieten kann.
+        Sowohl die ehemalige als auch die aktuelle Bundesregierung haben die Notwendigkeit erkannt, die digitale
+        Wirtschaft in Deutschland zu stärken. Im Fokus dieser Initiative der ehemaligen Bundesregierung stand
+        insbesondere die Wertschöpfung durch datenbasierte Geschäftsmodelle. Hierfür sollte mit dem Dateninstitut eine
+        zentrale Anlaufstelle geschaffen werden, die Daten zugänglich macht und Prozesse standardisiert. Als Pilot-Use
+        Case haben wir im Rahmen der Post-Covid Challenge erprobt, wie das Dateninstitut arbeiten könnte und welchen
+        Mehrwert es für die Forschung und die Wirtschaft bieten kann.
       </div>
 
       <div class="grid gap-12 grid-cols-2 ml-25 mr-25 gap-x-30">
@@ -139,7 +152,7 @@ export default {
       Die Post-Covid Challenge besteht aus drei Stufen. Am Ende jeder Stufe erstellen die teilnehmenden Teams einen
       Abschlussbericht mit den Ergebnisse der jeweiligen Stufe. Zusätzlich dazu halten die teilnehmenden Teams einen
       Vortrag, der die wesentlichen Punkte des Berichts zusammenfasst. Hier veröffentlichen wir unsere Abschlussberichte
-      und die Folien unserer Abschlusspräsentationen für die bereits abgeschlossenen Stufen der Post-Covid Challenge.
+      und die Folien unserer Abschlusspräsentationen für alle Stufen der Post-Covid Challenge.
     </div>
 
     <div class="flex flex-wrap ml-25 mr-25 mb-15">
