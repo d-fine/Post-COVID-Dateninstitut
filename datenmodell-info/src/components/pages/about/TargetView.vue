@@ -83,7 +83,7 @@ export default {
       </div>
     </div>
 
-    <div id="video" class="pt-4 pb-4 mb-15 mt-15">
+    <!-- <div id="video" class="pt-4 pb-4 mb-15 mt-15">
       <div class="text-3xl text-left pb-4 ml-25 font-bold">
         <span class="text-(--df-orange) uppercase"> Erklärvideo zur Nutzung des Datennexus </span>
       </div>
@@ -97,7 +97,7 @@ export default {
           Your browser does not support the video tag.
         </video>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
