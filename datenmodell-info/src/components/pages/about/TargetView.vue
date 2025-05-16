@@ -82,22 +82,6 @@ export default {
         </div>
       </div>
     </div>
-
-    <div id="video" class="pt-4 pb-4 mb-15 mt-15">
-      <div class="text-3xl text-left pb-4 ml-25 font-bold">
-        <span class="text-(--df-orange) uppercase"> Erklärvideo zur Nutzung des Datennexus </span>
-      </div>
-      <div class="text-left pb-12 ml-25 mr-25 w-180 font-normal">
-        In diesem Video erklären wir Ihnen, wie Sie mithilfe des Datennexus verschiedene Datenquellen auf Patientenebene
-        verknüpfen können.
-      </div>
-      <div class="items-center ml-25 mr-25">
-        <video controls>
-          <source :src="datennexus_video" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
   </div>
 </template>
 
