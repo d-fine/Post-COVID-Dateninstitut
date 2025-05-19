@@ -34,8 +34,8 @@ const TogglePopup = (trigger) => {
         <img :src="microscop_logo" alt="Logo" class="w-55 rounded-full bg-white -mb-60" />
       </div>
     </div>
-    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-70">
-      <Card class="white-p-card font-bold pt-5 pb-5 pl-6 pr-6 w-85 text-lg">
+    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-60">
+      <Card class="white-p-card font-bold pt-5 pb-5 pl-6 pr-6 w-97 text-lg">
         <template #content>
           Passende (Meta-)daten aus allen Bereichen für Ihre Forschungsfragen finden und damit Forschung möglich machen.
         </template>
@@ -46,11 +46,14 @@ const TogglePopup = (trigger) => {
       <div class="text-3xl text-left uppercase pb-7 ml-25 mr-25">
         <span> Über den Datenkatalog </span>
       </div>
-      <div class="text-left pb-12 ml-25 mr-25 w-180 font-normal">
-        Unser Metadatenkatalog befindet sich im Aufbau, um Ihnen baldmöglichst eine umfassende Übersicht über alle
-        Forschungsdaten zu bieten, die über den Datennexus verknüpft werden können. Für die Verknüpfung werden die Daten
-        transaktionsbasiert von den datengebenden Stellen an EuroDaT übergeben, und nach der Transaktion gelöscht. Damit
-        soll der Zugang zu geeigneten Daten für Post-Covid-Forschungsfragen erleichtert werden.
+      <div class="text-left pb-12 ml-25 mr-25 font-normal">
+        Unser Metadatenkatalog befindet sich aktuell im Aufbau. Ziel ist es, Ihnen baldmöglichst eine umfassende
+        Übersicht über alle Forschungsdaten zu bieten. Damit soll der Zugang zu geeigneten Daten für
+        Post-Covid-Forschungsfragen erleichtert werden.
+        <br />
+        Perspektivisch können die Daten auch für Verknüpfungen genutzt werden können. Die Daten werden hierbei nicht
+        dauerhaft in EuroDaT gespeichert sondern nur temporär für die Verarbeitung vorgehalten. Die datengebenden
+        Stellen behalten zu jeder Zeit die Souvernänität über ihre Daten.
         <br />
         <br />
         Im Katalog finden Sie bereits jetzt Metadaten von renommierten Quellen wie NAKO und NAPKON, zudem umfasst unser
@@ -59,7 +62,7 @@ const TogglePopup = (trigger) => {
         <br />
         <br />
         Bitte beachten Sie, dass der Post-Covid Datennexus aktuell ein MVP (Minimum Viable Product) ist, und die
-        Metadaten beispielhaft ausgewählt wurden. Die Anbindung an die datenhaltenden Stellen ist zum jetzigen Zeitpunkt
+        Metadaten beispielhaft ausgewählt wurden. Die Anbindung an die datengebenden Stellen ist zum jetzigen Zeitpunkt
         noch nicht abgeschlossen.
       </div>
 
