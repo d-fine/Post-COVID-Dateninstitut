@@ -208,8 +208,8 @@ function initializeDataCatalog(): Item[] {
       <div class="block">
         <Card class="white-p-card max-w-2xl text-4xl mt-15 uppercase p-5 font-bold">
           <template #content>
-            <span class="text-(--df-orange)"> Der Datenkatalog </span> <br />
-            <span> Daten finden und nutzen </span>
+            <span class="text-(--df-orange)"> Der Metadatenkatalog </span> <br />
+            <span> Passende Daten finden </span>
           </template>
         </Card>
         <div style="background-color: var(--df-orange); width: 70%; height: 5px; margin-left: 16px"></div>
@@ -220,8 +220,17 @@ function initializeDataCatalog(): Item[] {
     </div>
 
     <div>
-      <div class="text-3xl text-left uppercase ml-25 text-(--df-orange)">
-        <span> Datenkatalog durchsuchen </span>
+      <div class="text-3xl text-left uppercase ml-25 text-(--df-orange) mb-6">
+        <span> Metadatenkatalog durchsuchen </span>
+      </div>
+      <div class="text-left mb-7 ml-25 mr-25 font-normal">
+        Hier finden Sie eine Übersicht über Foschungsdaten, die perspektisch mithilfe des Datennexus beantragt, ggf.
+        verknüpft und für die Forschung genutzt werden können. Bitte beachten Sie, dass der Post-Covid Datennexus
+        aktuell ein MVP (Minimum Viable Product) ist, und die Metadaten beispielhaft ausgewählt wurden. Alle Daten
+        müssen individuell bei den datenhaltenden Stellen beantragt werden.
+        <br />
+        <br />
+        Weiterführende Informationen zu den Datensätzen finden Sie auf den Webauftritten der datenhaltenden Stellen.
       </div>
     </div>
 

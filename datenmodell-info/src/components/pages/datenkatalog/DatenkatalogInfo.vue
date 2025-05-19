@@ -34,10 +34,10 @@ const TogglePopup = (trigger) => {
         <img :src="microscop_logo" alt="Logo" class="w-55 rounded-full bg-white -mb-60" />
       </div>
     </div>
-    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-70">
-      <Card class="white-p-card font-bold pt-5 pb-5 pl-6 pr-6 w-85 text-lg">
+    <div class="pt-2 pb-2 flex flex-row items-center text-1xl mt-15 ml-60">
+      <Card class="white-p-card font-bold pt-5 pb-5 pl-6 pr-6 w-97 text-lg">
         <template #content>
-          Passende Daten aus allen Bereichen für Ihre Forschungsfragen finden und damit Forschung möglich machen.
+          Passende (Meta-)daten aus allen Bereichen für Ihre Forschungsfragen finden und damit Forschung möglich machen.
         </template>
       </Card>
     </div>
@@ -46,19 +46,24 @@ const TogglePopup = (trigger) => {
       <div class="text-3xl text-left uppercase pb-7 ml-25 mr-25">
         <span> Über den Datenkatalog </span>
       </div>
-      <div class="text-left pb-12 ml-25 mr-25 w-180 font-normal">
-        Unser Datenkatalog bietet Ihnen eine Übersicht über alle Forschungsdaten, die über den Datennexus verbunden
-        werden können. Ein zentrales Ziel des Katalogs ist es, Forschenden den Zugang zu geeigneten Daten für ihre
-        Forschungsfragen zu erleichtern.
+      <div class="text-left pb-12 ml-25 mr-25 font-normal">
+        Unser Metadatenkatalog befindet sich aktuell im Aufbau. Ziel ist es, Ihnen baldmöglichst eine umfassende
+        Übersicht über alle Forschungsdaten zu bieten. Damit soll der Zugang zu geeigneten Daten für
+        Post-Covid-Forschungsfragen erleichtert werden.
+        <br />
+        Perspektivisch können die Daten auch für Verknüpfungen genutzt werden. Die Daten werden hierbei nicht dauerhaft
+        in EuroDaT gespeichert sondern nur temporär für die Verarbeitung vorgehalten. Die datengebenden Stellen behalten
+        zu jeder Zeit die Souvernänität über ihre Daten.
         <br />
         <br />
-        Im Katalog finden Sie Daten von renommierten Quellen wie NAKO und NAPKON, zudem umfasst unser Katalog die Open
-        Source Datensätze des Robert Koch-Instituts (RKI), die für die Post-Covid-Forschung von großem Interesse sind
-        und zeigen, wie Open Source Daten die wissenschaftliche Arbeit bereichern können.
+        Im Katalog finden Sie bereits jetzt Metadaten von renommierten Quellen wie NAKO und NAPKON. Zudem umfasst unser
+        Katalog die Open Source Datensätze des Robert Koch-Instituts (RKI), die für die Post-Covid-Forschung von großem
+        Interesse sind und zeigen, wie Open Source Daten die wissenschaftliche Arbeit bereichern können.
         <br />
         <br />
-        Nutzen Sie die Möglichkeit, diese vielseitigen Daten für Ihre Forschung zu entdecken und sich inspirieren zu
-        lassen.
+        Bitte beachten Sie, dass der Post-Covid Datennexus aktuell ein MVP (Minimum Viable Product) ist, und die
+        Metadaten beispielhaft ausgewählt wurden. Die Anbindung an die datengebenden Stellen ist zum jetzigen Zeitpunkt
+        noch nicht abgeschlossen.
       </div>
 
       <div class="flex">
@@ -105,7 +110,7 @@ const TogglePopup = (trigger) => {
 
     <div class="mb-15">
       <div class="text-3xl text-left uppercase ml-25 mb-7 text-(--df-orange)">
-        <span> Ihre Datensätze Registrieren </span>
+        <span> Ihre Metadaten registrieren </span>
       </div>
       <div class="text-left mb-7 ml-25 mr-25 font-normal">
         Unser Datenkatalog befindet sich aktuell noch im Aufbau. Wir arbeiten an einer stetigen Erweiterung.
@@ -122,7 +127,7 @@ const TogglePopup = (trigger) => {
         />
       </div>
       <Popup v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
-        Aktuell können leider noch keine Datensätze aufgenommen werden. Bitte schauen Sie später noch einmal vorbei oder
+        Aktuell können leider noch keine Metadaten aufgenommen werden. Bitte schauen Sie später noch einmal vorbei oder
         wenden Sie sich an <br />
         <a :href="'mailto:' + email" class="text-(--df-light-blue)">{{ email }}</a
         >.
