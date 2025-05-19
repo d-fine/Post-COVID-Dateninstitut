@@ -51,12 +51,12 @@ const TogglePopup = (trigger) => {
         Übersicht über alle Forschungsdaten zu bieten. Damit soll der Zugang zu geeigneten Daten für
         Post-Covid-Forschungsfragen erleichtert werden.
         <br />
-        Perspektivisch können die Daten auch für Verknüpfungen genutzt werden können. Die Daten werden hierbei nicht
-        dauerhaft in EuroDaT gespeichert sondern nur temporär für die Verarbeitung vorgehalten. Die datengebenden
-        Stellen behalten zu jeder Zeit die Souvernänität über ihre Daten.
+        Perspektivisch können die Daten auch für Verknüpfungen genutzt werden. Die Daten werden hierbei nicht dauerhaft
+        in EuroDaT gespeichert sondern nur temporär für die Verarbeitung vorgehalten. Die datengebenden Stellen behalten
+        zu jeder Zeit die Souvernänität über ihre Daten.
         <br />
         <br />
-        Im Katalog finden Sie bereits jetzt Metadaten von renommierten Quellen wie NAKO und NAPKON, zudem umfasst unser
+        Im Katalog finden Sie bereits jetzt Metadaten von renommierten Quellen wie NAKO und NAPKON. Zudem umfasst unser
         Katalog die Open Source Datensätze des Robert Koch-Instituts (RKI), die für die Post-Covid-Forschung von großem
         Interesse sind und zeigen, wie Open Source Daten die wissenschaftliche Arbeit bereichern können.
         <br />
