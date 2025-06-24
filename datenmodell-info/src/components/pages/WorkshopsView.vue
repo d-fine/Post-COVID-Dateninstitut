@@ -44,9 +44,20 @@ export default {
         <span> Geplante Workshops </span>
       </div>
       <div class="text-left pb-10 ml-25 mr-25 w-180 font-normal">
-        Gerne möchten wir Sie über die von uns geplanten Workshops informieren. Hier können Sie alle anstehenden Termine
-        und Informationen zu unseren Workshops finden.
+        Gerne möchten wir Sie über die von uns geplanten Workshops informieren. Hier können Sie Termine und
+        Informationen zu unseren Workshops finden.
       </div>
+
+      <div class="ml-25 mr-25 pb-6">
+        <div class="font-bold text-2xl pb-3">Vorstellung des Datennexus beim HBDI</div>
+        <div class="text-(--df-orange) pb-3 ml-5">Donnerstag, 26. Juni 2025</div>
+        <div class="font-normal w-210 pb-3 ml-5">
+          Im Rahmen eines Workshops wird das innovative Konzept des Datennexus dem Hessischen Beauftragten für
+          Datenschutz und Informationsfreiheit (HBDI) vorgestellt. Der Fokus liegt auf der sicheren und rechtskonformen
+          Verknüpfung von Gesundheitsdaten mithilfe von EuroDaT.
+        </div>
+      </div>
+
       <div class="ml-25 mr-25">
         <div class="font-bold text-2xl pb-3">
           <a href="https://datnet.eu/event/fokus-gesundheitsdaten-anwendungsfelder-und-potenziale-von-dtm/">
