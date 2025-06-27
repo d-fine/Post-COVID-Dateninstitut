@@ -145,27 +145,52 @@ See [Vite Configuration Reference](https://vite.dev/config/).
 
 
 ### Setup
-install packages
+The following commands are to be run either in Windows PowerShell or in IntelliJ IDEA's Terminal.
+- First navigate to the subfolder
+```sh
+cd [project_folder]/clientapp-frontend 
+```
+
+- install packages
 
 ```sh
 npm install
 ```
+or, to guarantee exact package versions are used:
+```sh
+npm ci
+```
 
-Generate backend api code if applicable (see package.json)
+- Generate backend api code if applicable (see package.json)
 
-Requires java
+(Requires java, see more below)
 ```sh
 npm run openapi-generator
+```
+
+- Repeat these two steps in the folder
+```sh
+cd [project_folder]/datenmodell-frontend 
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+- npm run dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-npm run build
+- npm run build
 ```
+
+### Java installation
+
+- Install a Java SDK (e.g. jdk-24) which will then likely be found in a path like this one:
+```sh
+"C:\Program Files\Java\jdk-24"
+```
+- Add the 'bin' subfolder of this folder to your environment variable PATH and restart IntelliJ IDEA
+
+- In IntelliJ IDEA File > Project Structure > Project Settings > Project, choose this folder (the parent of the 'bin' subfolder) as SDK
