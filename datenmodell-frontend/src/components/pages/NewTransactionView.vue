@@ -138,7 +138,7 @@ onMounted(updateAllAnalysis);
         <span> Transaktion Starten </span>
       </div>
       <div class="text-left mb-7 ml-25 mr-25 font-normal">
-        Um eine Transaktion durchführen zu können, wähle Sie bitte eine EuroDaT App Logik aus.
+        Um eine Transaktion durchführen zu können, wählen Sie bitte eine EuroDaT App Logik aus.
       </div>
     </div>
 
