@@ -23,7 +23,7 @@ class ImageApi(
             .registryPassword(appProperties.imageRepoUserPassword)
 
     return imageResourceApi
-        .apiV1AppServiceAppsAppIdImagesPost(
+        .createImage(
             appName,
             imageRequest,
         )
@@ -34,14 +34,6 @@ class ImageApi(
       appName: String,
       imageId: String,
   ) {
-    imageResourceApi.apiV1AppServiceAppsAppIdImagesImageIdDelete(appName, imageId)
+    imageResourceApi.deleteImage(appName, imageId)
   }
 }
-
-class ImagePostResponse(
-    var id: String,
-    var sourceLocation: String,
-    var location: String,
-    var status: String,
-    var createdAt: String,
-)

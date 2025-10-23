@@ -12,9 +12,10 @@ registry_pwd="$(grep registry_pwd $credentials_file | awk -F '=' '{print $2}')"
 # get authorization from EuroDaT
 token=$(../create_jwt.sh \
     --client_id $client_id \
-    --url https://app.int.eurodat.org \
+    --url https://auth.eurodat.org \
     --key_path $key_path \
-    --key_pwd $key_pwd)
+    --key_pwd $key_pwd \
+    --realm eurodat-int)
 
 echo "$token"
 
@@ -35,10 +36,11 @@ echo "workflow_name: $workflow_name"
 transaction_ddl_string=$(cat ddl.sql  | tr '\n' ' ')
 ddl_string="\"transactionDDL\": \"$transaction_ddl_string\", \"safeDepositDDL\": \"string\" "
 id_string="\"id\": \"$app_name\""
-security_mapping_string='"tableSecurityMapping": [{ "rowBaseOutputSecurityColumn": "security_column", "tableName": "data"}]'
+security_mapping_string='"tableSecurityMappings": [{ "rowLevelSecurityColumnName": "security_column", "tableName": "data"}]'
 request_body="{ $ddl_string, $id_string, $security_mapping_string }"
+
 output=$(curl -X 'POST' \
-  'https://app.int.eurodat.org/api/v1/app-service/apps' \
+  'https://app.int.eurodat.org/api/v1/apps' \
   -H 'accept: application/json' \
   -H "Authorization: Bearer $token" \
   -H 'Content-Type: application/json' \
@@ -49,7 +51,7 @@ echo
 
 # register image
 output=$(curl -X 'POST' \
-  "https://app.int.eurodat.org/api/v1/app-service/apps/$app_name/images" \
+  "https://app.int.eurodat.org/api/v1/apps/$app_name/images" \
   -H 'accept: application/json' \
   -H "Authorization: Bearer $token" \
   -H 'Content-Type: application/json' \
@@ -62,7 +64,7 @@ echo "image_id: $image_id"
 # register workflow
 sleep 20
 curl -X 'POST' \
-  "https://app.int.eurodat.org/api/v1/app-service/apps/$app_name/workflows" \
+  "https://app.int.eurodat.org/api/v1/apps/$app_name/workflows" \
   -H 'accept: application/json' \
   -H "Authorization: Bearer $token" \
   -H 'Content-Type: application/json' \
@@ -118,22 +120,22 @@ echo "cleaning up ..."
 sleep 20
 
 curl -X 'DELETE' \
+  "https://app.int.eurodat.org/api/v1/apps/$app_name/workflows/$workflow_name" \
+  -H 'accept: application/json' \
+  -H "Authorization: Bearer $token"
+
+curl -X 'DELETE' \
   "https://app.int.eurodat.org/api/v1/transactions/$transaction_id" \
   -H 'accept: application/json' \
   -H "Authorization: Bearer $token"
 
 curl -X 'DELETE' \
-  "https://app.int.eurodat.org/api/v1/app-service/apps/$app_name/workflows/$workflow_name" \
-  -H 'accept: application/json' \
-  -H "Authorization: Bearer $token"
-
-curl -X 'DELETE' \
-  "https://app.int.eurodat.org/api/v1/app-service/apps/$app_name/images/$image_id" \
+  "https://app.int.eurodat.org/api/v1/apps/$app_name/images/$image_id" \
   -H 'accept: application/json' \
   -H "Authorization: Bearer $token"
 
 sleep 20
 curl -X 'DELETE' \
-  "https://app.int.eurodat.org/api/v1/app-service/apps/$app_name" \
+  "https://app.int.eurodat.org/api/v1/apps/$app_name" \
   -H 'accept: application/json' \
   -H "Authorization: Bearer $token"
