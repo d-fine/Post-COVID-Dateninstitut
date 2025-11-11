@@ -99,11 +99,7 @@ class V1__CreateBackendTables : BaseJavaMigration() {
         .execute(
             "create table hub_transaction (" +
                 "id uuid primary key, " +
-                "research_data_id uuid not null ," +
-                "constraint fk_hub_transaction_research_data " +
-                "foreign key (research_data_id) " +
-                "references hub_research_data(id) " +
-                "on delete cascade " +
+                "research_data_id uuid not null " +
                 ")",
         )
 

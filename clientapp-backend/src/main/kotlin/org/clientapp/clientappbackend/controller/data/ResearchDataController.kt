@@ -1,4 +1,4 @@
-package org.clientapp.clientappbackend.controller.researchdata
+package org.clientapp.clientappbackend.controller.data
 
 import java.util.UUID
 import org.clientapp.clientappbackend.service.db.ResearchDataService

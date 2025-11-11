@@ -1,4 +1,4 @@
-package org.clientapp.clientappbackend.controller.researchdata
+package org.clientapp.clientappbackend.controller.data
 
 import db.migration.TransactionStatus
 import java.util.UUID

@@ -1,4 +1,4 @@
-package org.clientapp.clientappbackend.controller.piidata
+package org.clientapp.clientappbackend.controller.data
 
 import org.clientapp.clientappbackend.service.DataConverterService
 import org.clientapp.clientappbackend.service.bloomfilter.BloomFilterService
@@ -7,6 +7,7 @@ import org.clientapp.clientappbackend.service.db.PiiDataService
 import org.clientapp.clientappbackend.service.db.UserManagementService
 import org.openapitools.api.PiiDataApi
 import org.openapitools.model.EntityInformation
+import org.openapitools.model.ResearchDataInformation
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -23,6 +24,12 @@ class PiiDataController(
     @Autowired private val userManagementService: UserManagementService,
     @Autowired private val bloomFilterService: BloomFilterService
 ) : PiiDataApi {
+
+  @PreAuthorize("hasRole('ADMIN')")
+  override fun getAllPiiData(): ResponseEntity<List<ResearchDataInformation>> {
+    return ResponseEntity.ok(piiDataService.getAllPiiData())
+  }
+
 
   @PreAuthorize("hasRole('ADMIN')")
   @Suppress("MagicNumber")
