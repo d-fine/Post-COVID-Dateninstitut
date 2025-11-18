@@ -45,7 +45,7 @@ class DataConverterService {
 
   fun transformListToJson(data: List<Map<String, String>>): List<String> {
     return data.map { row ->
-      "{" +
+      val contents =
           row.entries
               .map { entry ->
                 var value = "\"${entry.value}\""
@@ -54,8 +54,9 @@ class DataConverterService {
                 }
                 "\"${entry.key}\":${value}"
               }
-              .joinToString(",") +
-          "}"
+              .joinToString(",")
+      val result = "{" + contents + "}"
+      result.replace(Regex("[\\uFEFF]"), "")
     }
   }
 

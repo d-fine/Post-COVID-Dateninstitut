@@ -15,10 +15,24 @@ class EurodatDataManagementService(
   private val logger = LoggerFactory.getLogger(javaClass)
 
   fun transformCsvFileToJson(file: ByteArray): List<String>? {
-    val charset = charset("UTF-8")
+    val charset = dataConverterService.detectEncodingWithICU(file.inputStream())
     val delimiter = dataConverterService.inferDelimiter(file.inputStream())
     val rawDataList = dataConverterService.inputStreamToList(file.inputStream(), charset, delimiter)
     return dataConverterService.transformListToJson(rawDataList)
+  }
+  
+  fun postData(
+      clientId: String,
+      transactionId: String,
+      tableName: String,
+      data: List<Map<String, String>>
+  ): InsertResult {
+    logger.info("building request")
+    var dataRequest = DataRequest()
+    dataRequest.transactionId = transactionId
+    dataRequest.table = tableName
+    dataRequest.data = dataConverterService.transformListToJson(data)
+    return dataManagementApi.postData(clientId, dataRequest)
   }
 
   fun postData(

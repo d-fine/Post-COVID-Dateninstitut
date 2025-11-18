@@ -6,7 +6,7 @@ import pandas as pd
 
 from typing import Dict
 
-INPUT_TABLES = ["nako_studie_ernaehrung", "nako_pii_ernaehrung"]
+INPUT_TABLES = ["study_data", "pii_data"]
 
 pii_data_columns = ["vorname", "nachname", "geburtstag", "geschlecht", "wohnort"]
 DATA_CONSUMER = "postcovidclient"
@@ -20,13 +20,13 @@ def run(input_tables: Dict[str, pd.DataFrame]) -> dict:
     :return dict: the results of the analysis as pandas dataframes. Requires a string as keys, which are used to write
         to the output schema
     """
-    nako_study = input_tables["nako_studie_ernaehrung"]
-    nako_pii = input_tables["nako_pii_ernaehrung"]
+    my_study = input_tables["study_data"]
+    my_pii = input_tables["pii_data"]
 
     return {}
 
 
 if __name__ == '__main__':
-    test_nako_pii = pd.DataFrame(columns=["id"] + pii_data_columns)
+    test_my_pii = pd.DataFrame(columns=["id"] + pii_data_columns)
     test_other_pii = pd.DataFrame(columns=["id"] + pii_data_columns)
     test_data = pd.DataFrame(columns=["id", "test"])

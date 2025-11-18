@@ -3,6 +3,7 @@ package org.clientapp.clientappbackend.service.db
 import db.migration.ApprovalStatus
 import java.time.LocalDateTime
 import java.util.UUID
+import kotlin.jvm.optionals.getOrNull
 import org.clientapp.clientappbackend.entity.HubPiiDataEntity
 import org.clientapp.clientappbackend.entity.SatPiiDataAttributesEntity
 import org.clientapp.clientappbackend.entity.SatPiiDataBloomfilterEntity
@@ -12,6 +13,7 @@ import org.clientapp.clientappbackend.repository.SatPiiDataAttributesRepository
 import org.clientapp.clientappbackend.repository.SatPiiDataBloomfilterRepository
 import org.clientapp.clientappbackend.repository.SatPiiDataMetadataRepository
 import org.openapitools.model.EntityInformation
+import org.openapitools.model.ResearchDataInformation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -22,6 +24,44 @@ class PiiDataService(
     @Autowired private val satPiiDataBloomfilterRepository: SatPiiDataBloomfilterRepository,
     @Autowired private val satPiiDataAttributesRepository: SatPiiDataAttributesRepository,
 ) {
+
+  fun getAllPiiData(): List<ResearchDataInformation> =
+      satPiiDataMetadataRepository.findAllByValidToIsNull().map {
+        ResearchDataInformation(
+            researchDataId = it.piiDataEntity.id, fileName = it.name, description = it.description)
+      }
+
+  fun getHubPiiDatataEntity(piiDataId: UUID): HubPiiDataEntity? =
+      hubPiiDataRepository.findById(piiDataId).getOrNull()
+
+  fun getBloomfilterTableForPiiData(
+      hubPiiDataEntity: HubPiiDataEntity?,
+      studyIdColumn: String = "id"
+  ): List<Map<String, String>> {
+    val attributeMapping: Map<UUID, String> =
+        satPiiDataAttributesRepository
+            .findByPiiDataEntityAndValidToIsNull(hubPiiDataEntity!!)
+            .associate { it.attributeId to it.attributeName }
+
+    if (attributeMapping.containsValue(studyIdColumn)) {
+      throw IllegalArgumentException("name collision of study id column and an attribute column")
+    }
+
+    val data = satPiiDataBloomfilterRepository.findByPiiDataEntityAndValidToIsNull(hubPiiDataEntity)
+    val pivotedData: MutableMap<String, MutableMap<String, String>> = mutableMapOf()
+    for (entity in data) {
+      if (!pivotedData.containsKey(entity.studyId)) {
+        var newMapForCsvRow: MutableMap<String, String> =
+            mutableMapOf(studyIdColumn to entity.studyId)
+        pivotedData[entity.studyId] = newMapForCsvRow
+      }
+      var currentMapOfCsvRow = pivotedData[entity.studyId]
+      val attributeName = attributeMapping[entity.attributeId]!!
+      currentMapOfCsvRow?.put(attributeName, entity.bloomfilterCode)
+    }
+    return pivotedData.values.map { it.toMap() }
+  }
+
 
   fun uploadPIIData(
       keycloakId: String,

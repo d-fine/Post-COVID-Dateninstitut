@@ -12,10 +12,17 @@ import org.springframework.data.repository.CrudRepository
 
 interface HubPiiDataRepository : CrudRepository<HubPiiDataEntity, UUID>
 
-interface SatPiiDataMetadataRepository : CrudRepository<SatPiiDataMetadataEntity, PiiDataId>
+interface SatPiiDataMetadataRepository : CrudRepository<SatPiiDataMetadataEntity, PiiDataId> {
+  fun findAllByValidToIsNull(): List<SatPiiDataMetadataEntity>
+}
 
 interface SatPiiDataBloomfilterRepository :
-    CrudRepository<SatPiiDataBloomfilterEntity, PiiDataBloomFilterId>
+    CrudRepository<SatPiiDataBloomfilterEntity, PiiDataBloomFilterId> {
+  fun findByPiiDataEntityAndValidToIsNull(
+      hubPiiDataEntity: HubPiiDataEntity
+  ): List<SatPiiDataBloomfilterEntity>
+}
+
 
 interface SatPiiDataAttributesRepository :
     CrudRepository<SatPiiDataAttributesEntity, PiiDataAttributesId> {
@@ -23,6 +30,11 @@ interface SatPiiDataAttributesRepository :
       piiDataEntity: HubPiiDataEntity,
       attributeName: String
   ): SatPiiDataAttributesEntity?
+
+  fun findByPiiDataEntityAndValidToIsNull(
+      hubPiiDataEntity: HubPiiDataEntity
+  ): List<SatPiiDataAttributesEntity>
+
 
   fun existsByPiiDataEntityAndAttributeName(
       piiDataEntity: HubPiiDataEntity,

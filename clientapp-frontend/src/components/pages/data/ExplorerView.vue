@@ -3,28 +3,40 @@ import type { ResearchDataInformation } from '@/generated/openapi';
 import type Keycloak from 'keycloak-js';
 
 import { Button, Column, DataTable, Dialog, Card } from 'primevue';
-import { inject, ref, onMounted } from 'vue';
+import { inject, ref, onMounted, computed } from 'vue';
 import { assertDefined } from '@/utils/TypeScriptUtils';
-import { getResearchDataSet, getAllResearchData } from '@/services/ApiClients';
+import { getResearchDataSet, getAllResearchData, getAllPiiData } from '@/services/ApiClients';
 
 import DatasetView from './datasets/DatasetView.vue';
+import { piiDataType, researchDataType } from '@/utils/Constants';
 
 const euroDatUploadVisible = ref(false);
 const euroDatUploadDatasetName = ref('');
 const euroDatUploadDatasetId = ref('');
+const euroDatUploadDatasetType = ref('');
 const notebook_logo = '/Nexus_Logo.png';
 
-const setEurodatUploadDialog = (researchDataId: string, name: string) => {
+const setEurodatUploadDialog = (researchDataId: string, name: string, dataType: string) => {
   euroDatUploadDatasetName.value = name;
   euroDatUploadDatasetId.value = researchDataId;
   euroDatUploadVisible.value = true;
 };
 
 const allResearchData = ref<ResearchDataInformation[]>([]);
+const allPiiData = ref<ResearchDataInformation[]>([]);
+const mergedData = computed(() => {
+  const piiWithOrigin = allPiiData.value.map((item) => ({ ...item, dataType: piiDataType }));
+  const researchWithOrigin = allResearchData.value.map((item) => ({ ...item, dataType: researchDataType }));
+  return [...piiWithOrigin, ...researchWithOrigin];
+});
+
 const getKeycloakPromise = inject<() => Promise<Keycloak>>('getKeycloakPromise');
 
 const updateAllResearchData = async () => {
   allResearchData.value = await getAllResearchData(assertDefined(getKeycloakPromise));
+};
+const updateAllPiiData = async () => {
+  allPiiData.value = await getAllPiiData(assertDefined(getKeycloakPromise));
 };
 
 const downloadDataSet = async (researchDataId: string, name: string) => {
@@ -42,6 +54,7 @@ const downloadDataSet = async (researchDataId: string, name: string) => {
 };
 
 onMounted(updateAllResearchData);
+onMounted(updateAllPiiData);
 </script>
 
 <template>
@@ -91,25 +104,29 @@ onMounted(updateAllResearchData);
         :style="{ width: '27rem' }"
       >
         <div>Dateiname: {{ euroDatUploadDatasetName }}</div>
-        <DatasetView :datasetId="euroDatUploadDatasetId" />
+        <DatasetView :datasetId="euroDatUploadDatasetId" :dataType="euroDatUploadDatasetType" />
       </Dialog>
-      <DataTable :value="allResearchData" class="max-w-7xl">
+      <DataTable :value="mergedData" class="max-w-7xl">
         <Column field="fileName" header="Dateiname"></Column>
         <Column field="description" header="Beschreibung"></Column>
+        <Column field="dataType" header="Datentyp"></Column>
         <Column header="Download">
           <template #body="slotProps">
-            <Button
-              label="Download"
-              @click="downloadDataSet(slotProps.data.researchDataId, slotProps.data.fileName)"
-              class="white-button"
-            />
+            <div v-if="slotProps.data.dataType == piiDataType">N/A</div>
+            <div v-else>
+              <Button
+                label="Download"
+                @click="downloadDataSet(slotProps.data.researchDataId, slotProps.data.fileName)"
+                class="white-button"
+              />
+            </div>
           </template>
         </Column>
         <Column header="Bereitstellen">
           <template #body="slotProps">
             <Button
               label="EuroDaT"
-              @click="setEurodatUploadDialog(slotProps.data.researchDataId, slotProps.data.fileName)"
+              @click="setEurodatUploadDialog(slotProps.data.researchDataId, slotProps.data.fileName, slotProps.data.dataType)"
               class="white-button"
             />
           </template>

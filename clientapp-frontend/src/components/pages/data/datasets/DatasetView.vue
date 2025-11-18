@@ -11,6 +11,8 @@ import { Form } from '@primevue/forms';
 import { zodResolver } from '@primevue/forms/resolvers/zod';
 import { z } from 'zod';
 
+import { researchDataType } from '@/utils/Constants';
+
 import { postTransactionUploadData } from '@/services/ApiClients';
 
 const getKeycloakPromise = inject<() => Promise<Keycloak>>('getKeycloakPromise');
@@ -23,6 +25,10 @@ const initialValues = ref({
 });
 
 const props = defineProps({
+  dataType: {
+    type: String,
+    default: researchDataType,
+  },
   datasetId: {
     type: String,
     default: null,
@@ -53,7 +59,8 @@ const uploadData = async (clientId: string, transactionId: string, tableName: st
     clientId,
     transactionId,
     tableName,
-    props.datasetId ?? route.query.researchDataId
+    props.datasetId ?? route.query.researchDataId,
+    props.dataType
   );
   if (response == null) {
     toast.add({ severity: 'error', summary: 'Failed to upload data to EuroDaT', life: 3000 });

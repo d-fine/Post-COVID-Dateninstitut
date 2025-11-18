@@ -177,6 +177,87 @@ paths:
         - default-oauth: []
         - default-bearer-auth: []
 
+  /transaction/upload/pii-data/:
+    post:
+      tags:
+        - transaction-controller
+      summary: Upload bloomfilter of pii data set
+      description: Upload a pii data set to a running EuroDaT transaction with initialized input schema
+      operationId: uploadTransactionPiiData
+      parameters:
+        - name: "clientId"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+        - name: "transactionId"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+        - name: "tableName"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+        - name: "piiDataId"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            format: uuid
+      responses:
+        '200':
+          description: Successfully uploaded table to EuroDaT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityInformation'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - default-oauth: []
+        - default-bearer-auth: []
+
+  /pii-data/overview:
+    get:
+      tags:
+        - pii-data-controller
+      summary: Get an overview of available pii data
+      description: Retrieve meta data about all available pii data sets
+      operationId: getAllPiiData
+      responses:
+        '200':
+          description: Retrieved all pii data sets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResearchDataInformation'
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
   /pii-data/upload:
     post:
       tags:

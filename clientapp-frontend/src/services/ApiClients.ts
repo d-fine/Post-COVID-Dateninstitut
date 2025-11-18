@@ -3,6 +3,7 @@ import { type Configuration, type EntityInformation, type ResearchDataInformatio
 import * as backendApis from '@/generated/openapi';
 import { updateTokenAndItsExpiryTimestampAndStoreBoth } from '@/utils/SessionTimeoutUtils';
 import axios, { type AxiosInstance } from 'axios';
+import { piiDataType, researchDataType } from '@/utils/Constants';
 
 interface ApiBackendClients {
   researchDataApi: backendApis.ResearchDataControllerApiInterface;
@@ -76,12 +77,18 @@ export async function postTransactionUploadData(
   clientId: string,
   transactionId: string,
   tableName: string,
-  researchDataId: string
+  dataId: string,
+  dataType: string
 ): Promise<EntityInformation | null> {
   try {
     const transactionApi = new ApiClientProvider(getKeycloakPromise()).backendClients.transactionApi;
-    return (await transactionApi.uploadTransactionResearchData(clientId, transactionId, tableName, researchDataId))
-      .data;
+    if (dataType == researchDataType) {
+      return (await transactionApi.uploadTransactionResearchData(clientId, transactionId, tableName, dataId)).data;
+    } else if (dataType == piiDataType) {
+      return (await transactionApi.uploadTransactionPiiData(clientId, transactionId, tableName, dataId)).data;
+    }
+    console.error('Unknown data type for upload');
+    return null;
   } catch (error) {
     console.error(error);
     return null;
@@ -125,6 +132,16 @@ export async function postUploadPiiData(
   } catch (error) {
     console.error(error);
     return null;
+  }
+}
+
+export async function getAllPiiData(getKeycloakPromise: () => Promise<Keycloak>): Promise<ResearchDataInformation[]> {
+  try {
+    const piiDataControllerApi = new ApiClientProvider(getKeycloakPromise()).backendClients.piiDataApi;
+    return (await piiDataControllerApi.getAllPiiData()).data;
+  } catch (error) {
+    console.error(error);
+    return [];
   }
 }
 
