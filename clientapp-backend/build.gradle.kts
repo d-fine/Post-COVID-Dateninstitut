@@ -103,7 +103,7 @@ tasks.register(
   apiPackage.set("$eurodatClientDestinationPackage.api")
   generatorName.set("java")
   library.set("restclient")
-  validateSpec.set(false)
+  validateSpec.set(true)
 
   configOptions.set(
       mapOf(
@@ -198,4 +198,6 @@ dependencyCheck {
   suppressionFile = "$rootDir/config/dependency-check/suppressions.xml"
 }
 
+// TODO Fix failing NVD download,see
+// https://github.com/dependency-check/DependencyCheck/issues/6107
 // tasks.check { dependsOn("dependencyCheckAnalyze") }
