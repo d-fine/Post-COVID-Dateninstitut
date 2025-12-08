@@ -37,14 +37,14 @@ spring:
             provider: eurodat
         provider:
           eurodat:
-            issuer-uri: https://app.int.eurodat.org/auth/realms/eurodat-int # most important if you provide issuer-uri then all the configuration will be automatically handled
+            issuer-uri: https://auth.eurodat.org/realms/eurodat-int # most important if you provide issuer-uri then all the configuration will be automatically handled
       resourceserver:
         jwt:
           issuer-uri: http://localhost:20011/realms/data-provider
           jwk-set-uri: http://localhost:20011/realms/data-provider/protocol/openid-connect/certs
 jks:
   base-path: https://app.int.eurodat.org/
-  file-path: clientapp-backend/src/main/resources/keystore.jks
+  file-path: clientapp-backend/src/main/resources/<TO_BE_CHANGED>
   certificate-alias: certificate
   password: <TO_BE_CHANGED>
 keycloak:

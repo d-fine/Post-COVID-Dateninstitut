@@ -14,7 +14,7 @@ class DataManagementApi(
       outputTable: String,
       transactionId: String,
   ): List<String> =
-      dataManagementResourceApi.apiV1ParticipantsParticipantIdDataGet(
+      dataManagementResourceApi.getData(
           clientId,
           outputTable,
           transactionId,

@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.web.client.HttpClientErrorException
 
-const val MAX_NUMBER_OF_REQUEST_ATTEMPTS: Int = 4
-const val SLEEP_INTERVAL: Long = 6000
+const val MAX_NUMBER_OF_REQUEST_ATTEMPTS: Int = 60
+const val SLEEP_INTERVAL: Long = 1000
 
 @Service
 class EurodatTransactionManagementService(
@@ -31,18 +31,10 @@ class EurodatTransactionManagementService(
         "Start the transaction with parameters: appName is $appName, imageId is " +
             "$imageId, workflowName is $workflowName",
     )
-    for (count in 1..MAX_NUMBER_OF_REQUEST_ATTEMPTS) {
-      logger.debug(
-          "Start the workflow registration, attempt: $count of $MAX_NUMBER_OF_REQUEST_ATTEMPTS")
-      try {
-        workflowRegistrationApi.registerWorkflow(appName, imageId, workflowName)
-        break
-      } catch (e: HttpClientErrorException) {
-        logger.debug("EuroDat response to the request: $e")
-        logger.debug("Pause for $SLEEP_INTERVAL ms")
-        Thread.sleep(SLEEP_INTERVAL)
-      }
+    val registerWorkflow: () -> Unit = {
+      workflowRegistrationApi.registerWorkflow(appName, imageId, workflowName)
     }
+    runUntilSuccessOrAbort("registerWorkflow", registerWorkflow)
 
     val transactionId = transactionsApi.startTransaction(appName)
     return transactionId
@@ -57,13 +49,26 @@ class EurodatTransactionManagementService(
       workflowName: String,
       transactionId: String,
   ) {
-    transactionsApi.deleteTransaction(transactionId)
-    workflowRegistrationApi.deleteWorkflow(appName, workflowName)
-    imageApi.deleteImage(appName, imageId)
+    val deleteWorkflow: () -> Unit = {
+      workflowRegistrationApi.deleteWorkflow(appName, workflowName)
+    }
+    runUntilSuccessOrAbort("deleteWorkflow", deleteWorkflow)
+
+    val endTransaction: () -> Unit = { transactionsApi.endTransaction(transactionId) }
+    runUntilSuccessOrAbort("endTransaction", endTransaction)
+
+    val deleteImage: () -> Unit = { imageApi.deleteImage(appName, imageId) }
+    runUntilSuccessOrAbort("deleteImage", deleteImage)
+
+    val deleteApp: () -> Unit = { appApi.deleteApp(appName) }
+    runUntilSuccessOrAbort("deleteApp", deleteApp)
+  }
+
+  fun runUntilSuccessOrAbort(message: String, targetFunction: () -> Unit) {
     for (count in 1..MAX_NUMBER_OF_REQUEST_ATTEMPTS) {
-      logger.debug("Start the deletion, attempt: $count of $MAX_NUMBER_OF_REQUEST_ATTEMPTS")
+      logger.debug("Run attempt, $message , $count of $MAX_NUMBER_OF_REQUEST_ATTEMPTS")
       try {
-        appApi.deleteApp(appName)
+        targetFunction()
         break
       } catch (e: HttpClientErrorException) {
         logger.debug("EuroDat response to the request: $e")

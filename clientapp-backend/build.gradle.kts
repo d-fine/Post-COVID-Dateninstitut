@@ -80,37 +80,9 @@ openApiGenerate {
 tasks.register("generateClients") {
   description = "Task to generate all required clients for the service."
   group = "clients"
-  dependsOn("generateEurodatClient")
   dependsOn("generateEurodatDataManagementClient")
+  dependsOn("generateEurodatTransactionClient")
 }
-
-tasks.register(
-    "generateEurodatClient",
-    org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class,
-) {
-  description = "Task to generate clients for the EuroDaT service."
-  group = "clients"
-  val eurodatClientDestinationPackage = "org.eurodat"
-  input = project.file("$rootDir/clientapp-backend/src/main/resources/eurodat.yaml").path
-  outputDir.set(
-      layout.buildDirectory.dir("clients/eurodat").get().toString(),
-  )
-  packageName.set(eurodatClientDestinationPackage)
-  modelPackage.set("$eurodatClientDestinationPackage.model")
-  apiPackage.set("$eurodatClientDestinationPackage.api")
-  generatorName.set("java")
-  library.set("restclient")
-
-  configOptions.set(
-      mapOf(
-          "dateLibrary" to "java8",
-          "useJakartaEe" to "true",
-      ),
-  )
-}
-
-// requires postgres db to be active
-tasks.register<Test>("setupTestData") { useJUnitPlatform { includeTags("database-setup") } }
 
 tasks.register(
     "generateEurodatDataManagementClient",
@@ -120,7 +92,9 @@ tasks.register(
   group = "clients"
   val eurodatClientDestinationPackage = "org.eurodat.eurodatdatamanagement.openApiClient"
   input =
-      project.file("$rootDir/clientapp-backend/src/main/resources/eurodatDataManagement.yaml").path
+      project
+          .file("$rootDir/clientapp-backend/eurodat-api-spec/eurodatDataManagementService.yaml")
+          .path
   outputDir.set(
       layout.buildDirectory.dir("clients/eurodat-data-management").get().toString(),
   )
@@ -129,7 +103,36 @@ tasks.register(
   apiPackage.set("$eurodatClientDestinationPackage.api")
   generatorName.set("java")
   library.set("restclient")
-  validateSpec.set(false)
+  validateSpec.set(true)
+
+  configOptions.set(
+      mapOf(
+          "dateLibrary" to "java8",
+          "useJakartaEe" to "true",
+      ),
+  )
+}
+
+tasks.register(
+    "generateEurodatTransactionClient",
+    org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class,
+) {
+  description = "Task to generate clients for the EuroDaT transaction service."
+  group = "clients"
+  val eurodatClientDestinationPackage = "org.eurodat.eurodattransaction.openApiClient"
+  input =
+      project
+          .file("$rootDir/clientapp-backend/eurodat-api-spec/eurodatTransactionService.yaml")
+          .path
+  outputDir.set(
+      layout.buildDirectory.dir("clients/eurodat-transaction").get().toString(),
+  )
+  packageName.set(eurodatClientDestinationPackage)
+  modelPackage.set("$eurodatClientDestinationPackage.model")
+  apiPackage.set("$eurodatClientDestinationPackage.api")
+  generatorName.set("java")
+  library.set("restclient")
+  validateSpec.set(true)
 
   configOptions.set(
       mapOf(
@@ -142,11 +145,16 @@ tasks.register(
 sourceSets {
   val main by getting
   main.kotlin.srcDir(layout.buildDirectory.dir("generate-resources/main/src/main/kotlin"))
-  main.java.srcDir(layout.buildDirectory.dir("clients/eurodat/src/main/java"))
   main.java.srcDir(layout.buildDirectory.dir("clients/eurodat-data-management/src/main/java"))
+  main.java.srcDir(layout.buildDirectory.dir("clients/eurodat-transaction/src/main/java"))
 }
 
-tasks.test { useJUnitPlatform { excludeTags("eurodat", "database-setup") } }
+// these tasks require postgres db to be active
+tasks.register<Test>("runSmokeTests") { useJUnitPlatform { includeTags("eurodat-smoketest") } }
+
+tasks.register<Test>("setupTestData") { useJUnitPlatform { includeTags("database-setup") } }
+
+tasks.test { useJUnitPlatform { excludeTags("eurodat-smoketest", "database-setup") } }
 
 detekt {
   ignoreFailures = true // TODO temporarily, to be removed
@@ -190,4 +198,6 @@ dependencyCheck {
   suppressionFile = "$rootDir/config/dependency-check/suppressions.xml"
 }
 
-tasks.check { dependsOn("dependencyCheckAnalyze") }
+// TODO Fix failing NVD download,see
+// https://github.com/dependency-check/DependencyCheck/issues/6107
+// tasks.check { dependsOn("dependencyCheckAnalyze") }

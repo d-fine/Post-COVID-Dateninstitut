@@ -1,7 +1,7 @@
 package org.datenmodell.datenmodellbackend.eurodat
 
-import org.eurodat.eurodatcontroller.openApiClient.api.WorkflowResourceApi
-import org.eurodat.eurodatcontroller.openApiClient.model.WorkflowRequest
+import org.eurodat.eurodattransaction.openApiClient.api.WorkflowResourceApi
+import org.eurodat.eurodattransaction.openApiClient.model.WorkflowRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
@@ -16,7 +16,7 @@ class WorkflowApi(
   ): String {
     val workflowRequest = WorkflowRequest().workflowDefinitionId(workflowName)
     return workflowResourceApi
-        .apiV1TransactionsTransactionIdWorkflowsPost(
+        .startWorkflow(
             transactionId,
             workflowRequest,
         )

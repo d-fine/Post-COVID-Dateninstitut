@@ -37,7 +37,7 @@ export default {
             postUploadReseachData(
               assertDefined(this.getKeycloakPromise),
               file.name,
-              'postcovidclient',
+              'postcovidclient2',
               'test data',
               new File([payload], file.name, { type: payload.type })
             ).then((result) => {

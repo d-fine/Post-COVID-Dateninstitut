@@ -1,21 +1,21 @@
-package org.datenmodell.datenmodellbackend.eurodatconfiguration;
+package org.clientapp.clientappbackend.configuration;
 
-import org.eurodat.eurodatcontroller.openApiClient.ApiClient;
-import org.eurodat.eurodatcontroller.openApiClient.api.ClientResourceApi;
-import org.eurodat.eurodatcontroller.openApiClient.api.TransactionResourceApi;
-import org.eurodat.eurodatcontroller.openApiClient.api.WorkflowResourceApi;
+import org.eurodat.eurodattransaction.openApiClient.ApiClient;
+import org.eurodat.eurodattransaction.openApiClient.api.ClientResourceApi;
+import org.eurodat.eurodattransaction.openApiClient.api.TransactionResourceApi;
+import org.eurodat.eurodattransaction.openApiClient.api.WorkflowResourceApi;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
 
-/** Configuration for the EuroDaT controller. */
+/** Configuration for the EuroDaT transaction. */
 @Configuration
 @SuppressWarnings("java:S6830")
-public class EurodatControllerConfiguration {
+public class EurodatTransactionConfiguration {
 
-  private static final String QUALIFIER_NAME = "eurodat-controller-resource";
+  private static final String QUALIFIER_NAME = "eurodat-transaction-resource";
 
   @Value("${jks.base-path}")
   private String basePath;
@@ -26,14 +26,15 @@ public class EurodatControllerConfiguration {
   }
 
   @Bean
-  public TransactionResourceApi transactionResourceApi(
+  public WorkflowResourceApi workflowResourceApi(
       @Qualifier(QUALIFIER_NAME) ApiClient apiClient) {
-    return new TransactionResourceApi(apiClient);
+    return new  WorkflowResourceApi(apiClient);
   }
 
   @Bean
-  public WorkflowResourceApi workflowResourceApi(@Qualifier(QUALIFIER_NAME) ApiClient apiClient) {
-    return new WorkflowResourceApi(apiClient);
+  public TransactionResourceApi transactionResourceApi(
+      @Qualifier(QUALIFIER_NAME) ApiClient apiClient) {
+    return new TransactionResourceApi(apiClient);
   }
 
   /**

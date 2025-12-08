@@ -11,4 +11,7 @@ class AppProperties {
 
   @Value("\${spring.security.oauth2.client.registration.eurodat.client-id}")
   lateinit var eurodatClientId: String
+
+  @Value("\${eurodat-transaction.additional-provider}")
+  lateinit var eurodatTransactionAdditionalProvider: String
 }

@@ -22,15 +22,13 @@ class WorkflowRegistrationApi(
             .addStartCommandItem("python")
             .addStartCommandItem("main.py")
 
-    workflowRegistrationResourceApi.apiV1AppServiceAppsAppIdWorkflowsPost(
-        appName, workflowRegistrationRequest)
+    workflowRegistrationResourceApi.addWorkflow(appName, workflowRegistrationRequest)
   }
 
   fun deleteWorkflow(
       appName: String,
       workflowName: String,
   ) {
-    workflowRegistrationResourceApi.apiV1AppServiceAppsAppIdWorkflowsWorkflowIdDelete(
-        appName, workflowName)
+    workflowRegistrationResourceApi.deleteWorkflow(appName, workflowName)
   }
 }

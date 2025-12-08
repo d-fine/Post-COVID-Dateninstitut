@@ -25,7 +25,6 @@ export default {
     };
   },
   methods: {
-     
     async uploadFiles(event: FileUploadUploaderEvent) {
       let fileList = event.files;
       if (fileList instanceof File) fileList = [fileList];
@@ -35,7 +34,7 @@ export default {
           const response = await postUploadPiiData(
             assertDefined(this.getKeycloakPromise),
             file.name,
-            'postcovidclient',
+            'postcovidclient2',
             'test data',
             file
           );
