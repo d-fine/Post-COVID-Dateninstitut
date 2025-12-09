@@ -12,7 +12,7 @@ class DataManagementApi(
 ) {
 
   fun postData(clientId: String, dataRequest: DataRequest): InsertResult {
-    return dataManagementResourceApi.apiV1ParticipantsParticipantIdDataPost(clientId, dataRequest)
+    return dataManagementResourceApi.insertData(clientId, dataRequest)
   }
 
   fun getData(
@@ -20,7 +20,7 @@ class DataManagementApi(
       outputTable: String,
       transactionId: String,
   ): List<String> =
-      dataManagementResourceApi.apiV1ParticipantsParticipantIdDataGet(
+      dataManagementResourceApi.getData(
           clientId,
           outputTable,
           transactionId,

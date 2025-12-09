@@ -1,0 +1,659 @@
+---
+openapi: 3.0.3
+components:
+  schemas:
+    AppRequest:
+      type: object
+      required:
+        - appId
+        - consumer
+        - provider
+      properties:
+        appId:
+          type: string
+        consumer:
+          type: array
+          items:
+            type: string
+        provider:
+          type: array
+          items:
+            type: string
+    ClientCertificateValues:
+      type: object
+      required:
+        - name
+        - certificate
+      properties:
+        name:
+          type: string
+        certificate:
+          type: string
+    ClientDeleteResponse:
+      type: object
+      properties:
+        keycloakClientDelete:
+          type: boolean
+        clientMapperDelete:
+          type: boolean
+    ClientIdParticipantMapping:
+      type: object
+      required:
+        - clientId
+        - participant
+      properties:
+        clientId:
+          type: string
+        participant:
+          type: string
+    ClientRegistrationForm:
+      type: object
+      required:
+        - clientId
+        - certificate
+        - participant
+        - purpose
+      properties:
+        clientId:
+          type: string
+        certificate:
+          type: string
+        participant:
+          type: string
+        purpose:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/Purpose"
+    Message:
+      type: object
+      required:
+        - appId
+        - transactionId
+        - workflowId
+        - label
+        - participant
+      properties:
+        correlationId:
+          type: integer
+          nullable: true
+          format: int64
+        appId:
+          type: string
+        transactionId:
+          type: string
+        workflowId:
+          type: string
+        label:
+          type: string
+        participant:
+          type: string
+        createdAt:
+          allOf:
+            - $ref: "#/components/schemas/ZonedDateTime"
+          nullable: true
+    MessageRequest:
+      type: object
+      required:
+        - message
+        - participants
+      properties:
+        message:
+          type: string
+        participants:
+          type: array
+          items:
+            type: string
+    Purpose:
+      type: string
+      enum:
+        - APPS
+        - TRANSACTIONS
+        - SAFEDEPOSITS
+    SafeDepositDatabaseRequest:
+      type: object
+      required:
+        - appId
+      properties:
+        appId:
+          type: string
+    SafeDepositDatabaseResponse:
+      type: object
+      required:
+        - response
+      properties:
+        response:
+          type: string
+    Transaction:
+      type: object
+      required:
+        - id
+        - appId
+        - clientId
+        - participant
+        - consumer
+        - provider
+      properties:
+        id:
+          type: string
+        appId:
+          type: string
+        clientId:
+          type: string
+        participant:
+          type: string
+        consumer:
+          type: array
+          items:
+            type: string
+        provider:
+          type: array
+          items:
+            type: string
+        startTime:
+          allOf:
+            - $ref: "#/components/schemas/ZonedDateTime"
+        endTime:
+          allOf:
+            - $ref: "#/components/schemas/ZonedDateTime"
+    WorkflowGetResponse:
+      type: object
+      required:
+        - metadata
+        - status
+      properties:
+        metadata:
+          $ref: "#/components/schemas/WorkflowMetadata"
+        status:
+          $ref: "#/components/schemas/WorkflowStatus"
+    WorkflowMetadata:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+    WorkflowRequest:
+      type: object
+      required:
+        - workflowDefinitionId
+      properties:
+        workflowDefinitionId:
+          type: string
+    WorkflowStartResponse:
+      type: object
+      required:
+        - transactionId
+        - workflowDefinitionId
+        - workflowRunId
+      properties:
+        transactionId:
+          type: string
+        workflowDefinitionId:
+          type: string
+        workflowRunId:
+          type: string
+    WorkflowStatus:
+      type: object
+      required:
+        - phase
+        - startedAt
+        - finishedAt
+      properties:
+        phase:
+          $ref: "#/components/schemas/WorkflowStatusPhase"
+        startedAt:
+          type: string
+        finishedAt:
+          type: string
+    WorkflowStatusPhase:
+      type: string
+      enum:
+        - UNKNOWN
+        - PENDING
+        - RUNNING
+        - SUCCEEDED
+        - FAILED
+        - ERROR
+    ZonedDateTime:
+      type: string
+      format: date-time
+      example: 2022-03-10T12:15:50-04:00
+  securitySchemes:
+    SecurityScheme:
+      description: Authentication
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/v1/apps/{appId}/messages:
+    get:
+      operationId: getMessages
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: excludeUntil
+          in: query
+          schema:
+            type: integer
+            nullable: true
+            format: int64
+      responses:
+        "200":
+          description: Messages fetched
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Message"
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access endpoint
+        "404":
+          description: Messages not found
+      summary: Get Messages
+      tags:
+        - Messaging Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/clients:
+    patch:
+      operationId: updateCertificate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientCertificateValues"
+        required: true
+      responses:
+        "200":
+          description: Client certificate updated
+          content:
+            text/plain:
+              schema:
+                type: string
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access endpoint
+        "404":
+          description: Client not found
+      summary: Update Certificate
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme: []
+    post:
+      operationId: registerClient
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientRegistrationForm"
+        required: true
+      responses:
+        "201":
+          description: Client registered
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access endpoint
+        "409":
+          description: Client already exists
+        "400":
+          description: Bad Request
+      summary: Register Client
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/clients/mappings:
+    get:
+      operationId: getClientParticipantMapping
+      responses:
+        "200":
+          description: Client mappings fetched
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClientIdParticipantMapping"
+        "401":
+          description: Not authenticated
+        "404":
+          description: Client mappings not found
+        "403":
+          description: Not Allowed
+      summary: Get Client Participant Mapping
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/clients/participants:
+    get:
+      operationId: getAllClientParticipants
+      responses:
+        "200":
+          description: Participants fetched
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "401":
+          description: Not authenticated
+        "404":
+          description: Participants not found
+        "403":
+          description: Not Allowed
+      summary: Get All Client Participants
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/clients/{clientId}:
+    delete:
+      operationId: deleteClient
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Client deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClientDeleteResponse"
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access endpoint
+        "404":
+          description: Client not found
+      summary: Delete Client
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/clients/{clientId}/participant:
+    get:
+      operationId: getClientParticipant
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Client mapping fetched
+          content:
+            text/plain:
+              schema:
+                type: string
+        "401":
+          description: Not authenticated
+        "404":
+          description: Client mapping not found
+        "403":
+          description: Not Allowed
+      summary: Get Client Participant
+      tags:
+        - Client Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/messages:
+    post:
+      operationId: postMessage
+      requestBody:
+        description: Message request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessageRequest"
+        required: true
+      responses:
+        "201":
+          description: Message posted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Message"
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access endpoint
+        "400":
+          description: Bad Request
+      security:
+        - custom-bearer: []
+      summary: Post Message
+      tags:
+        - Messaging Resource
+  /api/v1/safedeposit:
+    post:
+      operationId: createSafeDepositDatabase
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SafeDepositDatabaseRequest"
+        required: true
+      responses:
+        "201":
+          description: Safedeposit Database created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SafeDepositDatabaseResponse"
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access endpoint
+        "404":
+          description: App not found
+        "409":
+          description: Safedeposit Database already exists
+        "400":
+          description: Bad Request
+      summary: Create Safe Deposit Database
+      tags:
+        - Safe Deposit Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/safedeposit/{appId}:
+    delete:
+      operationId: deleteSafeDepositDatabase
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Safedeposit Database deleted
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access endpoint
+      summary: Delete Safe Deposit Database
+      tags:
+        - Safe Deposit Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/transactions:
+    post:
+      operationId: startTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AppRequest"
+        required: true
+      responses:
+        "401":
+          description: Not authenticated
+        "404":
+          description: App not found
+        "403":
+          description: Not authorised to access endpoint
+        "200":
+          description: Transaction created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "400":
+          description: Bad Request
+      summary: Start Transaction
+      tags:
+        - Transaction Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/transactions/{transactionId}:
+    get:
+      operationId: findTransaction
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "401":
+          description: Not authenticated
+        "200":
+          description: Transaction fetched
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "403":
+          description: Not authorised to access endpoint
+        "404":
+          description: Transaction not found
+      summary: Find Transaction
+      tags:
+        - Transaction Resource
+      security:
+        - SecurityScheme: []
+    delete:
+      operationId: endTransaction
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "403":
+          description: Not authorised to access endpoint
+        "404":
+          description: Transaction not found
+        "200":
+          description: Transaction deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "401":
+          description: Not authenticated
+        "400":
+          description: Non-finished workflow run prevents deletion
+      summary: End Transaction
+      tags:
+        - Transaction Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/transactions/{transactionId}/workflows:
+    post:
+      operationId: startWorkflow
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkflowRequest"
+        required: true
+      responses:
+        "201":
+          description: Workflow started
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WorkflowStartResponse"
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access endpoint
+        "404":
+          description: "Transaction, App or Workflow not found"
+        "400":
+          description: Bad Request
+      summary: Start Workflow
+      tags:
+        - Workflow Resource
+      security:
+        - SecurityScheme: []
+  /api/v1/transactions/{transactionId}/workflows/{workflowRunId}:
+    get:
+      operationId: getWorkflow
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: workflowRunId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Workflow fetched
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WorkflowGetResponse"
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access endpoint
+        "404":
+          description: Workflow not found
+      summary: Get Workflow
+      tags:
+        - Workflow Resource
+      security:
+        - SecurityScheme: []
+info:
+  title: Transaction Service REST API
+  version: 1.0.0-SNAPSHOT
+  description: OpenAPI specification of EuroDaT's Transaction Service API
+  contact:
+    name: EuroDaT support
+    url: https://www.eurodat.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://app.int.eurodat.org

@@ -1,72 +1,102 @@
 ---
-openapi: 3.1.0
+openapi: 3.0.3
 components:
   schemas:
-    WorkflowRegistrationRequest:
-      type: object
-      required:
-      - workflowId
-      - imageId
-      - startCommand
-      properties:
-        imageId:
-          type: string
-        startCommand:
-          type: array
-          items:
-            type: string
-        workflowId:
-          type: string
-    TableSecurityMapping:
-      type: object
-      required:
-      - rowBaseOutputSecurityColumn
-      - tableName
-      properties:
-        rowBaseOutputSecurityColumn:
-          type: string
-        tableName:
-          type: string
-    ZonedDateTime:
-      type: string
-      format: date-time
-      examples:
-      - 2022-03-10T12:15:50-04:00
-    AppResponse:
+    AppRegistration:
       type: object
       required:
       - id
       - transactionDDL
       - safeDepositDDL
-      - tableSecurityMapping
-      - workflows
+      - tableSecurityMappings
       properties:
+        id:
+          type: string
         transactionDDL:
           type: string
         safeDepositDDL:
           type: string
+        tableSecurityMappings:
+          type: array
+          items:
+            $ref: "#/components/schemas/TableSecurityMapping"
+        transactionTimeoutInDays:
+          type: integer
+          format: int32
+    AppResponse:
+      type: object
+      required:
+      - id
+      - owner
+      - transactionDDL
+      - safeDepositDDL
+      - tableSecurityMappings
+      - workflows
+      properties:
         id:
           type: string
+        owner:
+          type: string
+        transactionDDL:
+          type: string
+        safeDepositDDL:
+          type: string
+        tableSecurityMappings:
+          type: array
+          items:
+            $ref: "#/components/schemas/TableSecurityMapping"
         workflows:
           type: array
           items:
             $ref: "#/components/schemas/WorkflowDefinition"
-        tableSecurityMapping:
-          type: array
-          items:
-            $ref: "#/components/schemas/TableSecurityMapping"
+        transactionTimeoutInDays:
+          type: integer
+          format: int32
+    Image:
+      type: object
+      required:
+      - id
+      - sourceLocation
+      - status
+      - createdAt
+      properties:
+        id:
+          type: string
+        sourceLocation:
+          type: string
+        location:
+          type: string
+        status:
+          $ref: "#/components/schemas/ImageStatus"
+        createdAt:
+          $ref: "#/components/schemas/ZonedDateTime"
     ImageRequest:
       type: object
       required:
       - location
       properties:
-        registryUserName:
-          type:
-          - string
-        registryPassword:
-          type:
-          - string
         location:
+          type: string
+        registryUserName:
+          type: string
+        registryPassword:
+          type: string
+    ImageStatus:
+      type: string
+      enum:
+      - UPLOADING
+      - ACTIVE
+      - DELETING
+      - INACTIVE
+    TableSecurityMapping:
+      type: object
+      required:
+      - rowLevelSecurityColumnName
+      - tableName
+      properties:
+        rowLevelSecurityColumnName:
+          type: string
+        tableName:
           type: string
     WorkflowDefinition:
       type: object
@@ -77,11 +107,9 @@ components:
       - startCommand
       - imageId
       properties:
-        imageId:
+        id:
           type: string
         resourceName:
-          type: string
-        id:
           type: string
         entryPoint:
           type: string
@@ -89,45 +117,27 @@ components:
           type: array
           items:
             type: string
-    AppRegistration:
+        imageId:
+          type: string
+    WorkflowRegistrationRequest:
       type: object
       required:
-      - id
-      - transactionDDL
-      - safeDepositDDL
-      - tableSecurityMapping
+      - workflowId
+      - imageId
+      - startCommand
       properties:
-        transactionDDL:
+        workflowId:
           type: string
-        safeDepositDDL:
+        imageId:
           type: string
-        id:
-          type: string
-        tableSecurityMapping:
+        startCommand:
           type: array
           items:
-            $ref: "#/components/schemas/TableSecurityMapping"
-    Image:
-      type: object
-      required:
-      - id
-      - sourceLocation
-      - status
-      - createdAt
-      properties:
-        createdAt:
-          $ref: "#/components/schemas/ZonedDateTime"
-        sourceLocation:
-          type: string
-        location:
-          type:
-          - string
-        id:
-          type: string
-        status:
-          type: string
-    Unit:
-      type: object
+            type: string
+    ZonedDateTime:
+      type: string
+      format: date-time
+      example: 2022-03-10T12:15:50-04:00
   securitySchemes:
     SecurityScheme:
       description: Authentication
@@ -135,8 +145,9 @@ components:
       scheme: bearer
       bearerFormat: JWT
 paths:
-  /api/v1/app-service/apps:
+  /api/v1/apps:
     post:
+      operationId: startAppRegistration
       requestBody:
         content:
           application/json:
@@ -144,28 +155,27 @@ paths:
               $ref: "#/components/schemas/AppRegistration"
         required: true
       responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AppResponse"
         "201":
-          description: OK
+          description: App registered successfully
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/AppResponse"
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "409":
+          description: App already exists
         "403":
           description: Not Allowed
+        "400":
+          description: Bad Request
       summary: Start App Registration
       tags:
       - App Resource
       security:
       - SecurityScheme: []
     get:
+      operationId: getAllAppIds
       responses:
         "200":
           description: OK
@@ -184,8 +194,9 @@ paths:
       - App Resource
       security:
       - SecurityScheme: []
-  /api/v1/app-service/apps/{appId}:
+  /api/v1/apps/{appId}:
     get:
+      operationId: findApp
       parameters:
       - name: appId
         in: path
@@ -209,6 +220,7 @@ paths:
       security:
       - SecurityScheme: []
     delete:
+      operationId: deleteApp
       parameters:
       - name: appId
         in: path
@@ -216,14 +228,12 @@ paths:
         schema:
           type: string
       responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Unit"
+        "204":
+          description: App deleted successfully
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "404":
+          description: App with the specified ID not found
         "403":
           description: Not Allowed
       summary: Delete App
@@ -231,8 +241,9 @@ paths:
       - App Resource
       security:
       - SecurityScheme: []
-  /api/v1/app-service/apps/{appId}/images:
+  /api/v1/apps/{appId}/images:
     get:
+      operationId: getImages
       parameters:
       - name: appId
         in: path
@@ -241,7 +252,7 @@ paths:
           type: string
       responses:
         "200":
-          description: OK
+          description: Images found
           content:
             application/json:
               schema:
@@ -249,7 +260,9 @@ paths:
                 items:
                   $ref: "#/components/schemas/Image"
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "404":
+          description: App not found
         "403":
           description: Not Allowed
       summary: Get Images
@@ -258,6 +271,7 @@ paths:
       security:
       - SecurityScheme: []
     post:
+      operationId: createImage
       parameters:
       - name: appId
         in: path
@@ -271,23 +285,28 @@ paths:
               $ref: "#/components/schemas/ImageRequest"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Image created
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Image"
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "404":
+          description: App not found
         "403":
           description: Not Allowed
+        "400":
+          description: Bad Request
       summary: Create Image
       tags:
       - Image Resource
       security:
       - SecurityScheme: []
-  /api/v1/app-service/apps/{appId}/images/{imageId}:
+  /api/v1/apps/{appId}/images/{imageId}:
     get:
+      operationId: getImage
       parameters:
       - name: appId
         in: path
@@ -301,13 +320,15 @@ paths:
           type: string
       responses:
         "200":
-          description: OK
+          description: Image found
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Image"
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "404":
+          description: App or image not found
         "403":
           description: Not Allowed
       summary: Get Image
@@ -316,6 +337,7 @@ paths:
       security:
       - SecurityScheme: []
     delete:
+      operationId: deleteImage
       parameters:
       - name: appId
         in: path
@@ -328,14 +350,18 @@ paths:
         schema:
           type: string
       responses:
-        "200":
-          description: OK
+        "202":
+          description: Image deletion started
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Image"
+        "400":
+          description: Image cannot be deleted
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "404":
+          description: App or image not found
         "403":
           description: Not Allowed
       summary: Delete Image
@@ -343,8 +369,9 @@ paths:
       - Image Resource
       security:
       - SecurityScheme: []
-  /api/v1/app-service/apps/{appId}/workflows:
+  /api/v1/apps/{appId}/workflows:
     get:
+      operationId: getWorkflows
       parameters:
       - name: appId
         in: path
@@ -353,7 +380,7 @@ paths:
           type: string
       responses:
         "200":
-          description: OK
+          description: Workflows found
           content:
             application/json:
               schema:
@@ -361,7 +388,9 @@ paths:
                 items:
                   type: string
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "404":
+          description: App not found
         "403":
           description: Not Allowed
       summary: Get Workflows
@@ -370,6 +399,7 @@ paths:
       security:
       - SecurityScheme: []
     post:
+      operationId: addWorkflow
       parameters:
       - name: appId
         in: path
@@ -383,14 +413,18 @@ paths:
               $ref: "#/components/schemas/WorkflowRegistrationRequest"
         required: true
       responses:
-        "200":
-          description: OK
+        "201":
+          description: Workflow created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Unit"
+                $ref: "#/components/schemas/WorkflowDefinition"
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "400":
+          description: Bad request
+        "409":
+          description: Workflow with the same name already exists for the app
         "403":
           description: Not Allowed
       summary: Add Workflow
@@ -398,8 +432,9 @@ paths:
       - Workflow Registration Resource
       security:
       - SecurityScheme: []
-  /api/v1/app-service/apps/{appId}/workflows/{workflowId}:
+  /api/v1/apps/{appId}/workflows/{workflowId}:
     get:
+      operationId: getWorkflow
       parameters:
       - name: appId
         in: path
@@ -413,13 +448,15 @@ paths:
           type: string
       responses:
         "200":
-          description: OK
+          description: Workflow found
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/WorkflowDefinition"
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "404":
+          description: Workflow or app not found
         "403":
           description: Not Allowed
       summary: Get Workflow
@@ -428,6 +465,7 @@ paths:
       security:
       - SecurityScheme: []
     delete:
+      operationId: deleteWorkflow
       parameters:
       - name: appId
         in: path
@@ -440,14 +478,12 @@ paths:
         schema:
           type: string
       responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Unit"
+        "204":
+          description: Workflow deleted
         "401":
-          description: Not Authorized
+          description: Not authenticated
+        "404":
+          description: Workflow or app not found
         "403":
           description: Not Allowed
       summary: Delete Workflow

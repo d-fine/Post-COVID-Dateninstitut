@@ -15,5 +15,5 @@ def run(input_tables: dict) -> dict:
         to the output schema
     """
     for name, table in input_tables.items():
-        table["security_column"] = "postcovidclient"
+        table["research_data"] = table["research_data"] + " _has_been_analyzed"
     return input_tables

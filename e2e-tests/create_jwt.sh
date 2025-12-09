@@ -7,6 +7,7 @@ set -e
 # --key_pwd is the password of the private key .pem file.
 # --url is the URL of the EuroDaT cluster. Defaults to EuroDaT Integration
 # --cacert is the truststore of the EuroDaT cluster. Only necessary in case of self-signed EuroDaT certificates
+# --realm the keycloak realm to be used (i.e. eurodat-dev, eurodat-nightly, eurodat-qa, eurodat-int, eurodat-prod)
 
 # Parse arguments
 while [[ "$#" -gt 0 ]]; do
@@ -16,6 +17,7 @@ while [[ "$#" -gt 0 ]]; do
         --key_path) key_path="$2"; shift ;;
         --key_pwd) key_pwd="$2"; shift ;;
         --cacert) cacert="$2"; shift ;;
+        --realm) REALM="$2"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
     shift
@@ -25,7 +27,7 @@ if [ -z "$client_id" ]; then
     exit 1
 fi
 if [ -z "$url" ]; then
-    url="https://app.int.eurodat.org"
+    url="https://auth.eurodat.org"
 fi
 if [ -z "$key_path" ]; then
     key_path=./keystore.pem
@@ -45,7 +47,8 @@ exp=$((now+5))
 sub=$client_id
 jti=$(openssl rand -hex 16)
 iss=$client_id
-aud=$url"/auth/realms/eurodat-int/protocol/openid-connect/token"
+
+aud=$url"/realms/$REALM/protocol/openid-connect/token"
 
 # Create the JWT header
 header=$(echo -n '{"alg":"RS256","typ":"JWT"}' | base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n')
@@ -56,10 +59,9 @@ signature=$(echo -n "$header.$payload" | openssl dgst -sha256 -sign $key_path -p
 # Print the JWT token
 signed_jwt_token="$header.$payload.$signature"
 
-access_token=$(curl -X POST -s $url"/auth/realms/eurodat-int/protocol/openid-connect/token" \
+access_token=$(curl -X POST -s $url"/realms/$REALM/protocol/openid-connect/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=client_credentials" \
-  -d "scope=openid" \
   -d "client_id=$client_id" \
   -d "client_assertion=$signed_jwt_token" \
   -d "client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer" \

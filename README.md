@@ -103,7 +103,7 @@ This project consists of three independent stacks:
     - [clientapp-keycloak](clientapp-keycloak)
 
 There are some curl-based end-to-end-tests for the communication with the data trustee EuroDaT 
-in [e2e-tests](e2e-tests). 
+in [e2e-tests](e2e-tests) (installation of jq is required).
 
 ## Docker
 

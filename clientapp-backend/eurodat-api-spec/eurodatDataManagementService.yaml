@@ -1,0 +1,213 @@
+---
+openapi: 3.0.3
+components:
+  schemas:
+    DataRequest:
+      type: object
+      required:
+      - data
+      - table
+      - transactionId
+      properties:
+        data:
+          type: array
+          items:
+            type: string
+        table:
+          type: string
+        transactionId:
+          type: string
+    InsertResult:
+      type: object
+      required:
+      - result
+      properties:
+        result:
+          type: string
+    PersistentDataRequest:
+      type: object
+      required:
+      - data
+      - table
+      - appId
+      properties:
+        data:
+          type: array
+          items:
+            type: string
+        table:
+          type: string
+        appId:
+          type: string
+  securitySchemes:
+    SecurityScheme:
+      description: Authentication
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/v1/participants/{participantId}/data:
+    post:
+      operationId: insertData
+      parameters:
+      - name: participantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DataRequest"
+        required: true
+      responses:
+        "201":
+          description: Data entry created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InsertResult"
+        "401":
+          description: Not authenticated
+        "400":
+          description: Request body invalid
+        "403":
+          description: Not authorised to access transaction
+        "404":
+          description: "Transaction not found, already closed or table not found"
+      summary: Insert Data
+      tags:
+      - Data Management Resource
+      security:
+      - SecurityScheme: []
+    get:
+      operationId: getData
+      parameters:
+      - name: participantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: correlationId
+        in: query
+        schema:
+          type: integer
+          nullable: true
+          format: int64
+      - name: table
+        in: query
+        schema:
+          type: string
+        required: true
+      - name: transactionId
+        in: query
+        schema:
+          type: string
+        required: true
+      responses:
+        "404":
+          description: App not found or transaction not found or already closed or
+            table not found
+        "200":
+          description: Data entry retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "403":
+          description: Not authorised to access app or transaction
+        "401":
+          description: Not authenticated
+      summary: Get Data
+      tags:
+      - Data Management Resource
+      security:
+      - SecurityScheme: []
+  /api/v1/participants/{participantId}/persistentdata:
+    post:
+      operationId: insertPersistentData
+      parameters:
+      - name: participantId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PersistentDataRequest"
+        required: true
+      responses:
+        "201":
+          description: Data entry created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InsertResult"
+        "400":
+          description: Request body invalid
+        "401":
+          description: Not authenticated
+        "403":
+          description: Not authorised to access safedeposit database
+        "404":
+          description: Table not found
+      summary: Insert Persistent Data
+      tags:
+      - Data Management Resource
+      security:
+      - SecurityScheme: []
+    get:
+      operationId: getPersistentData
+      parameters:
+      - name: participantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appId
+        in: query
+        schema:
+          type: string
+        required: true
+      - name: table
+        in: query
+        schema:
+          type: string
+        required: true
+      responses:
+        "401":
+          description: Not authenticated
+        "200":
+          description: Data entry retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "404":
+          description: Table not found
+        "403":
+          description: Not authorised to access safedeposit database
+      summary: Get Persistent Data
+      tags:
+      - Data Management Resource
+      security:
+      - SecurityScheme: []
+info:
+  title: Data Management Service REST API
+  version: 1.0.0-SNAPSHOT
+  description: OpenAPI specification of EuroDaT's Data Management Service API
+  contact:
+    name: EuroDaT support
+    url: https://www.eurodat.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: https://app.int.eurodat.org

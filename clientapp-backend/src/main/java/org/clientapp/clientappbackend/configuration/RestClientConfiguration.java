@@ -6,10 +6,7 @@ import java.io.IOException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.function.Function;
-import org.eurodat.ApiClient;
-import org.eurodat.api.ClientResourceApi;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,7 +36,10 @@ import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
-/** The REST client configuration. */
+
+/**
+ * The REST client configuration.
+ */
 @Configuration
 public class RestClientConfiguration {
 
@@ -57,42 +57,20 @@ public class RestClientConfiguration {
   @Value("${jks.password}")
   private String jksPassword;
 
-  /**
-   * Builds the client resource api.
-   *
-   * @param apiClient an api client
-   * @return the client resource api
-   */
-  @Bean
-  public ClientResourceApi clientResourceApi(@Qualifier(EURODAT_NAME) ApiClient apiClient) {
-    return new ClientResourceApi(apiClient);
-  }
-
-  /**
-   * Builds an api client.
-   *
-   * @param restClient a REST client
-   * @return an api client
-   */
-  @Bean(EURODAT_NAME)
-  public ApiClient apiClient(RestClient restClient) {
-    ApiClient apiClient = new ApiClient(restClient);
-    apiClient.setBasePath(basePath);
-    return apiClient;
-  }
-
   @Bean
   public RestClient restClient(Interceptor interceptor) {
     return RestClient.builder().requestInterceptor(interceptor).build();
   }
 
-  /** Custom request interceptor to inject a constant client registration id into the request. */
+  /**
+   * Custom request interceptor to inject a constant client registration id into the request.
+   */
   @Component
   public class Interceptor implements ClientHttpRequestInterceptor {
 
     private static final Authentication ANONYMOUS_AUTHENTICATION =
-        new AnonymousAuthenticationToken(
-            "anonymous", "anonymousUser", AuthorityUtils.createAuthorityList("ROLE_ANONYMOUS"));
+        new AnonymousAuthenticationToken("anonymous", "anonymousUser",
+            AuthorityUtils.createAuthorityList("ROLE_ANONYMOUS"));
     private final OAuth2AuthorizedClientManager authorizedClientManager;
 
     public Interceptor(OAuth2AuthorizedClientManager authorizedClientManager) {
@@ -101,19 +79,15 @@ public class RestClientConfiguration {
 
     @NotNull
     @Override
-    public ClientHttpResponse intercept(
-        @NotNull HttpRequest request,
-        @NotNull byte[] body,
-        @NotNull ClientHttpRequestExecution execution)
+    public ClientHttpResponse intercept(@NotNull HttpRequest request, @NotNull byte[] body,
+                                        @NotNull ClientHttpRequestExecution execution)
         throws IOException {
       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
       if (authentication == null) {
         authentication = ANONYMOUS_AUTHENTICATION;
       }
-      OAuth2AuthorizeRequest req =
-          OAuth2AuthorizeRequest.withClientRegistrationId(EURODAT_NAME)
-              .principal(authentication.getName())
-              .build();
+      OAuth2AuthorizeRequest req = OAuth2AuthorizeRequest.withClientRegistrationId(EURODAT_NAME)
+          .principal(authentication.getName()).build();
       OAuth2AuthorizedClient authorizedClient = authorizedClientManager.authorize(req);
       if (authorizedClient == null) {
         return execution.execute(request, body);
@@ -140,15 +114,13 @@ public class RestClientConfiguration {
         JksReader.readRsaPublicKeyFromJks(jksFilePath, certificateAlias, jksPassword);
     RestClientClientCredentialsTokenResponseClient tokenResponseClient =
         new RestClientClientCredentialsTokenResponseClient();
-    Function<ClientRegistration, JWK> jwkResolver =
-        clientRegistration -> {
-          if (clientRegistration
-              .getClientAuthenticationMethod()
-              .equals(ClientAuthenticationMethod.PRIVATE_KEY_JWT)) {
-            return new RSAKey.Builder(publicKey).privateKey(privateKey).build();
-          }
-          return null;
-        };
+    Function<ClientRegistration, JWK> jwkResolver = clientRegistration -> {
+      if (clientRegistration.getClientAuthenticationMethod()
+          .equals(ClientAuthenticationMethod.PRIVATE_KEY_JWT)) {
+        return new RSAKey.Builder(publicKey).privateKey(privateKey).build();
+      }
+      return null;
+    };
 
     tokenResponseClient.addParametersConverter(
         new NimbusJwtClientAuthenticationParametersConverter<>(jwkResolver));
@@ -159,8 +131,8 @@ public class RestClientConfiguration {
    * Builds an authorized client manager for OAuth2.
    *
    * @param clientRegistrationRepository a ClientRegistrationRepository
-   * @param authorizedClientService an OAuth2AuthorizedClientService
-   * @param tokenResponseClient an OAuth2AccessTokenResponseClient
+   * @param authorizedClientService      an OAuth2AuthorizedClientService
+   * @param tokenResponseClient          an OAuth2AccessTokenResponseClient
    * @return an OAuth2AuthorizedClientManager
    */
   @Bean
@@ -171,12 +143,11 @@ public class RestClientConfiguration {
 
     OAuth2AuthorizedClientProvider authorizedClientProvider =
         OAuth2AuthorizedClientProviderBuilder.builder()
-            .clientCredentials(b -> b.accessTokenResponseClient(tokenResponseClient))
-            .build();
+            .clientCredentials(b -> b.accessTokenResponseClient(tokenResponseClient)).build();
 
     AuthorizedClientServiceOAuth2AuthorizedClientManager authorizedClientManager =
-        new AuthorizedClientServiceOAuth2AuthorizedClientManager(
-            clientRegistrationRepository, authorizedClientService);
+        new AuthorizedClientServiceOAuth2AuthorizedClientManager(clientRegistrationRepository,
+            authorizedClientService);
     authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
 
     return authorizedClientManager;

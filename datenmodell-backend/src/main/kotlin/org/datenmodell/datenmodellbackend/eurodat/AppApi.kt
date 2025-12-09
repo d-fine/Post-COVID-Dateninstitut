@@ -17,14 +17,14 @@ class AppApi(
     appRegistration.transactionDDL = ddlStatement
     val tableSecurityMapping = TableSecurityMapping()
     tableSecurityMapping.tableName = "data"
-    tableSecurityMapping.rowBaseOutputSecurityColumn = "security_column"
+    tableSecurityMapping.rowLevelSecurityColumnName = "security_column"
     appRegistration.safeDepositDDL = "string"
-    appRegistration.tableSecurityMapping = listOf(tableSecurityMapping)
+    appRegistration.tableSecurityMappings = listOf(tableSecurityMapping)
 
-    appResourceApi.apiV1AppServiceAppsPost(appRegistration)
+    appResourceApi.startAppRegistration(appRegistration)
   }
 
   fun deleteApp(appName: String) {
-    appResourceApi.apiV1AppServiceAppsAppIdDelete(appName)
+    appResourceApi.deleteApp(appName)
   }
 }
