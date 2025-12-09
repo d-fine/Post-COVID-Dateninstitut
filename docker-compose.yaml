@@ -125,6 +125,34 @@ services:
     depends_on:
       - clientapp-keycloak-db
 
+  datenmodell-frontend:
+    profiles:
+      - datenmodell
+      - datenmodell-exclude-backend
+      - full-exclude-backend
+    container_name: datenmodell-frontend
+    build:
+      context: datenmodell-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8090:80"
+    depends_on:
+      - datenmodell-backend
+
+  clientapp-frontend:
+    profiles:
+      - clientapp
+      - clientapp-exclude-backend
+      - full-exclude-backend
+    container_name: clientapp-frontend
+    build:
+      context: clientapp-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8091:80"
+    depends_on:
+      - clientapp-backend
+
 volumes:
   pgdata: {}
   pgclientdata: {}

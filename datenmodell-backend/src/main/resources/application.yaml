@@ -14,6 +14,17 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.PostgreSQLDialect
+    web:
+        cors:
+            allowed-origins:
+                - "http://localhost:8090"
+                - "http://localhost:5174"
+            allowed-methods:
+                - GET
+                - POST
+            allowed-headers:
+                - "*"
+            allow-credentials: true
     security:
         oauth2:
             client:
