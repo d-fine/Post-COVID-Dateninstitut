@@ -19,23 +19,23 @@ spring:
             client:
                 registration:
                     eurodat:
-                        client-id: ${CLIENT_ID}
+                        client-id: ${CLIENT_ID_1}
                         client-authentication-method: private_key_jwt
                         authorization-grant-type: client_credentials
                         scope: openid
                         provider: eurodat
                 provider:
                     eurodat:
-                        issuer-uri: https://app.int.eurodat.org/auth/realms/eurodat-int # most important if you provide issuer-uri then all the configuration will be automatically handled
+                        issuer-uri: https://auth.eurodat.org/realms/eurodat-int # most important if you provide issuer-uri then all the configuration will be automatically handled
             resourceserver:
                 jwt:
                     issuer-uri: http://localhost:20010/realms/dateninstitut
                     jwk-set-uri: http://datenmodell-keycloak:8080/realms/dateninstitut/protocol/openid-connect/certs
 jks:
     base-path: https://app.int.eurodat.org/
-    file-path: src/main/resources/keystore.jks
+    file-path: src/main/resources/keystore_client_1.jks
     certificate-alias: certificate
-    password: ${JKS_PWD}
+    password: ${JKS_PWD_1}
 keycloak:
     client: datenmodell-frontend
 server:
@@ -44,3 +44,5 @@ server:
 image-repository:
     user-id: ${IMAGE_REPO_USER}
     password: ${IMAGE_REPO_PWD}
+eurodat-transaction:
+    additional-provider: ${CLIENT_ID_2}

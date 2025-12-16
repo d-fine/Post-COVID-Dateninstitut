@@ -22,4 +22,6 @@ dependencyCheck {
   suppressionFile = "$rootDir/config/dependency-check/suppressions.xml"
 }
 
-tasks.check { dependsOn("dependencyCheckAggregate") }
+// TODO Fix failing NVD download,see
+// https://github.com/dependency-check/DependencyCheck/issues/6107
+// tasks.check { dependsOn("dependencyCheckAggregate") }

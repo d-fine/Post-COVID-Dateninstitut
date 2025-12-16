@@ -25,17 +25,18 @@ class InsertTestDataTest(
   @Test
   @Tag("database-setup")
   fun insertConsumerUserAndTestFile() {
-    val testUserDataProviderRealm = "b7554068-75bd-4ebe-a805-416273972286"
-    userManagementService.createUser("postcovidclient", "first", "sur")
-    val listFilePath = listOf("src/test/resources/test.csv")
+    val testUserKeyloakId = "b7554068-75bd-4ebe-a805-416273972286"
+    val clientId = "postcovidclient2"
+    userManagementService.createUser(clientId, "first", "sur")
+    val listFilePath = listOf("src/test/resources/test-eurodat-minimal.csv")
     for (filePath in listFilePath) {
       val fileBytes = Files.readAllBytes(Paths.get(filePath))
       val fileName = Paths.get(filePath).name
       researchDataService.uploadResearchData(
-          testUserDataProviderRealm,
-          userManagementService.getIdForUsername("postcovidclient"),
+          testUserKeyloakId,
+          userManagementService.getIdForUsername(clientId),
           fileName,
-          "minimal csv file with id column and title, content column",
+          "minimal csv file with id column, research data column, row level security column",
           fileBytes)
     }
   }
