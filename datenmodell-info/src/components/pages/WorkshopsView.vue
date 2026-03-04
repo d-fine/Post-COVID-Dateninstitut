@@ -47,6 +47,32 @@ export default {
         Gerne möchten wir Sie über die von uns geplanten Workshops informieren. Hier können Sie Termine und
         Informationen zu unseren Workshops finden.
       </div>
+      <div class="ml-25 mr-25">
+        <div class="font-bold text-2xl pb-3">
+          Aktuell sind keine Workshops geplant, schauen Sie gerne später noch einmal vorbei.
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-15">
+      <div class="text-3xl text-left uppercase ml-25 mb-7 text-(--df-orange) font-bold">
+        <span> Sie haben Interesse? </span>
+      </div>
+      <div class="text-left mb-25 ml-25 mr-25 font-normal">
+        Sie wollen mehr Informationen zu unserem Datenraum oder haben Intersse an einem Workshop?
+        <br /><br />
+        Gerne planen wir gemeinsam mit Ihnen eine Infoveranstaltung, einen Workshop oder einen kurzen ersten Austausch.
+        <br />
+        Kontaktieren Sie uns einfach per Mail an:
+        <a :href="'mailto:' + email" class="text-(--df-light-blue)">{{ email }}</a
+        >.
+      </div>
+    </div>
+
+    <div class="white-mid-section mt-15 mb-15 pt-13 pb-13">
+      <div class="text-3xl text-left uppercase pb-7 ml-25 mr-25 font-normal">
+        <span> Bereits durchgeführte Workshops </span>
+      </div>
 
       <div class="ml-25 mr-25 pb-6">
         <div class="font-bold text-2xl pb-3">Vorstellung des Datennexus beim HBDI</div>
@@ -99,21 +125,6 @@ export default {
             Anmeldung und mehr Informationen finden Sie hier.
           </a>
         </div>
-      </div>
-    </div>
-
-    <div class="mb-15">
-      <div class="text-3xl text-left uppercase ml-25 mb-7 text-(--df-orange)">
-        <span> Sie haben Interesse? </span>
-      </div>
-      <div class="text-left mb-25 ml-25 mr-25 font-normal">
-        Sie wollen mehr Informationen zu unserem Datenraum oder haben Intersse an einem Workshop?
-        <br /><br />
-        Gerne planen wir gemeinsam mit Ihnen eine Infoveranstaltung, einen Workshop oder einen kurzen ersten Austausch.
-        <br />
-        Kontaktieren Sie uns einfach per Mail an:
-        <a :href="'mailto:' + email" class="text-(--df-light-blue)">{{ email }}</a
-        >.
       </div>
     </div>
   </div>

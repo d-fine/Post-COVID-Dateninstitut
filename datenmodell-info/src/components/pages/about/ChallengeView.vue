@@ -9,6 +9,7 @@ export default {
       lock: '/lock.svg',
       law: '/law.svg',
       link: '/link.svg',
+      picture_bmi: '/Siegerfoto.jpg',
       reports: [
         { name: 'd-fine_Abschlussbericht_Stufe_1.pdf', title: 'Abschlussbericht Stufe 1' },
         { name: 'd-fine_Abschlusspraesentation_Stufe_1.pdf', title: 'Abschlusspräsentation Stufe 1' },
@@ -77,8 +78,32 @@ export default {
     </div>
 
     <div class="white-mid-section mt-15 mb-15 pt-13 pb-13">
-      <div class="text-3xl text-left uppercase pb-7 ml-25 mr-25">
-        <span> für die Datenökonomie </span>
+      <div class="text-3xl text-left pb-7 ml-25 mr-25">
+        <span class="uppercase text-(--df-orange)"> Datennutzung, die funktioniert </span>
+        <br />
+        <span> - DSGVO-konform, skalierbar und im Rahmen bestehender Regulatorik </span>
+      </div>
+      <div class="grid gap-12 grid-cols-2 ml-25 mr-25 gap-x-30">
+        <div class="logo-container flex flex-col items-center">
+          <img :src="picture_bmi" alt="Siegerfoto" class="w-105 bg-white" />
+        </div>
+        <div class="text-left font-normal text-(--df-blue)">
+          Mitten im Trubel um die Kanzlerwahl durften unsere Kolleginnen und Kollegen im Bundesinnenministerium ihren
+          Ansatz zur Überwindung von Datensilos und zur sicheren, verantwortungsvollen Datennutzung präsentieren. Beim
+          Abschlussevent der Post COVID Challenge hat das interdisziplinäre Team aus Medizin, Recht und Tech die
+          Auszeichnung als innovativstes und skalierbarstes MVP erhalten 🏆
+          <br />
+          <br />
+          „Dieser Erfolg macht uns stolz, und erfüllt uns gleichzeitig mit Tatendrang: Wir verstehen das Ende der
+          Challenge als Anfang der nächsten Phase unserer Arbeit. Packen wir es an!“ - Felix Mackenroth, Experte für die
+          Digitalisierung des Öffentlichen Sektors bei d-fine.
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-4 pb-4 mb-15">
+      <div class="text-3xl text-left pb-12 ml-25 font-bold">
+        <span class="text-(--df-orange) uppercase"> Für die Datenökonomie </span>
       </div>
       <div class="text-left pb-12 ml-25 mr-25 w-180 font-normal text-(--df-blue)">
         Sowohl die ehemalige als auch die aktuelle Bundesregierung haben die Notwendigkeit erkannt, die digitale
@@ -145,28 +170,30 @@ export default {
       </div>
     </div>
 
-    <div class="text-3xl text-left uppercase ml-25 mb-7 text-(--df-orange)">
-      <span> Abschlussberichte </span>
-    </div>
-    <div class="font-normal text-(--df-blue) ml-25 mr-25 mb-7">
-      Die Post-Covid Challenge besteht aus drei Stufen. Am Ende jeder Stufe erstellen die teilnehmenden Teams einen
-      Abschlussbericht mit den Ergebnisse der jeweiligen Stufe. Zusätzlich dazu halten die teilnehmenden Teams einen
-      Vortrag, der die wesentlichen Punkte des Berichts zusammenfasst. Hier veröffentlichen wir unsere Abschlussberichte
-      und die Folien unserer Abschlusspräsentationen für alle Stufen der Post-Covid Challenge.
-    </div>
+    <div class="white-mid-section mt-15 mb-15 pt-13 pb-13">
+      <div class="text-3xl text-left uppercase pb-7 ml-25 mr-25">
+        <span> Abschlussberichte </span>
+      </div>
+      <div class="font-normal text-(--df-blue) ml-25 mr-25 mb-7">
+        Die Post-Covid Challenge bestand aus drei Stufen. Am Ende jeder Stufe erstellten die teilnehmenden Teams einen
+        Abschlussbericht mit den Ergebnisse der jeweiligen Stufe. Zusätzlich dazu hielten die teilnehmenden Teams einen
+        Vortrag, der die wesentlichen Punkte des Berichts zusammenfasste. Hier veröffentlichen wir unsere
+        Abschlussberichte und die Folien unserer Abschlusspräsentationen für alle drei Stufen der Post-Covid Challenge.
+      </div>
 
-    <div class="flex flex-wrap ml-25 mr-25 mb-15">
-      <div
-        v-for="(report, index) in reports"
-        :key="index"
-        style="margin-bottom: 10px"
-        class="flex items-center w-1/2 mb-2.5"
-      >
-        <a :href="getPdfUrl(report.name)" target="_blank" style="margin-right: 5px">
-          {{ report.title }}
-        </a>
-        <PrimeButton class="navigation_button w-[8%]!" @click="downloadReport(report.name)" icon="pi pi-download">
-        </PrimeButton>
+      <div class="flex flex-wrap ml-25 mr-25">
+        <div
+          v-for="(report, index) in reports"
+          :key="index"
+          style="margin-bottom: 10px"
+          class="flex items-center w-1/2 mb-2.5"
+        >
+          <a :href="getPdfUrl(report.name)" target="_blank" style="margin-right: 5px">
+            {{ report.title }}
+          </a>
+          <PrimeButton class="navigation_button w-[8%]!" @click="downloadReport(report.name)" icon="pi pi-download">
+          </PrimeButton>
+        </div>
       </div>
     </div>
   </div>
