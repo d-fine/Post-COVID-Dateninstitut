@@ -88,6 +88,9 @@ export default {
           <img :src="picture_bmi" alt="Siegerfoto" class="w-105 bg-white" />
         </div>
         <div class="text-left font-normal text-(--df-blue)">
+          Berlin, Mai 2025
+          <br />
+          <br />
           Mitten im Trubel um die Kanzlerwahl durften unsere Kolleginnen und Kollegen im Bundesinnenministerium ihren
           Ansatz zur Überwindung von Datensilos und zur sicheren, verantwortungsvollen Datennutzung präsentieren. Beim
           Abschlussevent der Post COVID Challenge hat das interdisziplinäre Team aus Medizin, Recht und Tech die
