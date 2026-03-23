@@ -63,7 +63,7 @@ export default {
             target="_blank"
             class="bg-(--df-dark-blue) flex justify-center text-white"
           >
-            &copy; 2025 d-fine GmbH
+            &copy; 2026 d-fine GmbH
           </a>
         </template>
       </Toolbar>

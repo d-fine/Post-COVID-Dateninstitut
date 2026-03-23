@@ -52,6 +52,7 @@ export default {
         Fachrichtungen mit neuen Werkzeugen und einer umfassenden Datengrundlage ausrüsten. Hierfür stellen wir
         entscheidende Werkzeuge bereit:
         <br />
+        <br />
         Wir vernetzen Forschende durch wirkungsvolle Kommunikationswerkzeuge.
         <br />
         Wir vernetzen Prozesse und Methoden durch Standardisierung von Formaten und Algorithmen.
